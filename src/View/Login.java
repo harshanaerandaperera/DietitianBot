@@ -210,7 +210,7 @@ public class Login extends javax.swing.JFrame {
             new java.util.Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    MainUI U = new MainUI();
+                    UserUI U = new UserUI();
                     U.setVisible(true);
                     dispose();
 
