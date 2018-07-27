@@ -1,5 +1,6 @@
 package View;
 
+import Controller.DietMaths;
 import Models.LUIS;
 import java.io.Serializable;
 
@@ -71,6 +72,7 @@ public class MainUI extends javax.swing.JFrame implements Serializable {
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
+        btntestingpurpose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -311,6 +313,15 @@ public class MainUI extends javax.swing.JFrame implements Serializable {
 
         jPanel10.setBackground(new java.awt.Color(32, 33, 35));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btntestingpurpose.setText("Testing App");
+        btntestingpurpose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntestingpurposeActionPerformed(evt);
+            }
+        });
+        jPanel10.add(btntestingpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+
         jTabbedPane4.addTab("                                             Status                                          ", jPanel10);
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
@@ -338,7 +349,7 @@ public class MainUI extends javax.swing.JFrame implements Serializable {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
+            .addGap(0, 542, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("   X   ", jPanel3);
@@ -410,6 +421,23 @@ public class MainUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_btnSendQueryActionPerformed
 
+    private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
+                //call the API
+//        LUIS L=new LUIS();
+//        L.setQuery("text that I'm busy");
+//        L.ProcessQuery();
+//        System.out.println("TopIntent = "+L.getTopScoreIntent());
+
+    
+        
+        DietMaths t=new DietMaths();
+      //  System.out.println(t.TDEE_M(88, 183, 29, 3));
+      //  t.TDEE_M(88, 183, 29, 3);
+       // System.out.println(t.BMI(80,180));
+       t.MACRONUTRIENT(1, 2000);
+   
+    }//GEN-LAST:event_btntestingpurposeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,6 +483,7 @@ public class MainUI extends javax.swing.JFrame implements Serializable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSendQuery;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btntestingpurpose;
     private javax.swing.JLabel check;
     private javax.swing.JComboBox<String> cmbActivityLevel;
     private javax.swing.JComboBox<String> cmbGoal;
