@@ -1,8 +1,6 @@
 package View;
-
 import View.*;
 import Controller.DietMaths;
-import Models.LUIS;
 import java.io.Serializable;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
@@ -49,18 +47,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         });
 
         jTabbedPane2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane2MouseClicked(evt);
-            }
-        });
 
         jTabbedPane4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTabbedPane4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane4MouseClicked(evt);
-            }
-        });
 
         jPanel10.setBackground(new java.awt.Color(32, 33, 35));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,14 +115,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
     }//GEN-LAST:event_formWindowClosing
-
-    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane2MouseClicked
-
-    private void jTabbedPane4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane4MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane4MouseClicked
 
     private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
                 //call the API

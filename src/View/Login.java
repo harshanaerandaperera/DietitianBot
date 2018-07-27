@@ -168,20 +168,15 @@ public class Login extends javax.swing.JFrame {
 
 
     private void txtUnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnameFocusGained
-
         txtUname.setText("");
     }//GEN-LAST:event_txtUnameFocusGained
 
     private void txtPwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPwdFocusGained
-
         txtPwd.setText("");
     }//GEN-LAST:event_txtPwdFocusGained
 
     private void lbl_closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_closeMousePressed
-
         System.exit(0);
-
-
     }//GEN-LAST:event_lbl_closeMousePressed
     int xy, xx;
     private void loginMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseDragged
@@ -200,9 +195,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
 
-        if (!"tester".equals(txtUname.getText()) && !"123".equals(txtPwd.getText())) {
-            JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In Smart City", JOptionPane.ERROR_MESSAGE);
-        } else {
+        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
             loader.show();
             login.hide();
 
@@ -217,6 +210,25 @@ public class Login extends javax.swing.JFrame {
                 }
             }, 1000 * 2);
 
+        }
+        else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
+            loader.show();
+            login.hide();
+
+            // timeout
+            new java.util.Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    AdminUI AU = new AdminUI();
+                    AU.setVisible(true);
+                    dispose();
+
+                }
+            }, 1000 * 2);
+
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnSignInActionPerformed
