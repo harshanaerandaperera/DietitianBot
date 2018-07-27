@@ -1,5 +1,6 @@
-package App;
+package View;
 
+import App.LUIS;
 import java.io.Serializable;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
@@ -7,12 +8,12 @@ import java.io.Serializable;
  *
  * @author Harshana
  */
-public class View extends javax.swing.JFrame implements Serializable {
+public class MainUI extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form View
      */
-    public View() {
+    public MainUI() {
         initComponents();
 
     }
@@ -426,14 +427,18 @@ public class View extends javax.swing.JFrame implements Serializable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -442,7 +447,7 @@ public class View extends javax.swing.JFrame implements Serializable {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                new MainUI().setVisible(true);
             }
         });
     }
