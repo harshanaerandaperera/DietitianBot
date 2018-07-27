@@ -1,6 +1,6 @@
 package View;
 
-import App.LUIS;
+import Models.LUIS;
 import java.io.Serializable;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 

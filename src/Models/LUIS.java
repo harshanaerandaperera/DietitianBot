@@ -1,4 +1,4 @@
-package App;
+package Models;
 
 import java.net.URI;
 import org.apache.http.HttpEntity;
