@@ -29,7 +29,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private void initComponents() {
 
         radGrpGender = new javax.swing.ButtonGroup();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPaneMainPanelUser = new javax.swing.JTabbedPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -86,10 +86,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        jTabbedPane2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTabbedPaneMainPanelUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane2MouseClicked(evt);
+                jTabbedPaneMainPanelUserMouseClicked(evt);
             }
         });
 
@@ -169,7 +169,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jTabbedPane1.addTab("                                          Welcome                                           ", jPanel1);
 
-        jTabbedPane2.addTab("          Assistant         ", jTabbedPane1);
+        jTabbedPaneMainPanelUser.addTab("          Assistant         ", jTabbedPane1);
 
         jTabbedPane3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,7 +302,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPane2.addTab("           Profile          ", jPanel5);
+        jTabbedPaneMainPanelUser.addTab("           Profile          ", jPanel5);
 
         jTabbedPane4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jTabbedPane4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,7 +339,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPane2.addTab("           Diet Chart          ", jPanel6);
+        jTabbedPaneMainPanelUser.addTab("           Diet Chart          ", jPanel6);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -352,22 +352,22 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             .addGap(0, 542, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("   X   ", jPanel3);
+        jTabbedPaneMainPanelUser.addTab("   X   ", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPaneMainPanelUser)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPaneMainPanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.getAccessibleContext().setAccessibleName("     Me     ");
+        jTabbedPaneMainPanelUser.getAccessibleContext().setAccessibleName("     Me     ");
 
         setSize(new java.awt.Dimension(1222, 585));
         setLocationRelativeTo(null);
@@ -381,9 +381,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
-    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
+    private void jTabbedPaneMainPanelUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMainPanelUserMouseClicked
 
-    }//GEN-LAST:event_jTabbedPane2MouseClicked
+    }//GEN-LAST:event_jTabbedPaneMainPanelUserMouseClicked
 
     private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
 
@@ -521,9 +521,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPaneMainPanelUser;
     private javax.swing.JLabel lblJResponse;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblSenScore;

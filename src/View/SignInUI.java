@@ -3,13 +3,14 @@ package View;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
 
+//IT16083424 Perera P.A.H.E     SHU ID=27045240 
 /**
  *
  * @author Harshana
  */
-public class Login extends javax.swing.JFrame {
+public class SignInUI extends javax.swing.JFrame {
 
-    public Login() {
+    public SignInUI() {
 
         initComponents();
     }
@@ -111,7 +112,7 @@ public class Login extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login128.png"))); // NOI18N
         jLabel6.setText("Sign In");
-        login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 230, 140));
+        login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 230, 140));
 
         btnSignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignUp64.png"))); // NOI18N
         btnSignIn.setBorder(null);
@@ -188,7 +189,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMouseDragged
 
     private void loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMousePressed
-
         xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_loginMousePressed
@@ -250,14 +250,18 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -266,7 +270,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new SignInUI().setVisible(true);
             }
         });
     }

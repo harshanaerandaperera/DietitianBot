@@ -28,13 +28,15 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private void initComponents() {
 
         radGrpGender = new javax.swing.ButtonGroup();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPaneMainPanelAdmin = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         btntestingpurpose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(32, 33, 35));
@@ -46,7 +48,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        jTabbedPane2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTabbedPaneMainPanelAdmin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 
         jTabbedPane4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -78,7 +80,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPane2.addTab("           Diet Chart          ", jPanel6);
+        jTabbedPaneMainPanelAdmin.addTab("           Diet Chart          ", jPanel6);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -91,22 +93,48 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             .addGap(0, 542, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("   X   ", jPanel3);
+        jTabbedPaneMainPanelAdmin.addTab("      test1      ", jPanel3);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1220, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 542, Short.MAX_VALUE)
+        );
+
+        jTabbedPaneMainPanelAdmin.addTab("    test2   ", jPanel1);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1220, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 542, Short.MAX_VALUE)
+        );
+
+        jTabbedPaneMainPanelAdmin.addTab("", new javax.swing.ImageIcon(getClass().getResource("/Images/SignOut.png")), jPanel4); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPaneMainPanelAdmin)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPaneMainPanelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.getAccessibleContext().setAccessibleName("     Me     ");
+        jTabbedPaneMainPanelAdmin.getAccessibleContext().setAccessibleName("     Me     ");
 
         setSize(new java.awt.Dimension(1222, 585));
         setLocationRelativeTo(null);
@@ -233,12 +261,14 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btntestingpurpose;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPaneMainPanelAdmin;
     private javax.swing.ButtonGroup radGrpGender;
     // End of variables declaration//GEN-END:variables
 
