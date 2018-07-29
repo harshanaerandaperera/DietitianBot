@@ -37,7 +37,9 @@ public class SignUpUI extends javax.swing.JFrame {
         lbl_close = new javax.swing.JLabel();
         txtPwd = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
-        btnSignIn = new javax.swing.JButton();
+        btnSignUp = new javax.swing.JButton();
+        lblSignIn = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         loader = new javax.swing.JPanel();
         img_loader = new javax.swing.JLabel();
         lbl_loader = new javax.swing.JLabel();
@@ -113,20 +115,35 @@ public class SignUpUI extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login128.png"))); // NOI18N
-        jLabel6.setText("Sign In");
+        jLabel6.setText("Sign Up");
         login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 230, 140));
 
-        btnSignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignUp64.png"))); // NOI18N
-        btnSignIn.setBorder(null);
-        btnSignIn.setContentAreaFilled(false);
-        btnSignIn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignupPressed.png"))); // NOI18N
-        btnSignIn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignUprollover.png"))); // NOI18N
-        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
+        btnSignUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignUp64.png"))); // NOI18N
+        btnSignUp.setBorder(null);
+        btnSignUp.setContentAreaFilled(false);
+        btnSignUp.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignupPressed.png"))); // NOI18N
+        btnSignUp.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SignUprollover.png"))); // NOI18N
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignInActionPerformed(evt);
+                btnSignUpActionPerformed(evt);
             }
         });
-        login.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
+        login.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, -1, -1));
+
+        lblSignIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSignIn.setForeground(new java.awt.Color(51, 153, 255));
+        lblSignIn.setText("Sign in instead");
+        lblSignIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblSignInMousePressed(evt);
+            }
+        });
+        login.add(lblSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Already have an account?");
+        login.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, -1, -1));
 
         jPanel1.add(login, "card2");
 
@@ -151,7 +168,7 @@ public class SignUpUI extends javax.swing.JFrame {
         );
         pnl_bgLayout.setVerticalGroup(
             pnl_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,7 +212,7 @@ public class SignUpUI extends javax.swing.JFrame {
         xy = evt.getY();
     }//GEN-LAST:event_loginMousePressed
 
-    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
 
         if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
             loader.show();
@@ -233,7 +250,13 @@ public class SignUpUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
         }
 
-    }//GEN-LAST:event_btnSignInActionPerformed
+    }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void lblSignInMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignInMousePressed
+        SignInUI IU=new SignInUI();
+        IU.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblSignInMousePressed
 
     /**
      * @param args the command line arguments
@@ -302,14 +325,16 @@ public class SignUpUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSignIn;
+    private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel img_loader;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblSignIn;
     private javax.swing.JLabel lbl_close;
     private javax.swing.JLabel lbl_loader;
     private javax.swing.JPanel loader;

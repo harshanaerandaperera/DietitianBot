@@ -36,6 +36,8 @@ public class SignInUI extends javax.swing.JFrame {
         txtPwd = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         btnSignIn = new javax.swing.JButton();
+        lblCreateAccount = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         loader = new javax.swing.JPanel();
         img_loader = new javax.swing.JLabel();
         lbl_loader = new javax.swing.JLabel();
@@ -125,6 +127,21 @@ public class SignInUI extends javax.swing.JFrame {
             }
         });
         login.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
+
+        lblCreateAccount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCreateAccount.setForeground(new java.awt.Color(51, 153, 255));
+        lblCreateAccount.setText("Create Account");
+        lblCreateAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblCreateAccountMousePressed(evt);
+            }
+        });
+        login.add(lblCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Don't have an account?");
+        login.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
         jPanel1.add(login, "card2");
 
@@ -233,6 +250,12 @@ public class SignInUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSignInActionPerformed
 
+    private void lblCreateAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAccountMousePressed
+        SignUpUI UU=new SignUpUI();
+        UU.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblCreateAccountMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -280,10 +303,12 @@ public class SignInUI extends javax.swing.JFrame {
     private javax.swing.JLabel img_loader;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblCreateAccount;
     private javax.swing.JLabel lbl_close;
     private javax.swing.JLabel lbl_loader;
     private javax.swing.JPanel loader;
