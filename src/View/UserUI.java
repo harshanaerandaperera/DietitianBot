@@ -391,11 +391,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnSendQueryActionPerformed
 
     private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
-                //call the API
-//        LUIS L=new LUIS();
-//        L.setQuery("text that I'm busy");
-//        L.ProcessQuery();
-//        System.out.println("TopIntent = "+L.getTopScoreIntent());
+
 
     
         
