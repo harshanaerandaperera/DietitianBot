@@ -66,6 +66,7 @@ public class SignInUI extends javax.swing.JFrame {
 
         txtUname.setBackground(new java.awt.Color(255, 255, 255));
         txtUname.setForeground(new java.awt.Color(102, 102, 102));
+        txtUname.setToolTipText("Enter Your Email");
         txtUname.setBorder(null);
         txtUname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

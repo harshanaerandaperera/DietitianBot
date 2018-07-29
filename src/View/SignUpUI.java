@@ -29,7 +29,7 @@ public class SignUpUI extends javax.swing.JFrame {
         pnl_bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         login = new javax.swing.JPanel();
-        txtUname = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -40,6 +40,24 @@ public class SignUpUI extends javax.swing.JFrame {
         btnSignUp = new javax.swing.JButton();
         lblSignIn = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        txtConfirmPwd = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtHeight = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtWeight = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        radMale = new javax.swing.JRadioButton();
+        radFemale = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        txtEmail = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         loader = new javax.swing.JPanel();
         img_loader = new javax.swing.JLabel();
         lbl_loader = new javax.swing.JLabel();
@@ -66,15 +84,16 @@ public class SignUpUI extends javax.swing.JFrame {
         });
         login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtUname.setBackground(new java.awt.Color(255, 255, 255));
-        txtUname.setForeground(new java.awt.Color(102, 102, 102));
-        txtUname.setBorder(null);
-        txtUname.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtName.setBackground(new java.awt.Color(255, 255, 255));
+        txtName.setForeground(new java.awt.Color(102, 102, 102));
+        txtName.setToolTipText("Name");
+        txtName.setBorder(null);
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUnameFocusGained(evt);
+                txtNameFocusGained(evt);
             }
         });
-        login.add(txtUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 302, 23));
+        login.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 302, 23));
 
         jSeparator1.setBackground(new java.awt.Color(41, 168, 73));
         jSeparator1.setForeground(new java.awt.Color(41, 168, 73));
@@ -82,11 +101,11 @@ public class SignUpUI extends javax.swing.JFrame {
 
         jSeparator2.setBackground(new java.awt.Color(41, 168, 73));
         jSeparator2.setForeground(new java.awt.Color(41, 168, 73));
-        login.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 302, 10));
+        login.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 302, 10));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/unlock_18px.png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        login.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, 31));
+        login.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, -1, 31));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/contacts_18px.png"))); // NOI18N
         login.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, 31));
@@ -100,17 +119,18 @@ public class SignUpUI extends javax.swing.JFrame {
                 lbl_closeMousePressed(evt);
             }
         });
-        login.add(lbl_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 0, 27, -1));
+        login.add(lbl_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 27, -1));
 
         txtPwd.setBackground(new java.awt.Color(255, 255, 255));
         txtPwd.setForeground(new java.awt.Color(102, 102, 102));
+        txtPwd.setToolTipText("Password");
         txtPwd.setBorder(null);
         txtPwd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtPwdFocusGained(evt);
             }
         });
-        login.add(txtPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 302, 19));
+        login.add(txtPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 302, 19));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -128,7 +148,7 @@ public class SignUpUI extends javax.swing.JFrame {
                 btnSignUpActionPerformed(evt);
             }
         });
-        login.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, -1, -1));
+        login.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 580, -1, -1));
 
         lblSignIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSignIn.setForeground(new java.awt.Color(51, 153, 255));
@@ -138,12 +158,118 @@ public class SignUpUI extends javax.swing.JFrame {
                 lblSignInMousePressed(evt);
             }
         });
-        login.add(lblSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, -1, -1));
+        login.add(lblSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Already have an account?");
-        login.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, -1, -1));
+        login.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 600, -1, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(41, 168, 73));
+        jSeparator3.setForeground(new java.awt.Color(41, 168, 73));
+        login.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 302, 10));
+
+        txtConfirmPwd.setBackground(new java.awt.Color(255, 255, 255));
+        txtConfirmPwd.setForeground(new java.awt.Color(102, 102, 102));
+        txtConfirmPwd.setToolTipText("Confirm Password");
+        txtConfirmPwd.setBorder(null);
+        txtConfirmPwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtConfirmPwdFocusGained(evt);
+            }
+        });
+        login.add(txtConfirmPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 302, 19));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/unlock_18px.png"))); // NOI18N
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        login.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, 31));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circular-line-with-word-age-in-the-center.png"))); // NOI18N
+        login.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, 31));
+
+        txtAge.setBackground(new java.awt.Color(255, 255, 255));
+        txtAge.setForeground(new java.awt.Color(102, 102, 102));
+        txtAge.setToolTipText("Age");
+        txtAge.setBorder(null);
+        txtAge.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAgeFocusGained(evt);
+            }
+        });
+        login.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 302, 23));
+
+        jSeparator4.setBackground(new java.awt.Color(41, 168, 73));
+        jSeparator4.setForeground(new java.awt.Color(41, 168, 73));
+        login.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 302, 10));
+
+        txtHeight.setBackground(new java.awt.Color(255, 255, 255));
+        txtHeight.setForeground(new java.awt.Color(102, 102, 102));
+        txtHeight.setToolTipText("Height");
+        txtHeight.setBorder(null);
+        txtHeight.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHeightFocusGained(evt);
+            }
+        });
+        login.add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 302, 23));
+
+        jSeparator5.setBackground(new java.awt.Color(41, 168, 73));
+        jSeparator5.setForeground(new java.awt.Color(41, 168, 73));
+        login.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 302, 10));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/height.png"))); // NOI18N
+        login.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, 31));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gender.png"))); // NOI18N
+        login.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, -1, 31));
+
+        txtWeight.setBackground(new java.awt.Color(255, 255, 255));
+        txtWeight.setForeground(new java.awt.Color(102, 102, 102));
+        txtWeight.setToolTipText("Weight");
+        txtWeight.setBorder(null);
+        txtWeight.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtWeightFocusGained(evt);
+            }
+        });
+        login.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 302, 23));
+
+        jSeparator6.setBackground(new java.awt.Color(41, 168, 73));
+        jSeparator6.setForeground(new java.awt.Color(41, 168, 73));
+        login.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 302, 10));
+
+        radMale.setForeground(new java.awt.Color(0, 0, 0));
+        radMale.setText("Male");
+        radMale.setBorder(null);
+        radMale.setContentAreaFilled(false);
+        login.add(radMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, -1));
+
+        radFemale.setForeground(new java.awt.Color(0, 0, 0));
+        radFemale.setText("Female");
+        radFemale.setBorder(null);
+        radFemale.setContentAreaFilled(false);
+        login.add(radFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/scale.png"))); // NOI18N
+        login.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, 31));
+
+        jSeparator7.setBackground(new java.awt.Color(41, 168, 73));
+        jSeparator7.setForeground(new java.awt.Color(41, 168, 73));
+        login.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 302, 10));
+
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
+        txtEmail.setToolTipText("Email");
+        txtEmail.setBorder(null);
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+        });
+        login.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 302, 23));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/opened-email-envelope.png"))); // NOI18N
+        login.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, 31));
 
         jPanel1.add(login, "card2");
 
@@ -168,7 +294,7 @@ public class SignUpUI extends javax.swing.JFrame {
         );
         pnl_bgLayout.setVerticalGroup(
             pnl_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,9 +313,9 @@ public class SignUpUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void txtUnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnameFocusGained
-        txtUname.setText("");
-    }//GEN-LAST:event_txtUnameFocusGained
+    private void txtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusGained
+        txtName.setText("");
+    }//GEN-LAST:event_txtNameFocusGained
 
     private void txtPwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPwdFocusGained
         txtPwd.setText("");
@@ -214,41 +340,41 @@ public class SignUpUI extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
 
-        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
-            loader.show();
-            login.hide();
-
-            // timeout
-            new java.util.Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    UserUI U = new UserUI();
-                    U.setVisible(true);
-                    dispose();
-
-                }
-            }, 1000 * 2);
-
-        }
-        else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
-            loader.show();
-            login.hide();
-
-            // timeout
-            new java.util.Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    AdminUI AU = new AdminUI();
-                    AU.setVisible(true);
-                    dispose();
-
-                }
-            }, 1000 * 2);
-
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
-        }
+//        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
+//            loader.show();
+//            login.hide();
+//
+//            // timeout
+//            new java.util.Timer().schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    UserUI U = new UserUI();
+//                    U.setVisible(true);
+//                    dispose();
+//
+//                }
+//            }, 1000 * 2);
+//
+//        }
+//        else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
+//            loader.show();
+//            login.hide();
+//
+//            // timeout
+//            new java.util.Timer().schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    AdminUI AU = new AdminUI();
+//                    AU.setVisible(true);
+//                    dispose();
+//
+//                }
+//            }, 1000 * 2);
+//
+//        }
+//        else {
+//            JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+//        }
 
     }//GEN-LAST:event_btnSignUpActionPerformed
 
@@ -257,6 +383,26 @@ public class SignUpUI extends javax.swing.JFrame {
         IU.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblSignInMousePressed
+
+    private void txtConfirmPwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtConfirmPwdFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmPwdFocusGained
+
+    private void txtAgeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAgeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeFocusGained
+
+    private void txtHeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHeightFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHeightFocusGained
+
+    private void txtWeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWeightFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtWeightFocusGained
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailFocusGained
 
     /**
      * @param args the command line arguments
@@ -327,20 +473,38 @@ public class SignUpUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel img_loader;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel lblSignIn;
     private javax.swing.JLabel lbl_close;
     private javax.swing.JLabel lbl_loader;
     private javax.swing.JPanel loader;
     private javax.swing.JPanel login;
     private javax.swing.JPanel pnl_bg;
+    private javax.swing.JRadioButton radFemale;
+    private javax.swing.JRadioButton radMale;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JPasswordField txtConfirmPwd;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtHeight;
+    private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPwd;
-    private javax.swing.JTextField txtUname;
+    private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 }
