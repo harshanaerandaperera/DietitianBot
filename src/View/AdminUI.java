@@ -157,7 +157,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
       //  System.out.println(t.TDEE_M(88, 183, 29, 3));
       //  t.TDEE_M(88, 183, 29, 3);
        // System.out.println(t.BMI(80,180));
-       t.MACRONUTRIENT(1, 2000);
+       t.MACRONUTRIENT(0, 2000);
    
     }//GEN-LAST:event_btntestingpurposeActionPerformed
 
