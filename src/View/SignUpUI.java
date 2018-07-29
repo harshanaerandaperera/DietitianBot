@@ -16,6 +16,19 @@ public class SignUpUI extends javax.swing.JFrame {
 
         initComponents();
     }
+    
+    
+    public boolean validatePassword(String password1,String password2){
+        if(password1.equals(password2)){
+            return true;
+        }
+        else{
+        return false;
+    }
+     
+   }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,6 +41,9 @@ public class SignUpUI extends javax.swing.JFrame {
 
         pnl_bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        loader = new javax.swing.JPanel();
+        img_loader = new javax.swing.JLabel();
+        lbl_loader = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -58,9 +74,6 @@ public class SignUpUI extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         txtEmail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        loader = new javax.swing.JPanel();
-        img_loader = new javax.swing.JLabel();
-        lbl_loader = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -70,6 +83,19 @@ public class SignUpUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
+
+        loader.setBackground(new java.awt.Color(255, 255, 255));
+        loader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        img_loader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ring.gif"))); // NOI18N
+        loader.add(img_loader, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 105, 139, 141));
+
+        lbl_loader.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbl_loader.setForeground(new java.awt.Color(41, 168, 73));
+        lbl_loader.setText("Loggin in....");
+        loader.add(lbl_loader, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 276, -1, -1));
+
+        jPanel1.add(loader, "card3");
 
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -272,19 +298,6 @@ public class SignUpUI extends javax.swing.JFrame {
         login.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, 31));
 
         jPanel1.add(login, "card2");
-
-        loader.setBackground(new java.awt.Color(255, 255, 255));
-        loader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        img_loader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ring.gif"))); // NOI18N
-        loader.add(img_loader, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 105, 139, 141));
-
-        lbl_loader.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbl_loader.setForeground(new java.awt.Color(41, 168, 73));
-        lbl_loader.setText("Loggin in....");
-        loader.add(lbl_loader, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 276, -1, -1));
-
-        jPanel1.add(loader, "card3");
 
         javax.swing.GroupLayout pnl_bgLayout = new javax.swing.GroupLayout(pnl_bg);
         pnl_bg.setLayout(pnl_bgLayout);
