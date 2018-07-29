@@ -5,6 +5,8 @@
  */
 package Models;
 
+import Controller.Users;
+
 /**
  *
  * @author Debug
@@ -19,6 +21,22 @@ public class User {
     private double weight;
     private String gender;
     private String password;
+    
+    
+    public User(String name,String email,int age,double height,double weight,String gender,String password){
+        this.name=name;
+        this.age=age;
+        this.height=height;
+        this.weight=weight;
+        this.gender=gender;
+        this.password=password;
+        System.out.println("User created--!");
+        
+        Users users=Users.getUsersInstance();
+        users.addUser(this);
+        
+     }
+    
     
      /**
      * @return the name
