@@ -80,25 +80,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         setBackground(new java.awt.Color(32, 33, 35));
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTabbedPaneMainPanelUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPaneMainPanelUserMouseClicked(evt);
-            }
-        });
 
         jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
         jPanel1.setVerifyInputWhenFocusTarget(false);
@@ -134,18 +119,23 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chatbar.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 480, 90));
 
+        check.setForeground(new java.awt.Color(255, 255, 255));
         check.setText("Top Score Intent");
         jPanel1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
+        lblJResponse.setForeground(new java.awt.Color(255, 255, 255));
         lblJResponse.setText("Response");
         jPanel1.add(lblJResponse, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
+        lbltopintentVal.setForeground(new java.awt.Color(255, 255, 255));
         lbltopintentVal.setText("Top Intent Score Val");
         jPanel1.add(lbltopintentVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 130, -1));
 
+        lblSenAna.setForeground(new java.awt.Color(255, 255, 255));
         lblSenAna.setText("Query sentiment Analysis label");
         jPanel1.add(lblSenAna, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 170, -1));
 
+        lblSenScore.setForeground(new java.awt.Color(255, 255, 255));
         lblSenScore.setText("Query Sentiment Score");
         jPanel1.add(lblSenScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
 
@@ -167,16 +157,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel6.setText("BOT Predicted Intent: ");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        jTabbedPane1.addTab("                                          Welcome                                           ", jPanel1);
+        jTabbedPane1.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
 
         jTabbedPaneMainPanelUser.addTab("          Assistant         ", jTabbedPane1);
 
         jTabbedPane3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane3MouseClicked(evt);
-            }
-        });
 
         jPanel4.setBackground(new java.awt.Color(32, 33, 35));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -352,7 +337,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             .addGap(0, 542, Short.MAX_VALUE)
         );
 
-        jTabbedPaneMainPanelUser.addTab("   X   ", jPanel3);
+        jTabbedPaneMainPanelUser.addTab("", new javax.swing.ImageIcon(getClass().getResource("/Images/SignOut.png")), jPanel3); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -372,22 +357,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         setSize(new java.awt.Dimension(1222, 585));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
-    }//GEN-LAST:event_formWindowClosing
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void jTabbedPaneMainPanelUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMainPanelUserMouseClicked
-
-    }//GEN-LAST:event_jTabbedPaneMainPanelUserMouseClicked
-
-    private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane3MouseClicked
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 //        radMale.setActionCommand("M");
