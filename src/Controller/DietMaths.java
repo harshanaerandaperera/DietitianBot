@@ -35,15 +35,19 @@ public class DietMaths {
 
         if (ActivityLevelIndex == 0) {
             ActivityLevel = 1.2;
+            System.out.println("ActivityLevel"+ActivityLevel);
         }
         if (ActivityLevelIndex == 1) {
             ActivityLevel = 1.375;
+            System.out.println("ActivityLevel"+ActivityLevel);
         }
         if (ActivityLevelIndex == 2) {
             ActivityLevel = 1.55;
+            System.out.println("ActivityLevel"+ActivityLevel);
         }
         if (ActivityLevelIndex == 3) {
             ActivityLevel = 1.725;
+            System.out.println("ActivityLevel"+ActivityLevel);
         }
 
         int REE = (int) Math.round((Weight * 10) + (Height * 6.25) - (5 * Age) + 5);  // Resting Energy Expenditure (REE)

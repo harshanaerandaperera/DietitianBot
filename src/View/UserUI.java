@@ -30,6 +30,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         currentUser = user;
         createProfile();
         showBMI();
+        getTDEE();
         System.out.println("Current User is" + currentUser.getName());
     }
     
@@ -44,6 +45,17 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
     public void showBMI(){
         lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(),currentUser.getHeight())));
+    }
+    public void getTDEE(){
+        if(currentUser.getGender().equals("Male")){
+            System.out.println("calaerie of "+currentUser.getEmail()+dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex()));
+        }
+        else if(currentUser.getGender().equals("Female")){
+             System.out.println("calaerie of "+currentUser.getEmail()+dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex()));
+
+        }
+        
+        
     }
     
 
@@ -391,7 +403,13 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-//        radMale.setActionCommand("M");
+
+        currentUser.setName(txtUpdateUserName.getText());
+        currentUser.setEmail(txtUpdateUserName.getText());
+        
+
+
+//radMale.setActionCommand("M");
 //        radFemale.setActionCommand("F");
 //        String selectedOption=radGrpGender.getSelection().getActionCommand();
         // System.out.println(selectedOption);

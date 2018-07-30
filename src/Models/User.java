@@ -22,7 +22,9 @@ public class User implements Serializable {
     private double weight;
     private String gender;
     private String password;
-
+    private String goal;
+    private double ActivityLevel;
+    
     public User() {
 
     }
@@ -146,6 +148,34 @@ public class User implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the goal
+     */
+    public String getGoal() {
+        return goal;
+    }
+
+    /**
+     * @param goal the goal to set
+     */
+    public void setGoal(String goal) {
+        this.goal = goal;
+    }
+
+    /**
+     * @return the ActivityLevel
+     */
+    public double getActivityLevel() {
+        return ActivityLevel;
+    }
+
+    /**
+     * @param ActivityLevel the ActivityLevel to set
+     */
+    public void setActivityLevel(double ActivityLevel) {
+        this.ActivityLevel = ActivityLevel;
     }
 
 }
