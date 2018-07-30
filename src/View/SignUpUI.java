@@ -18,15 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class SignUpUI extends javax.swing.JFrame {
 
-    Validator validator = new Validator();
-    Users users = Users.getUsersInstance();
-    User registerUser;
-    User currentUser;
+    public Validator validator = new Validator();
+    public Users users = Users.getUsersInstance();
+    public User registerUser;
+    public User currentUser;
 
     
     public SignUpUI() {
-
         initComponents();
+        DeserializeUsers();
     }
     
     
@@ -408,6 +408,7 @@ public class SignUpUI extends javax.swing.JFrame {
                 registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), "male", password2);
                 currentUser=registerUser;
                 JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
+                SerializeUser();
                 loader.show();
                 login.hide();
 
@@ -415,8 +416,10 @@ public class SignUpUI extends javax.swing.JFrame {
                 new java.util.Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
+                        
                         UserUI U = new UserUI();
                         U.setVisible(true);
+                        U.getCurrentUser(currentUser);
                         dispose();
 
                     }

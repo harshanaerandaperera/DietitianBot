@@ -2,6 +2,7 @@ package View;
 
 import Controller.DietMaths;
 import Models.LUIS;
+import Models.User;
 import java.io.Serializable;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * @author Harshana
  */
 public class UserUI extends javax.swing.JFrame implements Serializable {
-
+    User currentUser;
     /**
      * Creates new form View
      */
@@ -18,7 +19,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         initComponents();
 
     }
-
+    public void getCurrentUser(User user){
+        currentUser=user;
+        txtUpdateUserName.setText(currentUser.getName());
+        txtAge.setText(currentUser.getEmail());
+        txtWeight.setText(Double.toString(currentUser.getWeight()));
+        txtHeight.setText(Double.toString(currentUser.getHeight()));
+        System.out.println("Current User is"+currentUser.getName());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
