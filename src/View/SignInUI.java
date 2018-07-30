@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class SignInUI extends javax.swing.JFrame implements Serializable {
     //public Users users = Users.getUsersInstance();
+    Users users = new Users();
 
     public SignInUI() {
 
@@ -33,8 +34,8 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
             if (ufis.available() != 0) {
                 uois = new ObjectInputStream(ufis);
                 while (uois != null) {
-                   // users = (Users) uois.readObject();
-                    //System.out.println(this.users.size());
+                    users = (Users) uois.readObject();
+                    System.out.println(this.users.size());
 
                 }
             }
@@ -240,6 +241,13 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
 
+        String email=txtUname.getText();
+        String password=txtPwd.getText();
+        
+        users.getUserByEmail(email);
+        System.out.println("Sign In User"+users.getUserByEmail(email));
+        
+        
         if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
             loader.show();
             login.hide();
