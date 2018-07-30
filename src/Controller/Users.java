@@ -50,6 +50,23 @@ public class Users extends ArrayList<User>{
           return user;
 
    }    
+   
+   public boolean checkUser(String email){
+       
+       boolean status=false;
+       for(int i=0;i<this.size();i++){
+            if(this.get(i).getEmail().equals(email)){
+                    //System.out.println(this.get(i).getName());
+                       status=true;
+            }
+            else{
+                status=false;
+            }
+        }
+       
+       return status;
+   }
+   
      
     
 }

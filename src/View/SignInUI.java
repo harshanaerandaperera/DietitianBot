@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Harshana
  */
 public class SignInUI extends javax.swing.JFrame implements Serializable {
+
     //public Users users = Users.getUsersInstance();
     Users users = new Users();
 
@@ -22,7 +23,8 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
         initComponents();
         DeserializeUsers();
     }
- /**
+
+    /**
      * Deserialize Users
      */
     public void DeserializeUsers() {
@@ -43,6 +45,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -241,13 +244,40 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
 
-        String email=txtUname.getText();
-        String password=txtPwd.getText();
-        
-        users.getUserByEmail(email);
-        System.out.println("Sign In User"+users.getUserByEmail(email));
-        
-        
+        String email = txtUname.getText();
+        String password = txtPwd.getText();
+
+        // System.out.println(users.getUserByEmail(email));
+        //  System.out.println("email"+email);
+        // if(users.checkUser(email)){
+        //}
+        if (users.getUserByEmail(email).getEmail() == null) {
+            JOptionPane.showMessageDialog(null, "Invalid Email !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            if (users.getUserByEmail(email).getPassword().equals(password) && users.getUserByEmail(email).getEmail().equals(email)) {
+
+                loader.show();
+                login.hide();
+
+                // timeout
+                new java.util.Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        UserUI U = new UserUI();
+                        U.setVisible(true);
+                        dispose();
+
+                    }
+                }, 1000 * 2);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Password !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+
+//        
         if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
             loader.show();
             login.hide();
@@ -263,8 +293,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
                 }
             }, 1000 * 2);
 
-        }
-        else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
+        } else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
             loader.show();
             login.hide();
 
@@ -279,15 +308,14 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
                 }
             }, 1000 * 2);
 
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+        } else {
+            //  JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void lblCreateAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAccountMousePressed
-        SignUpUI UU=new SignUpUI();
+        SignUpUI UU = new SignUpUI();
         UU.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblCreateAccountMousePressed
