@@ -19,7 +19,6 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
     Users users = new Users();
     public User currentUser;
 
-
     public SignInUI() {
 
         initComponents();
@@ -248,32 +247,50 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
         String email = txtUname.getText();
         String password = txtPwd.getText();
-        if (users.getUserByEmail(email).getEmail() == null) {
-            JOptionPane.showMessageDialog(null, "Invalid Email !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+
+        if ("admin@gmail.com".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
+            loader.show();
+            login.hide();
+
+            // timeout
+            new java.util.Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    AdminUI AU = new AdminUI();
+                    AU.setVisible(true);
+                    dispose();
+
+                }
+            }, 1000 * 2);
 
         } else {
-            if (users.getUserByEmail(email).getPassword().equals(password) && users.getUserByEmail(email).getEmail().equals(email)) {
-
-                currentUser=users.getUserByEmail(email);
-                loader.show();
-                login.hide();
-
-                // timeout
-                new java.util.Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        UserUI U = new UserUI();
-                        U.setVisible(true);
-                        U.getCurrentUser(currentUser);
-
-                        dispose();
-
-                    }
-                }, 1000 * 2);
+            if (users.getUserByEmail(email).getEmail() == null) {
+                JOptionPane.showMessageDialog(null, "Invalid Email !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
 
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid Password !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+                if (users.getUserByEmail(email).getEmail().equals(email) && users.getUserByEmail(email).getPassword().equals(password)) {
 
+                    currentUser = users.getUserByEmail(email);
+                    loader.show();
+                    login.hide();
+
+                    // timeout
+                    new java.util.Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            UserUI U = new UserUI();
+                            U.setVisible(true);
+                            U.getCurrentUser(currentUser);
+
+                            dispose();
+
+                        }
+                    }, 1000 * 2);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Password !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
+
+                }
             }
         }
 
