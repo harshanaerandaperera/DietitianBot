@@ -367,19 +367,25 @@ public class SignUpUI extends javax.swing.JFrame {
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
 
         
+        
+        
         String name=txtName.getText();
         String email=txtEmail.getText();
         int age=Integer.parseInt(txtAge.getText());
         double height=Double.parseDouble(txtHeight.getText());
         double weight=Double.parseDouble(txtWeight.getText());
-        
-     //   String gender=buttonGroup1.getSelection().getActionCommand();
+   //   String gender=buttonGroup1.getSelection().getActionCommand();
         
         String password1=txtPwd.getText();
         String password2=txtConfirmPwd.getText();
         
-        registerUser=new User(name,email,age,height,weight,"male",password1);
-     //   users.getUserByEmail(registerUser.getEmail());
+        if(validatePassword(password1,password2)){
+             registerUser=new User(name,email,age,height,weight,"male",password1);
+         }else{
+             JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
 
         
 //        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
