@@ -395,37 +395,11 @@ public class SignUpUI extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String password1 = txtPwd.getText();
         String password2 = txtConfirmPwd.getText();
-        System.out.println("email " + email);
-        if (users.size() == 0) {
 
-           if (validator.validatePassword(password1, password2)) {
-                    registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), radGrpGender.getSelection().getActionCommand(), password2);
-                    users.registerUser(registerUser);
-                    currentUser = registerUser;
-                    JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
-                    SerializeUser();
-                    loader.show();
-                    login.hide();
+        if (validator.isValidEmail(email)) {
 
-                    // timeout
-                    new java.util.Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-
-                            UserUI U = new UserUI();
-                            U.setVisible(true);
-                            U.getCurrentUser(currentUser);
-                            dispose();
-                        }
-                    }, 1000 * 2);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
-                }
-        } else {
-
-            if (validator.validateEmail(email, users)) {
-                if (validator.validatePassword(password1, password2)) {
+            if (validator.isUniqueEmail(email, users)) {
+                if (validator.confirmPassword(password1, password2)) {
                     registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), radGrpGender.getSelection().getActionCommand(), password2);
                     users.registerUser(registerUser);
                     currentUser = registerUser;
@@ -450,11 +424,14 @@ public class SignUpUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                System.out.println(validator.validateEmail(email, users));
-
+                // System.out.println(validator.validateEmail(email, users));
                 JOptionPane.showMessageDialog(null, "Email is already used !", " email match ", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid Email pattern !", " email ", JOptionPane.ERROR_MESSAGE);
         }
+
+        // }
 //        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
 //            loader.show();
 //            login.hide();

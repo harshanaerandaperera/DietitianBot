@@ -31,7 +31,6 @@ public class Users extends ArrayList<User> {
         User user = new User();
         for (int i = 0; i < this.size(); i++) {
             if (this.get(i).getEmail().equals(email)) {
-                //System.out.println(this.get(i).getName());
                 user = this.get(i);
             }
         }
