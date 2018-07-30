@@ -7,7 +7,7 @@ package Controller;
 
 /**
  *
- * @author Oshin
+ * @author Harshana
  */
 public class Validator {
     

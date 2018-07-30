@@ -7,7 +7,7 @@ package Models;
 
 /**
  *
- * @author Debug
+ * @author Harshana
  */
 public class Admin {
     

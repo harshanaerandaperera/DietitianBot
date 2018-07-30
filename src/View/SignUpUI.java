@@ -1,7 +1,5 @@
 package View;
 
-
-
 import Controller.Users;
 import Controller.Validator;
 import Models.User;
@@ -19,10 +17,10 @@ public class SignUpUI extends javax.swing.JFrame {
 
         initComponents();
     }
-   Validator validator=new Validator();
-   Users users=Users.getUsersInstance();
-   User registerUser;
-    
+    Validator validator = new Validator();
+    Users users = Users.getUsersInstance();
+    User registerUser;
+
 //    public boolean validatePassword(String password1,String password2){
 //        if(password1.equals(password2)){
 //            return true;
@@ -32,11 +30,6 @@ public class SignUpUI extends javax.swing.JFrame {
 //    }
 //     
 //   }
-    
-    
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -368,33 +361,35 @@ public class SignUpUI extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMousePressed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-       String email=txtEmail.getText();
-        String password1=txtPwd.getText();
-        String password2=txtConfirmPwd.getText();
-        
-        if(validator.validateEmail(email)){
-            if(validator.validatePassword(password1,password2)){
-             registerUser=new User(txtName.getText(),email,Integer.parseInt(txtAge.getText()),Double.parseDouble(txtHeight.getText()),Double.parseDouble(txtWeight.getText()),"male",password2);
-             JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
+        String email = txtEmail.getText();
+        String password1 = txtPwd.getText();
+        String password2 = txtConfirmPwd.getText();
 
-        }else{
-             JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
-        }
-        }else{
-             JOptionPane.showMessageDialog(null, "Emil is already used !", " email match ", JOptionPane.ERROR_MESSAGE);
-        }
-        
-//        if(validator.validatePassword(password1,password2)){
-//             registerUser=new User(txtName.getText(),email,Integer.parseInt(txtAge.getText()),Double.parseDouble(txtHeight.getText()),Double.parseDouble(txtWeight.getText()),"male",password2);
-//             JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
-//
-//        }else{
-//             JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
-//        }
-//        
-//        
+        if (validator.validateEmail(email)) {
+            if (validator.validatePassword(password1, password2)) {
+                registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), "male", password2);
+                JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
+                loader.show();
+                login.hide();
 
-        
+                // timeout
+                new java.util.Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        UserUI U = new UserUI();
+                        U.setVisible(true);
+                        dispose();
+
+                    }
+                }, 1000 * 2);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Emil is already used !", " email match ", JOptionPane.ERROR_MESSAGE);
+        }
+
 //        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
 //            loader.show();
 //            login.hide();
@@ -410,8 +405,7 @@ public class SignUpUI extends javax.swing.JFrame {
 //                }
 //            }, 1000 * 2);
 //
-//        }
-//        else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
+//        } else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
 //            loader.show();
 //            login.hide();
 //
@@ -426,15 +420,14 @@ public class SignUpUI extends javax.swing.JFrame {
 //                }
 //            }, 1000 * 2);
 //
-//        }
-//        else {
+//        } else {
 //            JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
 //        }
 
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void lblSignInMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignInMousePressed
-        SignInUI IU=new SignInUI();
+        SignInUI IU = new SignInUI();
         IU.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblSignInMousePressed
