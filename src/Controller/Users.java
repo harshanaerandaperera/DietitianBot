@@ -30,7 +30,7 @@ public class Users extends ArrayList<User>{
             
         } 
    
-   public void addUser(User user){
+   public void registerUser(User user){
        super.add(user);
        System.out.println("User Added Succesfully..!");
        System.out.println("Number of register users :"+this.size());

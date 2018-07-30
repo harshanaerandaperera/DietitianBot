@@ -39,7 +39,7 @@ public class User {
         System.out.println("User created--!");
         
         Users users=Users.getUsersInstance();
-        users.addUser(this);
+        users.registerUser(this);
         
      }
     
