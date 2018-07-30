@@ -20,7 +20,6 @@ public class SignUpUI extends javax.swing.JFrame {
 
     public Validator validator = new Validator();
     Users users = new Users();
-    //  public Users users = Users.getUsersInstance();
     public User registerUser;
     public User currentUser;
 

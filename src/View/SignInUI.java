@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Users;
+import Models.User;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -15,8 +16,9 @@ import javax.swing.JOptionPane;
  */
 public class SignInUI extends javax.swing.JFrame implements Serializable {
 
-    //public Users users = Users.getUsersInstance();
     Users users = new Users();
+    public User currentUser;
+
 
     public SignInUI() {
 
@@ -246,17 +248,13 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
         String email = txtUname.getText();
         String password = txtPwd.getText();
-
-        // System.out.println(users.getUserByEmail(email));
-        //  System.out.println("email"+email);
-        // if(users.checkUser(email)){
-        //}
         if (users.getUserByEmail(email).getEmail() == null) {
             JOptionPane.showMessageDialog(null, "Invalid Email !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
 
         } else {
             if (users.getUserByEmail(email).getPassword().equals(password) && users.getUserByEmail(email).getEmail().equals(email)) {
 
+                currentUser=users.getUserByEmail(email);
                 loader.show();
                 login.hide();
 
@@ -266,6 +264,8 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
                     public void run() {
                         UserUI U = new UserUI();
                         U.setVisible(true);
+                        U.getCurrentUser(currentUser);
+
                         dispose();
 
                     }
