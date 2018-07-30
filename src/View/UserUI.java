@@ -19,6 +19,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         initComponents();
 
     }
+    /**
+     * 
+     * @param user 
+     */
     public void getCurrentUser(User user){
         currentUser=user;
         txtUpdateUserName.setText(currentUser.getName());

@@ -294,41 +294,6 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
             }
         }
 
-////        
-//        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
-//            loader.show();
-//            login.hide();
-//
-//            // timeout
-//            new java.util.Timer().schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    UserUI U = new UserUI();
-//                    U.setVisible(true);
-//                    dispose();
-//
-//                }
-//            }, 1000 * 2);
-//
-//        } else if ("admin".equals(txtUname.getText()) && "admin".equals(txtPwd.getText())) {
-//            loader.show();
-//            login.hide();
-//
-//            // timeout
-//            new java.util.Timer().schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    AdminUI AU = new AdminUI();
-//                    AU.setVisible(true);
-//                    dispose();
-//
-//                }
-//            }, 1000 * 2);
-//
-//        } else {
-//            //  JOptionPane.showMessageDialog(null, "Invalid User !", " Sign In AI Dietitian", JOptionPane.ERROR_MESSAGE);
-//        }
-
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void lblCreateAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAccountMousePressed

@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author Harshana
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
     private String name;
     //uniqe
@@ -22,27 +22,35 @@ public class User implements Serializable{
     private double weight;
     private String gender;
     private String password;
-    
-    
-    public User(){
-        
+
+    public User() {
+
     }
-    
-    
-    public User(String name,String email,int age,double height,double weight,String gender,String password){
-        this.name=name;
-        this.email=email;
-        this.age=age;
-        this.height=height;
-        this.weight=weight;
-        this.gender=gender;
-        this.password=password;
+
+    /**
+     *
+     * @param name
+     * @param email
+     * @param age
+     * @param height
+     * @param weight
+     * @param gender
+     * @param password
+     */
+
+    public User(String name, String email, int age, double height, double weight, String gender, String password) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.gender = gender;
+        this.password = password;
         System.out.println("User created--!");
-                
-     }
-    
-    
-     /**
+
+    }
+
+    /**
      * @return the name
      */
     public String getName() {
@@ -139,6 +147,5 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
 }
