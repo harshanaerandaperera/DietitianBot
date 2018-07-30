@@ -26,6 +26,9 @@ public class SignUpUI extends javax.swing.JFrame {
 
     public SignUpUI() {
         initComponents();
+        radMale.setActionCommand("Male");
+        radFemale.setActionCommand("Female");
+        
         DeserializeUsers();
     }
 
@@ -75,13 +78,7 @@ public class SignUpUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
-        buttonGroup7 = new javax.swing.ButtonGroup();
+        radGrpGender = new javax.swing.ButtonGroup();
         pnl_bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         login = new javax.swing.JPanel();
@@ -294,14 +291,14 @@ public class SignUpUI extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(41, 168, 73));
         login.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 302, 10));
 
-        buttonGroup1.add(radMale);
+        radGrpGender.add(radMale);
         radMale.setForeground(new java.awt.Color(0, 0, 0));
         radMale.setText("Male");
         radMale.setBorder(null);
         radMale.setContentAreaFilled(false);
         login.add(radMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, -1));
 
-        buttonGroup1.add(radFemale);
+        radGrpGender.add(radFemale);
         radFemale.setForeground(new java.awt.Color(0, 0, 0));
         radFemale.setText("Female");
         radFemale.setBorder(null);
@@ -400,10 +397,9 @@ public class SignUpUI extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String password1 = txtPwd.getText();
         String password2 = txtConfirmPwd.getText();
-
         if (validator.validateEmail(email,users)) {
             if (validator.validatePassword(password1, password2)) {
-                registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), "male", password2);
+                registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()),radGrpGender.getSelection().getActionCommand(), password2);
                 users.registerUser(registerUser);
                 currentUser = registerUser;
                 JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
@@ -420,7 +416,6 @@ public class SignUpUI extends javax.swing.JFrame {
                         U.setVisible(true);
                         U.getCurrentUser(currentUser);
                         dispose();
-
                     }
                 }, 1000 * 2);
 
@@ -561,13 +556,6 @@ public class SignUpUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignUp;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JLabel img_loader;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -594,6 +582,7 @@ public class SignUpUI extends javax.swing.JFrame {
     private javax.swing.JPanel login;
     private javax.swing.JPanel pnl_bg;
     private javax.swing.JRadioButton radFemale;
+    private javax.swing.ButtonGroup radGrpGender;
     private javax.swing.JRadioButton radMale;
     private javax.swing.JTextField txtAge;
     private javax.swing.JPasswordField txtConfirmPwd;
