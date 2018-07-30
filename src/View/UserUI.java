@@ -25,6 +25,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         txtAge.setText(Integer.toString(currentUser.getAge()));
         txtWeight.setText(Double.toString(currentUser.getWeight()));
         txtHeight.setText(Double.toString(currentUser.getHeight()));
+        
+        lblUserEmail.setText(currentUser.getEmail());
+        lblUserGender.setText(currentUser.getGender());
         System.out.println("Current User is"+currentUser.getName());
     }
     /**
@@ -36,7 +39,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        radGrpGender = new javax.swing.ButtonGroup();
         jTabbedPaneMainPanelUser = new javax.swing.JTabbedPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -67,8 +69,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
-        radMale = new javax.swing.JRadioButton();
-        radFemale = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         cmbActivityLevel = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -77,6 +77,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel14 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         txtUpdateUserName = new javax.swing.JTextField();
+        lblUserEmail = new javax.swing.JLabel();
+        lblUserGender = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
@@ -235,16 +237,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 67, 125, 10));
 
-        radGrpGender.add(radMale);
-        radMale.setForeground(new java.awt.Color(255, 255, 255));
-        radMale.setText("Male");
-        jPanel4.add(radMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(811, 226, -1, -1));
-
-        radGrpGender.add(radFemale);
-        radFemale.setForeground(new java.awt.Color(255, 255, 255));
-        radFemale.setText("Female");
-        jPanel4.add(radFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(876, 226, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Activity Level :");
@@ -270,7 +262,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Email:");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 155, 60, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 50, -1));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator9.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,6 +273,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         txtUpdateUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUpdateUserName.setBorder(null);
         jPanel4.add(txtUpdateUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 50, 188, -1));
+
+        lblUserEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserEmail.setText("...");
+        jPanel4.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 300, -1));
+
+        lblUserGender.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserGender.setText("...");
+        jPanel4.add(lblUserGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 90, -1));
 
         jTabbedPane3.addTab("                                                     Edit Profile                                                      ", jPanel4);
 
@@ -500,10 +500,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblJResponse;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblSenScore;
+    private javax.swing.JLabel lblUserEmail;
+    private javax.swing.JLabel lblUserGender;
     private javax.swing.JLabel lbltopintentVal;
-    private javax.swing.JRadioButton radFemale;
-    private javax.swing.ButtonGroup radGrpGender;
-    private javax.swing.JRadioButton radMale;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtUpdateUserName;

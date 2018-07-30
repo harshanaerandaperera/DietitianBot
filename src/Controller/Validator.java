@@ -10,31 +10,28 @@ package Controller;
  * @author Harshana
  */
 public class Validator {
-    
-     public boolean validatePassword(String password1,String password2){
-        if(password1.equals(password2)){
+
+    public boolean validatePassword(String password1, String password2) {
+        if (password1.equals(password2)) {
             return true;
+        } else {
+            return false;
         }
-        else{
-        return false;
+
     }
-     
-   }
-     
-     public boolean validateEmail(String email,Users users){
-         boolean status=true;
-         for(int i=0;i<users.size();i++){
-             if(users.get(i).getEmail().equals(email)){
-                status=false;
-             }
-             else{
-                 status=true;
-             }
-         }
-         
-         return status;
-     }
-     
-     
-    
+
+    public boolean validateEmail(String email, Users users) {
+        boolean status = true;
+        for (int i = 0; i < users.size();) {
+            if (users.get(i).getEmail().equals(email)) {
+                status = false;
+
+                break;
+            } else {
+                i++;
+            }
+        }
+        return status;
+    }
+
 }
