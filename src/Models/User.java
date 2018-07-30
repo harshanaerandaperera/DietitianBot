@@ -23,8 +23,14 @@ public class User {
     private String password;
     
     
+    public User(){
+        
+    }
+    
+    
     public User(String name,String email,int age,double height,double weight,String gender,String password){
         this.name=name;
+        this.email=email;
         this.age=age;
         this.height=height;
         this.weight=weight;

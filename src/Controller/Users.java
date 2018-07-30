@@ -39,15 +39,16 @@ public class Users extends ArrayList<User>{
        super.remove(user);
    }
      
-   public User getUserByEmail(String email){
-       User user=null;
-        for(int i=0;i<this.size();i++){
-            if(this.get(i).getEmail().equals(email)){
-                    user=this.get(i);
-                
+   public void getUserByEmail(String email){
+       System.out.println("hai");
+      // User user=new User();
+        for(int i=0;i<usersInstance.size();i++){
+            if(usersInstance.get(i).getEmail().equals(email)){
+                    System.out.println(this.get(i).getName());
             }
         }
-        return user;
+         //  return user;
+
    }    
      
     

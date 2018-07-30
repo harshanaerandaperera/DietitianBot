@@ -20,7 +20,7 @@ public class SignUpUI extends javax.swing.JFrame {
     }
     
    Users users=Users.getUsersInstance();
-    
+   User registerUser;
     
     public boolean validatePassword(String password1,String password2){
         if(password1.equals(password2)){
@@ -82,6 +82,7 @@ public class SignUpUI extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         txtEmail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         loader = new javax.swing.JPanel();
         img_loader = new javax.swing.JLabel();
         lbl_loader = new javax.swing.JLabel();
@@ -297,6 +298,14 @@ public class SignUpUI extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/opened-email-envelope.png"))); // NOI18N
         login.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, 31));
 
+        jButton1.setText("finduser");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        login.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 640, -1, -1));
+
         jPanel1.add(login, "card2");
 
         loader.setBackground(new java.awt.Color(255, 255, 255));
@@ -378,11 +387,11 @@ public class SignUpUI extends javax.swing.JFrame {
         String password1=txtPwd.getText();
         String password2=txtConfirmPwd.getText();
         
-        User user=new User(name,email,age,height,weight,"male",password1);
+        registerUser=new User(name,email,age,height,weight,"male",password1);
+       // System.out.println("reg 1"+registerUser);
         
-        
-        
-        
+        //users.getUserByEmail(email);
+        //System.out.println("user by email :"+);
         
         
         
@@ -453,6 +462,12 @@ public class SignUpUI extends javax.swing.JFrame {
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailFocusGained
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      //  users.getUserByEmail(registerUser.getEmail());
+        
+        System.out.println("registerUser"+registerUser.getEmail());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -530,6 +545,7 @@ public class SignUpUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JLabel img_loader;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
