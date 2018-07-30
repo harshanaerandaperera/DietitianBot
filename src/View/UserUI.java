@@ -11,7 +11,9 @@ import java.io.Serializable;
  * @author Harshana
  */
 public class UserUI extends javax.swing.JFrame implements Serializable {
+
     User currentUser;
+    DietMaths dm=new DietMaths();
     /**
      * Creates new form View
      */
@@ -19,21 +21,32 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         initComponents();
 
     }
+
     /**
-     * 
-     * @param user 
+     *
+     * @param user
      */
-    public void getCurrentUser(User user){
-        currentUser=user;
+    public void getCurrentUser(User user) {
+        currentUser = user;
+        createProfile();
+        showBMI();
+        System.out.println("Current User is" + currentUser.getName());
+    }
+    
+    public void createProfile(){
         txtUpdateUserName.setText(currentUser.getName());
         txtAge.setText(Integer.toString(currentUser.getAge()));
         txtWeight.setText(Double.toString(currentUser.getWeight()));
         txtHeight.setText(Double.toString(currentUser.getHeight()));
-        
         lblUserEmail.setText(currentUser.getEmail());
         lblUserGender.setText(currentUser.getGender());
-        System.out.println("Current User is"+currentUser.getName());
+        
     }
+    public void showBMI(){
+        lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(),currentUser.getHeight())));
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,6 +100,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         btntestingpurpose = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        lblUserBMI = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -255,7 +270,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel10.setText("Goal :");
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 300, 57, -1));
 
-        cmbGoal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fat Loss", "Maintenance" }));
+        cmbGoal.setForeground(new java.awt.Color(255, 255, 255));
+        cmbGoal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maintenance", "Fat Loss" }));
         jPanel4.add(cmbGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 297, 148, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -302,11 +318,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jTabbedPaneMainPanelUser.addTab("           Profile          ", jPanel5);
 
         jTabbedPane4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTabbedPane4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane4MouseClicked(evt);
-            }
-        });
 
         jPanel10.setBackground(new java.awt.Color(32, 33, 35));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -317,7 +328,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 btntestingpurposeActionPerformed(evt);
             }
         });
-        jPanel10.add(btntestingpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+        jPanel10.add(btntestingpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("BMI:");
+        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 50, -1));
+
+        lblUserBMI.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserBMI.setText("...");
+        jPanel10.add(lblUserBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 150, -1));
 
         jTabbedPane4.addTab("                                             Status                                          ", jPanel10);
 
@@ -385,10 +405,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jTabbedPane4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane4MouseClicked
-
-    }//GEN-LAST:event_jTabbedPane4MouseClicked
-
     private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
 
         LUIS L = new LUIS();
@@ -404,15 +420,12 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
 
+        DietMaths t = new DietMaths();
+        //  System.out.println(t.TDEE_M(88, 183, 29, 3));
+        //  t.TDEE_M(88, 183, 29, 3);
+        // System.out.println(t.BMI(80,180));
+        t.MACRONUTRIENT(1, 2000);
 
-    
-        
-        DietMaths t=new DietMaths();
-      //  System.out.println(t.TDEE_M(88, 183, 29, 3));
-      //  t.TDEE_M(88, 183, 29, 3);
-       // System.out.println(t.BMI(80,180));
-       t.MACRONUTRIENT(1, 2000);
-   
     }//GEN-LAST:event_btntestingpurposeActionPerformed
 
     /**
@@ -477,6 +490,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -504,6 +518,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblJResponse;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblSenScore;
+    private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserEmail;
     private javax.swing.JLabel lblUserGender;
     private javax.swing.JLabel lbltopintentVal;

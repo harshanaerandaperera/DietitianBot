@@ -6,6 +6,16 @@ package Controller;
  */
 public class DietMaths {
 
+    public DietMaths(){
+        
+    }
+    /**
+     * 
+     * @param Weight
+     * @param Height
+     * @return 
+     */
+    
     public double BMI(double Weight, double Height) {     //W in KG and H in centimeters
 
         return Weight / (Height / 100 * Height / 100);
@@ -80,12 +90,12 @@ public class DietMaths {
         double fats = 0;
         double carbs = 0;
 
-        if (GoalIndex == 0) {
+        if (GoalIndex == 0) {    //ModerateI suitable for maintaining weight
             carbs = cals * .5;
             protein = cals * .25;
             fats = cals * .25;
         }
-        if (GoalIndex == 1) {       //ModerateI suitable for maintaining weight
+        if (GoalIndex == 1) {      
 
             carbs = cals * .5;
             protein = cals * .25;
