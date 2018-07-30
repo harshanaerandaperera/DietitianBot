@@ -19,18 +19,16 @@ import javax.swing.JOptionPane;
 public class SignUpUI extends javax.swing.JFrame {
 
     public Validator validator = new Validator();
-    public Users users = Users.getUsersInstance();
+    Users users = new Users();
+    //  public Users users = Users.getUsersInstance();
     public User registerUser;
     public User currentUser;
 
-    
     public SignUpUI() {
         initComponents();
         DeserializeUsers();
     }
-    
-    
-     
+
     /**
      * Serialize Users
      */
@@ -45,6 +43,7 @@ public class SignUpUI extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+
     /**
      * Deserialize Users
      */
@@ -66,7 +65,6 @@ public class SignUpUI extends javax.swing.JFrame {
 
         }
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -403,10 +401,11 @@ public class SignUpUI extends javax.swing.JFrame {
         String password1 = txtPwd.getText();
         String password2 = txtConfirmPwd.getText();
 
-        if (validator.validateEmail(email)) {
+        if (validator.validateEmail(email,users)) {
             if (validator.validatePassword(password1, password2)) {
                 registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), "male", password2);
-                currentUser=registerUser;
+                users.registerUser(registerUser);
+                currentUser = registerUser;
                 JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
                 SerializeUser();
                 loader.show();
@@ -416,7 +415,7 @@ public class SignUpUI extends javax.swing.JFrame {
                 new java.util.Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        
+
                         UserUI U = new UserUI();
                         U.setVisible(true);
                         U.getCurrentUser(currentUser);

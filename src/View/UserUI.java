@@ -22,7 +22,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public void getCurrentUser(User user){
         currentUser=user;
         txtUpdateUserName.setText(currentUser.getName());
-        txtAge.setText(currentUser.getEmail());
+        txtAge.setText(Integer.toString(currentUser.getAge()));
         txtWeight.setText(Double.toString(currentUser.getWeight()));
         txtHeight.setText(Double.toString(currentUser.getHeight()));
         System.out.println("Current User is"+currentUser.getName());

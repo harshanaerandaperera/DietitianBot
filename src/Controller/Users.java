@@ -15,20 +15,20 @@ import java.util.ArrayList;
 public class Users extends ArrayList<User>{
     
     
-    private static Users usersInstance;
+  //  private static Users usersInstance;
     
-    private Users(){
+    public Users(){
         
     }
-    
-   public static Users getUsersInstance() {
-            
-          if (usersInstance == null) {
-            usersInstance = new Users();
-        }  
-            return usersInstance;
-            
-        } 
+//    
+//   public static Users getUsersInstance() {
+//            
+//          if (usersInstance == null) {
+//            usersInstance = new Users();
+//        }  
+//            return usersInstance;
+//            
+//        } 
    
    public void registerUser(User user){
        super.add(user);
@@ -40,8 +40,8 @@ public class Users extends ArrayList<User>{
    }
      
    public void getUserByEmail(String email){
-        for(int i=0;i<usersInstance.size();i++){
-            if(usersInstance.get(i).getEmail().equals(email)){
+        for(int i=0;i<this.size();i++){
+            if(this.get(i).getEmail().equals(email)){
                     System.out.println(this.get(i).getName());
             }
         }

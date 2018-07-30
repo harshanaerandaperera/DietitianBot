@@ -6,12 +6,13 @@
 package Models;
 
 import Controller.Users;
+import java.io.Serializable;
 
 /**
  *
  * @author Harshana
  */
-public class User {
+public class User implements Serializable{
 
     private String name;
     //uniqe
@@ -37,10 +38,7 @@ public class User {
         this.gender=gender;
         this.password=password;
         System.out.println("User created--!");
-        
-        Users users=Users.getUsersInstance();
-        users.registerUser(this);
-        
+                
      }
     
     

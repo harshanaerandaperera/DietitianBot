@@ -21,9 +21,8 @@ public class Validator {
      
    }
      
-     public boolean validateEmail(String email){
+     public boolean validateEmail(String email,Users users){
          boolean status=true;
-         Users users=Users.getUsersInstance();
          for(int i=0;i<users.size();i++){
              if(users.get(i).getEmail().equals(email)){
                 status=false;

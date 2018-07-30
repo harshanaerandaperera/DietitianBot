@@ -1,5 +1,10 @@
 package View;
 
+import Controller.Users;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
 
@@ -8,13 +13,35 @@ import javax.swing.JOptionPane;
  *
  * @author Harshana
  */
-public class SignInUI extends javax.swing.JFrame {
+public class SignInUI extends javax.swing.JFrame implements Serializable {
+    //public Users users = Users.getUsersInstance();
 
     public SignInUI() {
 
         initComponents();
+        DeserializeUsers();
     }
+ /**
+     * Deserialize Users
+     */
+    public void DeserializeUsers() {
+        ObjectInputStream uois = null;
+        File file = new File("users.txt");
+        try {
 
+            FileInputStream ufis = new FileInputStream(file);
+            if (ufis.available() != 0) {
+                uois = new ObjectInputStream(ufis);
+                while (uois != null) {
+                   // users = (Users) uois.readObject();
+                    //System.out.println(this.users.size());
+
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
