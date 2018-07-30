@@ -368,18 +368,31 @@ public class SignUpUI extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMousePressed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+       String email=txtEmail.getText();
         String password1=txtPwd.getText();
         String password2=txtConfirmPwd.getText();
         
-        if(validator.validatePassword(password1,password2)){
-             registerUser=new User(txtName.getText(),txtEmail.getText(),Integer.parseInt(txtAge.getText()),Double.parseDouble(txtHeight.getText()),Double.parseDouble(txtWeight.getText()),"male",password2);
+        if(validator.validateEmail(email)){
+            if(validator.validatePassword(password1,password2)){
+             registerUser=new User(txtName.getText(),email,Integer.parseInt(txtAge.getText()),Double.parseDouble(txtHeight.getText()),Double.parseDouble(txtWeight.getText()),"male",password2);
              JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
 
         }else{
              JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
         }
+        }else{
+             JOptionPane.showMessageDialog(null, "Emil is already used !", " email match ", JOptionPane.ERROR_MESSAGE);
+        }
         
-        
+//        if(validator.validatePassword(password1,password2)){
+//             registerUser=new User(txtName.getText(),email,Integer.parseInt(txtAge.getText()),Double.parseDouble(txtHeight.getText()),Double.parseDouble(txtWeight.getText()),"male",password2);
+//             JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
+//
+//        }else{
+//             JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
+//        }
+//        
+//        
 
         
 //        if ("user".equals(txtUname.getText()) && "user".equals(txtPwd.getText())) {
