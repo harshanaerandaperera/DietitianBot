@@ -40,8 +40,6 @@ public class Users extends ArrayList<User>{
    }
      
    public void getUserByEmail(String email){
-       System.out.println("hai");
-      // User user=new User();
         for(int i=0;i<usersInstance.size();i++){
             if(usersInstance.get(i).getEmail().equals(email)){
                     System.out.println(this.get(i).getName());
