@@ -3,6 +3,7 @@ package View;
 
 
 import Controller.Users;
+import Controller.Validator;
 import Models.User;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -18,19 +19,21 @@ public class SignUpUI extends javax.swing.JFrame {
 
         initComponents();
     }
-    
+   Validator validator=new Validator();
    Users users=Users.getUsersInstance();
    User registerUser;
     
-    public boolean validatePassword(String password1,String password2){
-        if(password1.equals(password2)){
-            return true;
-        }
-        else{
-        return false;
-    }
-     
-   }
+//    public boolean validatePassword(String password1,String password2){
+//        if(password1.equals(password2)){
+//            return true;
+//        }
+//        else{
+//        return false;
+//    }
+//     
+//   }
+    
+    
     
     
 
@@ -365,16 +368,10 @@ public class SignUpUI extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMousePressed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-//        String name=txtName.getText();
-//        String email=txtEmail.getText();
-//        int age=Integer.parseInt(txtAge.getText());
-//        double height=Double.parseDouble(txtHeight.getText());
-//        double weight=Double.parseDouble(txtWeight.getText());
-   //   String gender=buttonGroup1.getSelection().getActionCommand();
         String password1=txtPwd.getText();
         String password2=txtConfirmPwd.getText();
         
-        if(validatePassword(password1,password2)){
+        if(validator.validatePassword(password1,password2)){
              registerUser=new User(txtName.getText(),txtEmail.getText(),Integer.parseInt(txtAge.getText()),Double.parseDouble(txtHeight.getText()),Double.parseDouble(txtWeight.getText()),"male",password2);
              JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
 
