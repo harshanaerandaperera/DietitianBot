@@ -9,7 +9,7 @@ import Controller.Users;
 
 /**
  *
- * @author Debug
+ * @author Harshana
  */
 public class User {
 

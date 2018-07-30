@@ -3,6 +3,11 @@ package View;
 import Controller.Users;
 import Controller.Validator;
 import Models.User;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
 
@@ -13,23 +18,56 @@ import javax.swing.JOptionPane;
  */
 public class SignUpUI extends javax.swing.JFrame {
 
+    Validator validator = new Validator();
+    Users users = Users.getUsersInstance();
+    User registerUser;
+    User currentUser;
+
+    
     public SignUpUI() {
 
         initComponents();
     }
-    Validator validator = new Validator();
-    Users users = Users.getUsersInstance();
-    User registerUser;
+    
+    
+     
+    /**
+     * Serialize Users
+     */
+    public void SerializeUser() {
+        try {
+            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
+            uboos.writeObject(users);
+            uboos.flush();
+            uboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    /**
+     * Deserialize Users
+     */
+    public void DeserializeUsers() {
+        ObjectInputStream uois = null;
+        File file = new File("users.txt");
+        try {
 
-//    public boolean validatePassword(String password1,String password2){
-//        if(password1.equals(password2)){
-//            return true;
-//        }
-//        else{
-//        return false;
-//    }
-//     
-//   }
+            FileInputStream ufis = new FileInputStream(file);
+            if (ufis.available() != 0) {
+                uois = new ObjectInputStream(ufis);
+                while (uois != null) {
+                    users = (Users) uois.readObject();
+                    System.out.println(this.users.size());
+
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -368,6 +406,7 @@ public class SignUpUI extends javax.swing.JFrame {
         if (validator.validateEmail(email)) {
             if (validator.validatePassword(password1, password2)) {
                 registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), "male", password2);
+                currentUser=registerUser;
                 JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
                 loader.show();
                 login.hide();
