@@ -1,4 +1,5 @@
 package View;
+
 import View.*;
 import Controller.DietMaths;
 import java.io.Serializable;
@@ -293,11 +294,11 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPaneMainPanelAdmin.addTab("           Foods          ", jPanel6);
+        jTabbedPaneMainPanelAdmin.addTab("                      Foods                      ", jPanel6);
 
         jPanel3.setBackground(new java.awt.Color(32, 33, 35));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPaneMainPanelAdmin.addTab("      Meal Plan      ", jPanel3);
+        jTabbedPaneMainPanelAdmin.addTab("                      Meal Plan                     ", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -307,7 +308,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jLabel28.setText("Set API Key");
         jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 90, -1));
 
-        jTabbedPaneMainPanelAdmin.addTab("    Settings   ", jPanel1);
+        jTabbedPaneMainPanelAdmin.addTab("              Settings               ", jPanel1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -350,24 +351,29 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnRemoveFoodActionPerformed
 
     private void btnAddFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodActionPerformed
-        // TODO add your handling code here:
+        if (jcbBreakfast.isSelected()) {
+            System.out.println("Breakfast Selected");
+        }
+        if (jcbLunch.isSelected()) {
+            System.out.println("Lunch Selected");
+        }
+        if (jcbDinner.isSelected()) {
+            System.out.println("Dinner Selected");
+        }
+        if (jcbSnack.isSelected()) {
+            System.out.println("Snack Selected");
+        }
     }//GEN-LAST:event_btnAddFoodActionPerformed
 
     private void btnSearchFoodInManageFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFoodInManageFoodActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchFoodInManageFoodActionPerformed
 
-    
-    
-    
-    
-    
-    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-      
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -384,7 +390,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-       
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
