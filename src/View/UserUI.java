@@ -263,7 +263,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jTabbedPane1.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
 
-        jTabbedPaneMainPanelUser.addTab("          Assistant         ", jTabbedPane1);
+        jTabbedPaneMainPanelUser.addTab("                     Assistant                      ", jTabbedPane1);
 
         jTabbedPane3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -390,7 +390,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPaneMainPanelUser.addTab("           Profile          ", jPanel5);
+        jTabbedPaneMainPanelUser.addTab("                    Profile                     ", jPanel5);
 
         jTabbedPane4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -440,7 +440,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPaneMainPanelUser.addTab("           Diet Chart          ", jPanel6);
+        jTabbedPaneMainPanelUser.addTab("                Diet Chart               ", jPanel6);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
