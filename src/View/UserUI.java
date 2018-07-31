@@ -179,6 +179,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         setBackground(new java.awt.Color(32, 33, 35));
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 
@@ -522,6 +527,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         t.MACRONUTRIENT(1, 2000);
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.out.println("SerializeUser");
+        SerializeUser();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
