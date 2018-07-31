@@ -55,15 +55,16 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblManageFoods = new javax.swing.JTable();
         btnAddFood = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        jcbSnack = new javax.swing.JCheckBox();
+        jcbBreakfast = new javax.swing.JCheckBox();
+        jcbLunch = new javax.swing.JCheckBox();
+        jcbDinner = new javax.swing.JCheckBox();
         jSeparator19 = new javax.swing.JSeparator();
         txtSearchFoodName = new javax.swing.JTextField();
-        btnAddFood1 = new javax.swing.JButton();
+        btnSearchFoodInManageFood = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,11 +100,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
-            }
-        });
-        tblViewFoods.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                tblViewFoodsMouseMoved(evt);
             }
         });
         jScrollPane3.setViewportView(tblViewFoods);
@@ -224,11 +220,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 return canEdit [columnIndex];
             }
         });
-        tblManageFoods.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                tblManageFoodsMouseMoved(evt);
-            }
-        });
         jScrollPane4.setViewportView(tblManageFoods);
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1180, 270));
@@ -244,17 +235,29 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel2.add(btnAddFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 130, 120, -1));
 
-        jCheckBox1.setText("Dinner");
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 100, 90, -1));
+        jcbSnack.setForeground(new java.awt.Color(255, 255, 255));
+        jcbSnack.setText("Snacks");
+        jcbSnack.setBorder(null);
+        jcbSnack.setContentAreaFilled(false);
+        jPanel2.add(jcbSnack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 100, 90, -1));
 
-        jCheckBox2.setText("Breakfast");
-        jPanel2.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 10, 90, -1));
+        jcbBreakfast.setForeground(new java.awt.Color(255, 255, 255));
+        jcbBreakfast.setText("Breakfast");
+        jcbBreakfast.setBorder(null);
+        jcbBreakfast.setContentAreaFilled(false);
+        jPanel2.add(jcbBreakfast, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 10, 90, -1));
 
-        jCheckBox3.setText("Lunch");
-        jPanel2.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 40, 90, -1));
+        jcbLunch.setForeground(new java.awt.Color(255, 255, 255));
+        jcbLunch.setText("Lunch");
+        jcbLunch.setBorder(null);
+        jcbLunch.setContentAreaFilled(false);
+        jPanel2.add(jcbLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 40, 90, -1));
 
-        jCheckBox4.setText("Dinner");
-        jPanel2.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, 90, -1));
+        jcbDinner.setForeground(new java.awt.Color(255, 255, 255));
+        jcbDinner.setText("Dinner");
+        jcbDinner.setBorder(null);
+        jcbDinner.setContentAreaFilled(false);
+        jPanel2.add(jcbDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, 90, -1));
 
         jSeparator19.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator19.setForeground(new java.awt.Color(255, 255, 255));
@@ -266,16 +269,16 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         txtSearchFoodName.setBorder(null);
         jPanel2.add(txtSearchFoodName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 150, -1));
 
-        btnAddFood1.setBackground(new java.awt.Color(38, 50, 56));
-        btnAddFood1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        btnAddFood1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddFood1.setText("Search Food");
-        btnAddFood1.addActionListener(new java.awt.event.ActionListener() {
+        btnSearchFoodInManageFood.setBackground(new java.awt.Color(38, 50, 56));
+        btnSearchFoodInManageFood.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnSearchFoodInManageFood.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchFoodInManageFood.setText("Search Food");
+        btnSearchFoodInManageFood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFood1ActionPerformed(evt);
+                btnSearchFoodInManageFoodActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddFood1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 150, -1));
+        jPanel2.add(btnSearchFoodInManageFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 150, -1));
 
         jTabbedPane4.addTab("                                         Manage Foods                                         ", jPanel2);
 
@@ -293,32 +296,16 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jTabbedPaneMainPanelAdmin.addTab("           Foods          ", jPanel6);
 
         jPanel3.setBackground(new java.awt.Color(32, 33, 35));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1220, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
-        );
-
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jTabbedPaneMainPanelAdmin.addTab("      Meal Plan      ", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1220, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
-        );
+        jLabel28.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Set API Key");
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 90, -1));
 
         jTabbedPaneMainPanelAdmin.addTab("    Settings   ", jPanel1);
 
@@ -358,35 +345,29 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_formWindowClosing
 
-    private void tblViewFoodsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewFoodsMouseMoved
-
-    }//GEN-LAST:event_tblViewFoodsMouseMoved
-
     private void btnRemoveFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFoodActionPerformed
 
     }//GEN-LAST:event_btnRemoveFoodActionPerformed
-
-    private void tblManageFoodsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblManageFoodsMouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblManageFoodsMouseMoved
 
     private void btnAddFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddFoodActionPerformed
 
-    private void btnAddFood1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFood1ActionPerformed
+    private void btnSearchFoodInManageFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFoodInManageFoodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddFood1ActionPerformed
+    }//GEN-LAST:event_btnSearchFoodInManageFoodActionPerformed
 
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+      
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -403,70 +384,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -478,18 +396,15 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddFood;
-    private javax.swing.JButton btnAddFood1;
     private javax.swing.JButton btnRemoveFood;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JButton btnSearchFoodInManageFood;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -506,6 +421,10 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPaneMainPanelAdmin;
+    private javax.swing.JCheckBox jcbBreakfast;
+    private javax.swing.JCheckBox jcbDinner;
+    private javax.swing.JCheckBox jcbLunch;
+    private javax.swing.JCheckBox jcbSnack;
     private javax.swing.ButtonGroup radGrpGender;
     private javax.swing.JTable tblManageFoods;
     private javax.swing.JTable tblViewFoods;
