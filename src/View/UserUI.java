@@ -1,9 +1,16 @@
 package View;
 
 import Controller.DietMaths;
+import Controller.Users;
 import Models.LUIS;
 import Models.User;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import javax.swing.JOptionPane;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
 /**
@@ -13,13 +20,15 @@ import java.io.Serializable;
 public class UserUI extends javax.swing.JFrame implements Serializable {
 
     User currentUser;
+    Users users = new Users();
     DietMaths dm=new DietMaths();
     /**
      * Creates new form View
      */
     public UserUI() {
         initComponents();
-
+        DeserializeUsers();
+        System.out.println("des users count in userUi"+users.size());
     }
 
     /**
@@ -57,7 +66,41 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         
         
     }
+    /**
+     * Serialize Users
+     */
+    public void SerializeUser() {
+        try {
+            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
+            uboos.writeObject(users);
+            uboos.flush();
+            uboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     
+    /**
+     * Deserialize Users
+     */
+    public void DeserializeUsers() {
+        ObjectInputStream uois = null;
+        File file = new File("users.txt");
+        try {
+
+            FileInputStream ufis = new FileInputStream(file);
+            if (ufis.available() != 0) {
+                uois = new ObjectInputStream(ufis);
+                while (uois != null) {
+                    users = (Users) uois.readObject();
+                    System.out.println(this.users.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,6 +164,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         setBackground(new java.awt.Color(32, 33, 35));
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 
@@ -404,10 +452,18 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
-        currentUser.setName(txtUpdateUserName.getText());
-        currentUser.setEmail(txtUpdateUserName.getText());
         
+       // System.out.println("prev"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel()); 
+        users.getUserByEmail(currentUser.getEmail()).setName(txtUpdateUserName.getText());
+        users.getUserByEmail(currentUser.getEmail()).setAge(Integer.parseInt(txtAge.getText()));
+        users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(txtWeight.getText()));
+        users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(txtHeight.getText()));
+        users.getUserByEmail(currentUser.getEmail()).setGoal((String) cmbGoal.getSelectedItem());
+        users.getUserByEmail(currentUser.getEmail()).setActivityLevel((String) cmbActivityLevel.getSelectedItem());
+        JOptionPane.showMessageDialog(null, "Update Successfully !", " updated", JOptionPane.DEFAULT_OPTION);
 
+        
+        //System.out.println("affter"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel());
 
 //radMale.setActionCommand("M");
 //        radFemale.setActionCommand("F");
@@ -445,6 +501,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         t.MACRONUTRIENT(1, 2000);
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+      //  users.getUserByEmail(currentUser.getEmail()).getActivityLevel();
+        System.out.println("helo closing window");  
+        SerializeUser();
+        
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

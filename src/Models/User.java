@@ -23,7 +23,7 @@ public class User implements Serializable {
     private String gender;
     private String password;
     private String goal;
-    private double ActivityLevel;
+    private String ActivityLevel;
     
     public User() {
 
@@ -167,14 +167,14 @@ public class User implements Serializable {
     /**
      * @return the ActivityLevel
      */
-    public double getActivityLevel() {
+    public String getActivityLevel() {
         return ActivityLevel;
     }
 
     /**
      * @param ActivityLevel the ActivityLevel to set
      */
-    public void setActivityLevel(double ActivityLevel) {
+    public void setActivityLevel(String ActivityLevel) {
         this.ActivityLevel = ActivityLevel;
     }
 
