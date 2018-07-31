@@ -37,6 +37,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public void getCurrentUser(User user) {
         currentUser = user;
         populateGoalsToComboBox(currentUser.getGoal());
+        populateActivityLevelToComboBox(currentUser.getActivityLevel());
         createProfile();
         showBMI();
         getTDEE();
@@ -104,9 +105,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
 
     public void populateGoalsToComboBox(String goal){
-      //  System.out.println("goal"+goal);
-      cmbGoal.setSelectedItem(goal);
-        //cmbGoal.addItem(goal);
+        cmbGoal.setSelectedItem(goal);
+    }
+     public void populateActivityLevelToComboBox(String ActivityLevel){
+        cmbActivityLevel.setSelectedItem(ActivityLevel);
+         System.out.println("Activity Level Index"+cmbActivityLevel.getSelectedIndex());
     }
     
     /**
