@@ -56,13 +56,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
     public void showBMI(){
         lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(),currentUser.getHeight())));
-    }
+        System.out.println("BMI"+dm.BMI(currentUser.getWeight(),currentUser.getHeight()));
+    }       
     public void getTDEE(){
         if(currentUser.getGender().equals("Male")){
             System.out.println("calaerie of "+currentUser.getEmail()+dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex()));
+            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex())));
         }
         else if(currentUser.getGender().equals("Female")){
              System.out.println("calaerie of "+currentUser.getEmail()+dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex()));
+            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex())));
 
         }
         
@@ -167,6 +170,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         btntestingpurpose = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         lblUserBMI = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        lblUserTDEE1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -174,11 +179,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         setBackground(new java.awt.Color(32, 33, 35));
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 
@@ -409,6 +409,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserBMI.setText("...");
         jPanel10.add(lblUserBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 150, -1));
 
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("TDEE:");
+        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 50, -1));
+
+        lblUserTDEE1.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserTDEE1.setText("...");
+        jPanel10.add(lblUserTDEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 150, -1));
+
         jTabbedPane4.addTab("                                             Status                                          ", jPanel10);
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
@@ -471,7 +480,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         users.getUserByEmail(currentUser.getEmail()).setGoal((String) cmbGoal.getSelectedItem());
         users.getUserByEmail(currentUser.getEmail()).setActivityLevel((String) cmbActivityLevel.getSelectedItem());
         JOptionPane.showMessageDialog(null, "Update Successfully !", " updated", JOptionPane.DEFAULT_OPTION);
-        
+       currentUser=users.getUserByEmail(currentUser.getEmail());
+        showBMI();
+        getTDEE();
         
         //System.out.println("affter"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel());
 
@@ -511,14 +522,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         t.MACRONUTRIENT(1, 2000);
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-      //  users.getUserByEmail(currentUser.getEmail()).getActivityLevel();
-        System.out.println("helo closing window");  
-        SerializeUser();
-        
-        
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -583,6 +586,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -613,6 +617,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserEmail;
     private javax.swing.JLabel lblUserGender;
+    private javax.swing.JLabel lblUserTDEE1;
     private javax.swing.JLabel lbltopintentVal;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtHeight;
