@@ -28,7 +28,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public UserUI() {
         initComponents();
         DeserializeUsers();
-        System.out.println("des users count in userUi"+users.size());
     }
 
     /**
@@ -37,9 +36,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
      */
     public void getCurrentUser(User user) {
         currentUser = user;
+        populateGoalsToComboBox(currentUser.getGoal());
         createProfile();
         showBMI();
         getTDEE();
+
         System.out.println("Current User is" + currentUser.getName());
     }
     
@@ -102,6 +103,12 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         }
     }
 
+    public void populateGoalsToComboBox(String goal){
+      //  System.out.println("goal"+goal);
+      cmbGoal.setSelectedItem(goal);
+        //cmbGoal.addItem(goal);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -461,7 +468,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         users.getUserByEmail(currentUser.getEmail()).setGoal((String) cmbGoal.getSelectedItem());
         users.getUserByEmail(currentUser.getEmail()).setActivityLevel((String) cmbActivityLevel.getSelectedItem());
         JOptionPane.showMessageDialog(null, "Update Successfully !", " updated", JOptionPane.DEFAULT_OPTION);
-
+        
         
         //System.out.println("affter"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel());
 
