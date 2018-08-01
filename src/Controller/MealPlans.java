@@ -14,6 +14,10 @@ import java.util.ArrayList;
  */
 public class MealPlans extends ArrayList<MealPlan>{
     
+    public MealPlans(){
+        
+    }
+    
      public void addMealPlan(MealPlan mealPlan) {
         super.add(mealPlan);
         System.out.println("Meal Plan Added Succesfully..!");
@@ -21,6 +25,8 @@ public class MealPlans extends ArrayList<MealPlan>{
         mealPlan.setId(this.size());
      }
     
-     
+     public void removeMealPlan(MealPlan mealPlan){
+         super.remove(mealPlan);
+     }
      
 }

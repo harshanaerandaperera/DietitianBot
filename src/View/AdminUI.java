@@ -2,7 +2,9 @@ package View;
 
 import View.*;
 import Controller.DietMaths;
+import Controller.MealPlans;
 import Controller.Users;
+import Models.MealPlan;
 import Models.User;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +25,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         User currentUser;
         Users users = new Users();
+        MealPlans mealPlans=new MealPlans();
+        MealPlan currentMealPlan;
         
 
     /**
@@ -31,8 +35,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     public AdminUI() {
         initComponents();
         DeserializeUsers();
+        DeserializeMealPlans();
         populateUsersList();
-      //  System.out.println("users count in admin ui"+users.size());
+        populateMeanPlanList();
 
     }
        /**
@@ -70,6 +75,43 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
+    /**
+     * SerializeMealPlans
+     */
+    
+     public void SerializeMealPlans() {
+        try {
+            FileOutputStream mplfos = new FileOutputStream(new File("mealPlans.txt"));
+            ObjectOutputStream mplboos = new ObjectOutputStream(mplfos);
+            mplboos.writeObject(mealPlans);
+            mplboos.flush();
+            mplboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+     /**
+     * Deserialize Users
+     */
+    public void DeserializeMealPlans() {
+        ObjectInputStream mplois = null;
+        File file = new File("mealPlans.txt");
+        try {
+
+            FileInputStream mplfis = new FileInputStream(file);
+            if (mplfis.available() != 0) {
+                mplois = new ObjectInputStream(mplfis);
+                while (mplois != null) {
+                    mealPlans = (MealPlans) mplois.readObject();
+                    System.out.println(this.mealPlans.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
     
      private void populateUsersList() {
         DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
@@ -83,6 +125,22 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             v.add(user.getWeight());
             v.add(user.getGender());
            
+            dtm.addRow(v);
+        }
+    }
+     
+     private void populateMeanPlanList() {
+        DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
+        dtm.setRowCount(0);
+        for (MealPlan mealPlan : mealPlans) {
+            Vector v = new Vector();
+            v.add(mealPlan.getId());
+            v.add(mealPlan.getName());
+            v.add(mealPlan.getCalorieAmount());
+            v.add(mealPlan.getBreakfast());
+            v.add(mealPlan.getLunch());
+            v.add(mealPlan.getDinner());
+            v.add(mealPlan.getSnack());
             dtm.addRow(v);
         }
     }
@@ -121,12 +179,12 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtBreakfastManageMealPlan1 = new javax.swing.JTextArea();
+        txtLunchManageMealPlan = new javax.swing.JTextArea();
         jScrollPane7 = new javax.swing.JScrollPane();
-        txtBreakfastManageMealPlan2 = new javax.swing.JTextArea();
+        txtDinnerManageMealPlan = new javax.swing.JTextArea();
         jLabel37 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        txtBreakfastManageMealPlan3 = new javax.swing.JTextArea();
+        txtSnackManageMealPlan = new javax.swing.JTextArea();
         jLabel38 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblManageMealPlans = new javax.swing.JTable();
@@ -277,15 +335,15 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jLabel36.setText("Lunch:");
         jPanel5.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 80, -1));
 
-        txtBreakfastManageMealPlan1.setColumns(20);
-        txtBreakfastManageMealPlan1.setRows(5);
-        jScrollPane2.setViewportView(txtBreakfastManageMealPlan1);
+        txtLunchManageMealPlan.setColumns(20);
+        txtLunchManageMealPlan.setRows(5);
+        jScrollPane2.setViewportView(txtLunchManageMealPlan);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 240, 150));
 
-        txtBreakfastManageMealPlan2.setColumns(20);
-        txtBreakfastManageMealPlan2.setRows(5);
-        jScrollPane7.setViewportView(txtBreakfastManageMealPlan2);
+        txtDinnerManageMealPlan.setColumns(20);
+        txtDinnerManageMealPlan.setRows(5);
+        jScrollPane7.setViewportView(txtDinnerManageMealPlan);
 
         jPanel5.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 240, 150));
 
@@ -294,9 +352,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jLabel37.setText("Dinner:");
         jPanel5.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 80, -1));
 
-        txtBreakfastManageMealPlan3.setColumns(20);
-        txtBreakfastManageMealPlan3.setRows(5);
-        jScrollPane8.setViewportView(txtBreakfastManageMealPlan3);
+        txtSnackManageMealPlan.setColumns(20);
+        txtSnackManageMealPlan.setRows(5);
+        jScrollPane8.setViewportView(txtSnackManageMealPlan);
 
         jPanel5.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 240, 150));
 
@@ -477,15 +535,22 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
         SerializeUser();
-        
+        SerializeMealPlans();
         
     }//GEN-LAST:event_formWindowClosing
 
     private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
-
-        //String MealPlanName:
-
-
+//Integer(tx.toString)-set text
+        String mealPlanName=txtFoodName1.getText();
+        double totalCalorieAmount=Double.parseDouble(txtFoodCalorieAmount1.getText());
+        String breakfast=txtBreakfastManageMealPlan.getText();
+        String lunch=txtLunchManageMealPlan.getText();
+        String dinner=txtDinnerManageMealPlan.getText();
+        String snack=txtSnackManageMealPlan.getText();
+        
+        currentMealPlan=new MealPlan(mealPlanName,totalCalorieAmount,breakfast,lunch,dinner,snack);
+        mealPlans.addMealPlan(currentMealPlan);
+        populateMeanPlanList();
     }//GEN-LAST:event_btnAddMealPlanActionPerformed
 
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
@@ -644,14 +709,14 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTable tblUserMgt;
     private javax.swing.JTable tblViewMealPlans;
     private javax.swing.JTextArea txtBreakfastManageMealPlan;
-    private javax.swing.JTextArea txtBreakfastManageMealPlan1;
-    private javax.swing.JTextArea txtBreakfastManageMealPlan2;
-    private javax.swing.JTextArea txtBreakfastManageMealPlan3;
+    private javax.swing.JTextArea txtDinnerManageMealPlan;
     private javax.swing.JTextField txtFoodCalorieAmount1;
     private javax.swing.JTextField txtFoodName1;
+    private javax.swing.JTextArea txtLunchManageMealPlan;
     private javax.swing.JTextField txtSearchMealManage;
     private javax.swing.JTextField txtSearchMealView;
     private javax.swing.JTextField txtSearchMealView1;
+    private javax.swing.JTextArea txtSnackManageMealPlan;
     // End of variables declaration//GEN-END:variables
 
 }

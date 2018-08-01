@@ -5,11 +5,13 @@
  */
 package Models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Debug
  */
-public class MealPlan {
+public class MealPlan implements Serializable{
 
    
     private int id;
