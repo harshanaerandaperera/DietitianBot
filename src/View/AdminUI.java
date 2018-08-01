@@ -554,7 +554,21 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnAddMealPlanActionPerformed
 
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
-        // TODO add your handling code here:
+//         int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
+//         if (yesNo == 0) {
+//              DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
+//               int i = tblUserMgt.getSelectedRow(); 
+//               String email=d.getValueAt(0, 1).toString();
+//               //System.out.println("email of selected user"+email);
+//               currentUser=users.getUserByEmail(email);
+//              // System.out.println("selected currentUser"+currentUser);
+//               users.removeUser(currentUser);
+//               populateUsersList();
+//         }
+//            
+
+
+
     }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
 
     private void btnSearchMealPlanViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMealPlanViewActionPerformed
