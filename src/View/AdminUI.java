@@ -645,7 +645,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 int id=Integer.parseInt(d.getValueAt(0, 0).toString());
                 System.out.println("MPLID"+id);
                
-               currentMealPlan=mealPlans.getMealPanById(id);
+               currentMealPlan=mealPlans.getMealPlanById(id);
             //   System.out.println("selected meal Plan"+currentMealPlan);
                mealPlans.removeMealPlan(currentMealPlan);
                populateMealPlanList();

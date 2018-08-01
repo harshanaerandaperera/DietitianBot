@@ -28,16 +28,7 @@ public class MealPlans extends ArrayList<MealPlan>{
      public void removeMealPlan(MealPlan mealPlan){
          super.remove(mealPlan);
      }
-       public MealPlan getMealPanById(int id) {
-        MealPlan mealPlan = new MealPlan();
-        for (int i = 0; i < this.size(); i++) {
-            if (this.get(i).getId()==id) {
-                mealPlan = this.get(i);
-            }
-        }
-        return mealPlan;
-
-    }
+      
         
     public MealPlans getMealPlanByName(String name) {
         MealPlan mealPlan = new MealPlan();

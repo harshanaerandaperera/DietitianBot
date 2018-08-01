@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
@@ -23,10 +25,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     User currentUser;
     Users users = new Users();
-    DietMaths dm=new DietMaths();
-    MealPlans mealPlans=new MealPlans();
-    MealPlans myPlans=new MealPlans();
-    MealPlan currentMealPlan=new MealPlan();
+    DietMaths dm = new DietMaths();
+    MealPlans mealPlans = new MealPlans();
+    MealPlans myPlans = new MealPlans();
+    MealPlan currentMealPlan = new MealPlan();
+    int TDEE;
 
     /**
      * Creates new form View
@@ -35,12 +38,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         initComponents();
         DeserializeUsers();
         DeserializeMealPlans();
-        populateMealPlanDetailsToComboBox();
-        
+
+        //  populateMealPlanDetailsToComboBox();
     }
 
-    
-    
     /**
      *
      * @param user
@@ -52,53 +53,83 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         createProfile();
         showBMI();
         getTDEE();
-
+        getMyPlan();
         System.out.println("Current User is" + currentUser.getName());
     }
-    
-    public void createProfile(){
+
+    public void createProfile() {
         txtUpdateUserName.setText(currentUser.getName());
         txtAge.setText(Integer.toString(currentUser.getAge()));
         txtWeight.setText(Double.toString(currentUser.getWeight()));
         txtHeight.setText(Double.toString(currentUser.getHeight()));
         lblUserEmail.setText(currentUser.getEmail());
         lblUserGender.setText(currentUser.getGender());
-        
+
     }
-    public void showBMI(){
-        lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(),currentUser.getHeight())));
-        System.out.println("BMI"+dm.BMI(currentUser.getWeight(),currentUser.getHeight()));
-    }       
-    public void getTDEE(){
-        if(currentUser.getGender().equals("Male")){
-            System.out.println("calaerie of "+currentUser.getEmail()+dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex()));
-            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex())));
-        }
-        else if(currentUser.getGender().equals("Female")){
-             System.out.println("calaerie of "+currentUser.getEmail()+dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex()));
-            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(),cmbActivityLevel.getSelectedIndex())));
+
+    public void showBMI() {
+        lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
+        System.out.println("BMI" + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
+    }
+
+    public void getTDEE() {
+        if (currentUser.getGender().equals("Male")) {
+            TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
+            System.out.println("TDEE above" + TDEE);
+            System.out.println("calaerie of " + currentUser.getEmail() + dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+
+        } else if (currentUser.getGender().equals("Female")) {
+            System.out.println("calaerie of " + currentUser.getEmail() + dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         }
-        
-        
+
     }
-     public void populateMealPlanDetailsToComboBox() {
-         for(int i=0;i<mealPlans.size();i++){
-               cmbMyMealPlans.addItem(mealPlans.get(i).getName());
-         }
-         
-       
+
+    public void populateMealPlanDetailsToComboBox() {
+        for (int i = 0; i < myPlans.size(); i++) {
+            System.out.println("plan meat");
+            cmbMyMealPlans.addItem(myPlans.get(i).getId()+"   "+myPlans.get(i).getName());
+        }
+
     }
     
-    public void getMyPlan(){
-        for(int i=0;i<mealPlans.size();i++){
-            if(mealPlans.get(i).getCalorieAmount()==Double.parseDouble(lblUserTDEE1.getText())){
-               myPlans.addMealPlan(mealPlans.get(i));
-      
-            }
+     public String getMatchedMealPlanId(String cmbValue) {
+        Pattern p = Pattern.compile("[0-9]{1,13}(\\.[0-9]*)?");
+        Matcher m = p.matcher(cmbValue);
+        if (m.find()) {
+            return m.group();
+        } else {
+            return null;
         }
     }
-    
+
+    public void getMyPlan() {
+        for (int i = 0; i < mealPlans.size(); i++) {
+            System.out.println("TDEE loop" + TDEE);
+            if (TDEE > 0 && TDEE <= 500) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 0 && mealPlans.get(i).getCalorieAmount() <= 500) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+            if (TDEE > 500 && TDEE <= 1000) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 500 && mealPlans.get(i).getCalorieAmount() <= 1000) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+        }
+        populateMealPlanDetailsToComboBox();
+        System.out.println("size" + myPlans.size());
+    }
+
     /**
      * Serialize Users
      */
@@ -113,7 +144,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             System.out.println(e);
         }
     }
-    
+
     /**
      * Deserialize Users
      */
@@ -134,8 +165,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
+
     /**
-     * Deserialize MealPlans 
+     * Deserialize MealPlans
      */
     public void DeserializeMealPlans() {
         ObjectInputStream mplois = null;
@@ -154,16 +186,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
-    
 
-    public void populateGoalsToComboBox(String goal){
+    public void populateGoalsToComboBox(String goal) {
         cmbGoal.setSelectedItem(goal);
     }
-     public void populateActivityLevelToComboBox(String ActivityLevel){
+
+    public void populateActivityLevelToComboBox(String ActivityLevel) {
         cmbActivityLevel.setSelectedItem(ActivityLevel);
-         System.out.println("Activity Level Index"+cmbActivityLevel.getSelectedIndex());
+        System.out.println("Activity Level Index" + cmbActivityLevel.getSelectedIndex());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -595,8 +627,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
-        
-       // System.out.println("prev"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel()); 
+        // System.out.println("prev"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel()); 
         users.getUserByEmail(currentUser.getEmail()).setName(txtUpdateUserName.getText());
         users.getUserByEmail(currentUser.getEmail()).setAge(Integer.parseInt(txtAge.getText()));
         users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(txtWeight.getText()));
@@ -604,7 +635,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         users.getUserByEmail(currentUser.getEmail()).setGoal((String) cmbGoal.getSelectedItem());
         users.getUserByEmail(currentUser.getEmail()).setActivityLevel((String) cmbActivityLevel.getSelectedItem());
         JOptionPane.showMessageDialog(null, "Update Successfully !", " updated", JOptionPane.DEFAULT_OPTION);
-       currentUser=users.getUserByEmail(currentUser.getEmail());
+        currentUser = users.getUserByEmail(currentUser.getEmail());
         showBMI();
         getTDEE();
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -638,7 +669,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_formWindowClosing
 
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
-         if (cmbMyMealPlans.getSelectedIndex() != 0) {
+        if (cmbMyMealPlans.getSelectedIndex() != 0) {
+            getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString());
+            System.out.println("Selected Plan ID -"+getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()));
             
         }
     }//GEN-LAST:event_cmbMyMealPlansActionPerformed
@@ -663,7 +696,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(UserUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-      
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserUI().setVisible(true);
