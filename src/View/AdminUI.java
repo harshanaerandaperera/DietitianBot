@@ -482,7 +482,10 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
-        // TODO add your handling code here:
+
+        //String MealPlanName:
+
+
     }//GEN-LAST:event_btnAddMealPlanActionPerformed
 
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
