@@ -6,7 +6,9 @@ import Controller.Users;
 import Models.User;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -32,6 +34,20 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         populateUsersList();
       //  System.out.println("users count in admin ui"+users.size());
 
+    }
+       /**
+     * Serialize Users
+     */
+    public void SerializeUser() {
+        try {
+            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
+            uboos.writeObject(users);
+            uboos.flush();
+            uboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
       /**
@@ -460,6 +476,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
+        SerializeUser();
+        
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
