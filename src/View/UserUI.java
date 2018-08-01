@@ -90,7 +90,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public void populateMealPlanDetailsToComboBox() {
         for (int i = 0; i < myPlans.size(); i++) {
             System.out.println("plan meat");
-            cmbMyMealPlans.addItem(myPlans.get(i).getId()+"   "+myPlans.get(i).getName());
+            cmbMyMealPlans.addItem("-"+myPlans.get(i).getId()+"-   "+myPlans.get(i).getName());
         }
 
     }
@@ -267,6 +267,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jScrollPane8 = new javax.swing.JScrollPane();
         txtSnackUserMealPlan = new javax.swing.JTextArea();
         jLabel38 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        lblMealPlanTotalCalorieAmount = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -578,6 +580,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel38.setText("Snack:");
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 80, -1));
 
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("TotalCalorie Amount:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
+
+        lblMealPlanTotalCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
+        lblMealPlanTotalCalorieAmount.setText("...");
+        jPanel2.add(lblMealPlanTotalCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 70, 90, -1));
+
         jTabbedPane4.addTab("                                         My Plan                                         ", jPanel2);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -671,7 +682,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
             getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString());
-            System.out.println("Selected Plan ID -"+getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()));
+            myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
+            //System.out.println("my plan name : "+myPlans.getMealPlanById(Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getName());
+            
+            txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
+            txtLunchUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
+            txtDinnerUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getDinner());
+            txtSnackUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getSnack());
+             lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
+             
+            // System.out.println("Selected Plan ID ="+getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()));
             
         }
     }//GEN-LAST:event_cmbMyMealPlansActionPerformed
@@ -719,6 +739,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
@@ -752,6 +773,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPaneMainPanelUser;
     private javax.swing.JLabel lblJResponse;
+    private javax.swing.JLabel lblMealPlanTotalCalorieAmount;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblSenScore;
     private javax.swing.JLabel lblUserBMI;
