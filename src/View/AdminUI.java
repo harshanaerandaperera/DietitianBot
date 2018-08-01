@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
@@ -18,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminUI extends javax.swing.JFrame implements Serializable {
 
+        User currentUser;
         Users users = new Users();
+        
 
     /**
      * Creates new form View
@@ -480,7 +483,20 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
-        // TODO add your handling code here:
+        int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to delete Sensor?", " Remove Sensor ", JOptionPane.YES_NO_OPTION);
+         if (yesNo == 0) {
+              DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
+               int i = tblUserMgt.getSelectedRow(); 
+               String email=d.getValueAt(0, 1).toString();
+               System.out.println("email of selected user"+email);
+               currentUser=users.getUserByEmail(email);
+               System.out.println("selected currentUser"+currentUser);
+               users.removeUser(currentUser);
+               populateUsersList();
+         }
+
+
+
     }//GEN-LAST:event_btnRemoveUserActionPerformed
 
     /**
