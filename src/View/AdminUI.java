@@ -570,7 +570,50 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnSearchMealPlanViewActionPerformed
 
     private void btnSearchManageMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchManageMealPlanActionPerformed
-        // TODO add your handling code here:
+
+        String searchKey=txtSearchMealManage.getText();
+           if (cmbSearchMealPlanInManage.getSelectedIndex() == 0) {
+                populateMealPlanList();
+           }
+             if(cmbSearchMealPlanInManage.getSelectedIndex() == 1){
+                 //  System.out.println("MealPlan by name"+ mealPlans.getMealPlanByName(searchKey).size());
+                   DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
+                    dtm.setRowCount(0);
+                     for (int i = 0; i < mealPlans.getMealPlanByName(searchKey).size(); i++) {
+                         MealPlan mealPlan=mealPlans.getMealPlanByName(searchKey).get(i);
+                         Vector v = new Vector();
+                          v.add(mealPlan.getId());
+                          v.add(mealPlan.getName());
+                          v.add(mealPlan.getCalorieAmount());
+                          v.add(mealPlan.getBreakfast());
+                          v.add(mealPlan.getLunch());
+                          v.add(mealPlan.getDinner());
+                          v.add(mealPlan.getSnack());
+                          dtm.addRow(v);
+                         
+                     }
+             }
+               if(cmbSearchMealPlanInManage.getSelectedIndex() == 2){
+              // System.out.println("MealPlan by calorie amount"+ mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size());
+                     DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
+                    dtm.setRowCount(0);
+                     for (int i = 0; i < mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size(); i++) {
+                         MealPlan mealPlan=mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).get(i);
+                         Vector v = new Vector();
+                          v.add(mealPlan.getId());
+                          v.add(mealPlan.getName());
+                          v.add(mealPlan.getCalorieAmount());
+                          v.add(mealPlan.getBreakfast());
+                          v.add(mealPlan.getLunch());
+                          v.add(mealPlan.getDinner());
+                          v.add(mealPlan.getSnack());
+                          dtm.addRow(v);
+                         
+                     }
+               }
+             
+
+
     }//GEN-LAST:event_btnSearchManageMealPlanActionPerformed
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed

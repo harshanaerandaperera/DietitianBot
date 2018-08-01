@@ -38,5 +38,34 @@ public class MealPlans extends ArrayList<MealPlan>{
         return mealPlan;
 
     }
+        
+    public MealPlans getMealPlanByName(String name) {
+        MealPlan mealPlan = new MealPlan();
+        MealPlans mealPlans = new MealPlans();
+        for (int i = 0; i < super.size(); i++) {
+            mealPlan = super.get(i);
+            if (mealPlan.getName().equals(name)) {
+                mealPlans.add(mealPlan);
+            } else {
+                mealPlan=null;
+            }
+        }
+        return mealPlans;
+    }
+    
+    public MealPlans getMealPlanBycalorieAmount(double amount) {
+        MealPlan mealPlan = new MealPlan();
+        MealPlans mealPlans = new MealPlans();
+        for (int i = 0; i < super.size(); i++) {
+            mealPlan = super.get(i);
+            if (mealPlan.getCalorieAmount()==amount) {
+                mealPlans.add(mealPlan);
+            } else {
+                mealPlan=null;
+            }
+        }
+        return mealPlans;
+    }
+
     
 }
