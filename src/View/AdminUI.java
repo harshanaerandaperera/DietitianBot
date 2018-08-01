@@ -77,7 +77,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         }
     }
     /**
-     * SerializeMealPlans
+     * SerializeMeal Plans
      */
     
      public void SerializeMealPlans() {
@@ -93,7 +93,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }
     
      /**
-     * Deserialize Users
+     * Deserialize MealPlans 
      */
     public void DeserializeMealPlans() {
         ObjectInputStream mplois = null;
@@ -114,7 +114,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }
     
     
-     private void populateUsersList() {
+     public void populateUsersList() {
         DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
         dtm.setRowCount(0);
         for (User user : users) {
@@ -130,7 +130,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         }
     }
      
-     private void populateMealPlanList() {
+     public void populateMealPlanList() {
         DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
         dtm.setRowCount(0);
         for (MealPlan mealPlan : mealPlans) {
@@ -145,7 +145,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             dtm.addRow(v);
         }
     }
-     private void populateMealPlanListTotblViewMealPlans() {
+     public void populateMealPlanListTotblViewMealPlans() {
         DefaultTableModel dtm = (DefaultTableModel) tblViewMealPlans.getModel();
         dtm.setRowCount(0);
         for (MealPlan mealPlan : mealPlans) {
@@ -160,6 +160,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             dtm.addRow(v);
         }
     }
+     
     
 
     /**
@@ -182,11 +183,23 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         txtSearchMealView = new javax.swing.JTextField();
         btnSearchMealPlanView = new javax.swing.JButton();
         cmbSearchMealPlanInViewMealPlan = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtBreakfastviewMealPlan = new javax.swing.JTextArea();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtLunchViewMealPlan = new javax.swing.JTextArea();
+        jLabel41 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        txtDinnerViewMealPlan = new javax.swing.JTextArea();
+        jLabel42 = new javax.swing.JLabel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        txtSnackViewMealPlan = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jSeparator20 = new javax.swing.JSeparator();
-        txtFoodName1 = new javax.swing.JTextField();
+        txtMealPlanName = new javax.swing.JTextField();
         jSeparator21 = new javax.swing.JSeparator();
-        txtFoodCalorieAmount1 = new javax.swing.JTextField();
+        txtMealPlanCalorieAmount = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         btnAddMealPlan = new javax.swing.JButton();
@@ -259,9 +272,14 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 return canEdit [columnIndex];
             }
         });
+        tblViewMealPlans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblViewMealPlansMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(tblViewMealPlans);
 
-        jPanel11.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1180, 410));
+        jPanel11.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1180, 230));
 
         jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator22.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,6 +305,50 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         cmbSearchMealPlanInViewMealPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option to Search", "Search By Meal Plan Name", "Search By Calorie Amount" }));
         jPanel11.add(cmbSearchMealPlanInViewMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
+        txtBreakfastviewMealPlan.setColumns(20);
+        txtBreakfastviewMealPlan.setRows(5);
+        jScrollPane3.setViewportView(txtBreakfastviewMealPlan);
+
+        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 240, 150));
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Breakfast:");
+        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 80, -1));
+
+        jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Lunch:");
+        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 80, -1));
+
+        txtLunchViewMealPlan.setColumns(20);
+        txtLunchViewMealPlan.setRows(5);
+        jScrollPane4.setViewportView(txtLunchViewMealPlan);
+
+        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 240, 150));
+
+        jLabel41.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel41.setText("Dinner:");
+        jPanel11.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 80, -1));
+
+        txtDinnerViewMealPlan.setColumns(20);
+        txtDinnerViewMealPlan.setRows(5);
+        jScrollPane11.setViewportView(txtDinnerViewMealPlan);
+
+        jPanel11.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 240, 150));
+
+        jLabel42.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel42.setText("Snack:");
+        jPanel11.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 80, -1));
+
+        txtSnackViewMealPlan.setColumns(20);
+        txtSnackViewMealPlan.setRows(5);
+        jScrollPane12.setViewportView(txtSnackViewMealPlan);
+
+        jPanel11.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, 240, 150));
+
         jTabbedPane5.addTab("                                             View Meal Plans                                          ", jPanel11);
 
         jPanel5.setBackground(new java.awt.Color(32, 33, 35));
@@ -296,21 +358,21 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
         jPanel5.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 160, 10));
 
-        txtFoodName1.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodName1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodName1.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodName1.setBorder(null);
-        jPanel5.add(txtFoodName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 160, 20));
+        txtMealPlanName.setBackground(new java.awt.Color(32, 33, 35));
+        txtMealPlanName.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtMealPlanName.setForeground(new java.awt.Color(255, 255, 255));
+        txtMealPlanName.setBorder(null);
+        jPanel5.add(txtMealPlanName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 160, 20));
 
         jSeparator21.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator21.setForeground(new java.awt.Color(255, 255, 255));
         jPanel5.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 170, 10));
 
-        txtFoodCalorieAmount1.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodCalorieAmount1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodCalorieAmount1.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodCalorieAmount1.setBorder(null);
-        jPanel5.add(txtFoodCalorieAmount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 170, -1));
+        txtMealPlanCalorieAmount.setBackground(new java.awt.Color(32, 33, 35));
+        txtMealPlanCalorieAmount.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtMealPlanCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
+        txtMealPlanCalorieAmount.setBorder(null);
+        jPanel5.add(txtMealPlanCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 170, -1));
 
         jLabel30.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
@@ -393,6 +455,11 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblManageMealPlans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblManageMealPlansMouseClicked(evt);
             }
         });
         jScrollPane6.setViewportView(tblManageMealPlans);
@@ -552,9 +619,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
-//Integer(tx.toString)-set text
-        String mealPlanName=txtFoodName1.getText();
-        double totalCalorieAmount=Double.parseDouble(txtFoodCalorieAmount1.getText());
+
+        String mealPlanName=txtMealPlanName.getText();
+        double totalCalorieAmount=Double.parseDouble(txtMealPlanCalorieAmount.getText());
         String breakfast=txtBreakfastManageMealPlan.getText();
         String lunch=txtLunchManageMealPlan.getText();
         String dinner=txtDinnerManageMealPlan.getText();
@@ -562,22 +629,28 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         
         currentMealPlan=new MealPlan(mealPlanName,totalCalorieAmount,breakfast,lunch,dinner,snack);
         mealPlans.addMealPlan(currentMealPlan);
+        clear();
         populateMealPlanList();
         populateMealPlanListTotblViewMealPlans();
     }//GEN-LAST:event_btnAddMealPlanActionPerformed
 
+      public void clear() {
+          txtMealPlanName.setText("");
+    }
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
          int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
          if (yesNo == 0) {
               DefaultTableModel d = (DefaultTableModel) tblManageMealPlans.getModel();
                int i = tblManageMealPlans.getSelectedRow(); 
                 int id=Integer.parseInt(d.getValueAt(0, 0).toString());
-               // System.out.println("MPLID"+id);
+                System.out.println("MPLID"+id);
                
                currentMealPlan=mealPlans.getMealPanById(id);
             //   System.out.println("selected meal Plan"+currentMealPlan);
                mealPlans.removeMealPlan(currentMealPlan);
                populateMealPlanList();
+               populateMealPlanListTotblViewMealPlans();
+
          }
            
     }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
@@ -741,6 +814,26 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_btnRemoveUserActionPerformed
 
+    private void tblManageMealPlansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblManageMealPlansMouseClicked
+              
+                
+    }//GEN-LAST:event_tblManageMealPlansMouseClicked
+
+    private void tblViewMealPlansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewMealPlansMouseClicked
+              DefaultTableModel d = (DefaultTableModel) tblViewMealPlans.getModel();
+              int i = tblViewMealPlans.getSelectedRow(); 
+              int id=Integer.parseInt(d.getValueAt(i, 0).toString());
+              currentMealPlan=mealPlans.getMealPlanById(id);
+             // System.out.println("Selected meal paln :"+mealPlans.getMealPlanById(id).getName());
+             txtBreakfastviewMealPlan.setText(currentMealPlan.getBreakfast());
+             txtLunchViewMealPlan.setText(currentMealPlan.getLunch());
+             txtDinnerViewMealPlan.setText(currentMealPlan.getDinner());
+             txtSnackViewMealPlan.setText(currentMealPlan.getSnack());
+           
+             
+             
+    }//GEN-LAST:event_tblViewMealPlansMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -789,6 +882,10 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
@@ -797,7 +894,11 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -814,14 +915,20 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTable tblUserMgt;
     private javax.swing.JTable tblViewMealPlans;
     private javax.swing.JTextArea txtBreakfastManageMealPlan;
+    private javax.swing.JTextArea txtBreakfastviewMealPlan;
     private javax.swing.JTextArea txtDinnerManageMealPlan;
-    private javax.swing.JTextField txtFoodCalorieAmount1;
-    private javax.swing.JTextField txtFoodName1;
+    private javax.swing.JTextArea txtDinnerViewMealPlan;
     private javax.swing.JTextArea txtLunchManageMealPlan;
+    private javax.swing.JTextArea txtLunchViewMealPlan;
+    private javax.swing.JTextField txtMealPlanCalorieAmount;
+    private javax.swing.JTextField txtMealPlanName;
     private javax.swing.JTextField txtSearchMealManage;
     private javax.swing.JTextField txtSearchMealView;
     private javax.swing.JTextField txtSearchMealView1;
     private javax.swing.JTextArea txtSnackManageMealPlan;
+    private javax.swing.JTextArea txtSnackViewMealPlan;
     // End of variables declaration//GEN-END:variables
+
+  
 
 }

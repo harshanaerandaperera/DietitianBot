@@ -1,8 +1,10 @@
 package View;
 
 import Controller.DietMaths;
+import Controller.MealPlans;
 import Controller.Users;
 import Models.LUIS;
+import Models.MealPlan;
 import Models.User;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,12 +24,19 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     User currentUser;
     Users users = new Users();
     DietMaths dm=new DietMaths();
+    MealPlans mealPlans=new MealPlans();
+    MealPlans myPlans=new MealPlans();
+    MealPlan currentMealPlan=new MealPlan();
+
     /**
      * Creates new form View
      */
     public UserUI() {
         initComponents();
         DeserializeUsers();
+        DeserializeMealPlans();
+        populateMealPlanDetailsToComboBox();
+        
     }
 
     
@@ -73,6 +82,23 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         
         
     }
+     public void populateMealPlanDetailsToComboBox() {
+         for(int i=0;i<mealPlans.size();i++){
+               cmbMyMealPlans.addItem(mealPlans.get(i).getName());
+         }
+         
+       
+    }
+    
+    public void getMyPlan(){
+        for(int i=0;i<mealPlans.size();i++){
+            if(mealPlans.get(i).getCalorieAmount()==Double.parseDouble(lblUserTDEE1.getText())){
+               myPlans.addMealPlan(mealPlans.get(i));
+      
+            }
+        }
+    }
+    
     /**
      * Serialize Users
      */
@@ -108,6 +134,27 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
+    /**
+     * Deserialize MealPlans 
+     */
+    public void DeserializeMealPlans() {
+        ObjectInputStream mplois = null;
+        File file = new File("mealPlans.txt");
+        try {
+
+            FileInputStream mplfis = new FileInputStream(file);
+            if (mplfis.available() != 0) {
+                mplois = new ObjectInputStream(mplfis);
+                while (mplois != null) {
+                    mealPlans = (MealPlans) mplois.readObject();
+                    System.out.println(this.mealPlans.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
 
     public void populateGoalsToComboBox(String goal){
         cmbGoal.setSelectedItem(goal);
@@ -175,6 +222,19 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel16 = new javax.swing.JLabel();
         lblUserTDEE1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        cmbMyMealPlans = new javax.swing.JComboBox<>();
+        jLabel34 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtBreakfastUserMealPlan = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtLunchUserMealPlan = new javax.swing.JTextArea();
+        jLabel36 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtDinnerUserMealPlan = new javax.swing.JTextArea();
+        jLabel37 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtSnackUserMealPlan = new javax.swing.JTextArea();
+        jLabel38 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -429,6 +489,63 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmbMyMealPlans.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Click Here To View Availabale Meal Plans for me" }));
+        cmbMyMealPlans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMyMealPlansActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmbMyMealPlans, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 410, -1));
+
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("Breakfast:");
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 80, -1));
+
+        txtBreakfastUserMealPlan.setColumns(20);
+        txtBreakfastUserMealPlan.setRows(5);
+        txtBreakfastUserMealPlan.setEnabled(false);
+        jScrollPane1.setViewportView(txtBreakfastUserMealPlan);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 240, 150));
+
+        txtLunchUserMealPlan.setColumns(20);
+        txtLunchUserMealPlan.setRows(5);
+        txtLunchUserMealPlan.setEnabled(false);
+        jScrollPane2.setViewportView(txtLunchUserMealPlan);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 240, 150));
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Lunch:");
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 80, -1));
+
+        txtDinnerUserMealPlan.setColumns(20);
+        txtDinnerUserMealPlan.setRows(5);
+        txtDinnerUserMealPlan.setEnabled(false);
+        jScrollPane7.setViewportView(txtDinnerUserMealPlan);
+
+        jPanel2.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 240, 150));
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("Dinner:");
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 80, -1));
+
+        txtSnackUserMealPlan.setColumns(20);
+        txtSnackUserMealPlan.setRows(5);
+        txtSnackUserMealPlan.setEnabled(false);
+        jScrollPane8.setViewportView(txtSnackUserMealPlan);
+
+        jPanel2.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 240, 150));
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setText("Snack:");
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 80, -1));
+
         jTabbedPane4.addTab("                                         My Plan                                         ", jPanel2);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -520,6 +637,12 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         SerializeUser();
     }//GEN-LAST:event_formWindowClosing
 
+    private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
+         if (cmbMyMealPlans.getSelectedIndex() != 0) {
+            
+        }
+    }//GEN-LAST:event_cmbMyMealPlansActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -555,6 +678,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel check;
     private javax.swing.JComboBox<String> cmbActivityLevel;
     private javax.swing.JComboBox<String> cmbGoal;
+    private javax.swing.JComboBox<String> cmbMyMealPlans;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -564,6 +688,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -577,6 +705,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
@@ -595,7 +727,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblUserTDEE1;
     private javax.swing.JLabel lbltopintentVal;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextArea txtBreakfastUserMealPlan;
+    private javax.swing.JTextArea txtDinnerUserMealPlan;
     private javax.swing.JTextField txtHeight;
+    private javax.swing.JTextArea txtLunchUserMealPlan;
+    private javax.swing.JTextArea txtSnackUserMealPlan;
     private javax.swing.JTextField txtUpdateUserName;
     private javax.swing.JTextField txtUserQuery;
     private javax.swing.JTextField txtWeight;
