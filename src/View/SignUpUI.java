@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.TimerTask;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
@@ -255,7 +256,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtHeight.setBackground(new java.awt.Color(255, 255, 255));
         txtHeight.setForeground(new java.awt.Color(102, 102, 102));
-        txtHeight.setToolTipText("Height");
+        txtHeight.setToolTipText("Enter Height in centimeters");
         txtHeight.setBorder(null);
         txtHeight.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -395,40 +396,71 @@ public class SignUpUI extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String password1 = txtPwd.getText();
         String password2 = txtConfirmPwd.getText();
+        if (validator.isValidName(txtName.getText())) {
+            if (validator.isValidEmail(email)) {
+                if (validator.isValidNumber(txtAge.getText())) {
+                    if (validator.isValidNumber(txtHeight.getText())) {
+                        if (validator.isValidNumber(txtWeight.getText())) {
+                            if (radGrpGender.getSelection() != null) {
+                                if (!password1.isEmpty()) {
+                                    if (!password2.isEmpty()) {
+                                        if (validator.isUniqueEmail(email, users)) {
+                                            if (validator.confirmPassword(password1, password2)) {
+                                                registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), radGrpGender.getSelection().getActionCommand(), password2);
+                                                users.registerUser(registerUser);
+                                                currentUser = registerUser;
+                                                JOptionPane.showMessageDialog(null, "Register Successfully !", " Welcome ", JOptionPane.DEFAULT_OPTION);
+                                                SerializeUser();
+                                                loader.show();
+                                                login.hide();
 
-        if (validator.isValidEmail(email)) {
+                                                // timeout
+                                                new java.util.Timer().schedule(new TimerTask() {
+                                                    @Override
+                                                    public void run() {
 
-            if (validator.isUniqueEmail(email, users)) {
-                if (validator.confirmPassword(password1, password2)) {
-                    registerUser = new User(txtName.getText(), email, Integer.parseInt(txtAge.getText()), Double.parseDouble(txtHeight.getText()), Double.parseDouble(txtWeight.getText()), radGrpGender.getSelection().getActionCommand(), password2);
-                    users.registerUser(registerUser);
-                    currentUser = registerUser;
-                    JOptionPane.showMessageDialog(null, "Register Successfully !", " password match ", JOptionPane.DEFAULT_OPTION);
-                    SerializeUser();
-                    loader.show();
-                    login.hide();
+                                                        UserUI U = new UserUI();
+                                                        U.setVisible(true);
+                                                        U.getCurrentUser(currentUser);
+                                                        dispose();
+                                                    }
+                                                }, 1000 * 2);
 
-                    // timeout
-                    new java.util.Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Email is already used !", " Email Match ", JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Please Re-Enter password !", " Confirm Password ", JOptionPane.ERROR_MESSAGE);
+                                    }
 
-                            UserUI U = new UserUI();
-                            U.setVisible(true);
-                            U.getCurrentUser(currentUser);
-                            dispose();
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Please Enter password !", " Password ", JOptionPane.ERROR_MESSAGE);
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please select a gender !", " Gender ", JOptionPane.ERROR_MESSAGE);
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Invalid Weight, Please Re-Enter Weight !", " Weight ", JOptionPane.ERROR_MESSAGE);
                         }
-                    }, 1000 * 2);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Invalid Height, Please Re-Enter Height !", " Height ", JOptionPane.ERROR_MESSAGE);
+                    }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Password Does Not match please Re enter the password !", " password match ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Invalid Age, Please Re-Enter Age !", " Age ", JOptionPane.ERROR_MESSAGE);
                 }
+
             } else {
-                // System.out.println(validator.validateEmail(email, users));
-                JOptionPane.showMessageDialog(null, "Email is already used !", " email match ", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid Email pattern, Please Re-Enter Email !", " Email ", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid Email pattern !", " email ", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid Name pattern, Please Re-Enter Name !", " Name ", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnSignUpActionPerformed
@@ -463,11 +495,7 @@ public class SignUpUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -484,40 +512,7 @@ public class SignUpUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SignUpUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SignUpUI().setVisible(true);
