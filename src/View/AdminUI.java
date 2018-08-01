@@ -37,7 +37,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         DeserializeUsers();
         DeserializeMealPlans();
         populateUsersList();
-        populateMeanPlanList();
+        populateMealPlanList();
 
     }
        /**
@@ -129,7 +129,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         }
     }
      
-     private void populateMeanPlanList() {
+     private void populateMealPlanList() {
         DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
         dtm.setRowCount(0);
         for (MealPlan mealPlan : mealPlans) {
@@ -164,8 +164,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         tblViewMealPlans = new javax.swing.JTable();
         jSeparator22 = new javax.swing.JSeparator();
         txtSearchMealView = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
         btnSearchMealPlanView = new javax.swing.JButton();
+        cmbSearchMealPlanInViewMealPlan = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jSeparator20 = new javax.swing.JSeparator();
         txtFoodName1 = new javax.swing.JTextField();
@@ -190,9 +190,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         tblManageMealPlans = new javax.swing.JTable();
         btnRemoveMealPlan = new javax.swing.JButton();
         jSeparator23 = new javax.swing.JSeparator();
-        jLabel40 = new javax.swing.JLabel();
         txtSearchMealManage = new javax.swing.JTextField();
         btnSearchManageMealPlan = new javax.swing.JButton();
+        cmbSearchMealPlanInManage = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         tblUserMgt = new javax.swing.JTable();
@@ -249,18 +249,13 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator22.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel11.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 160, 10));
+        jPanel11.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 160, 10));
 
         txtSearchMealView.setBackground(new java.awt.Color(32, 33, 35));
         txtSearchMealView.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         txtSearchMealView.setForeground(new java.awt.Color(255, 255, 255));
         txtSearchMealView.setBorder(null);
-        jPanel11.add(txtSearchMealView, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 160, 20));
-
-        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Enter Meal Plan Name:");
-        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 170, -1));
+        jPanel11.add(txtSearchMealView, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 160, 20));
 
         btnSearchMealPlanView.setBackground(new java.awt.Color(38, 50, 56));
         btnSearchMealPlanView.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -272,6 +267,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             }
         });
         jPanel11.add(btnSearchMealPlanView, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 180, -1));
+
+        cmbSearchMealPlanInViewMealPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option to Search", "Search By Meal Plan Name", "Search By Calorie Amount" }));
+        jPanel11.add(cmbSearchMealPlanInViewMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jTabbedPane5.addTab("                                             View Meal Plans                                          ", jPanel11);
 
@@ -398,18 +396,13 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         jSeparator23.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator23.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 160, 10));
-
-        jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setText("Enter Meal Plan Name:");
-        jPanel5.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 170, -1));
+        jPanel5.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 160, 10));
 
         txtSearchMealManage.setBackground(new java.awt.Color(32, 33, 35));
         txtSearchMealManage.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         txtSearchMealManage.setForeground(new java.awt.Color(255, 255, 255));
         txtSearchMealManage.setBorder(null);
-        jPanel5.add(txtSearchMealManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 160, 20));
+        jPanel5.add(txtSearchMealManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 160, 20));
 
         btnSearchManageMealPlan.setBackground(new java.awt.Color(38, 50, 56));
         btnSearchManageMealPlan.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -420,7 +413,10 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 btnSearchManageMealPlanActionPerformed(evt);
             }
         });
-        jPanel5.add(btnSearchManageMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, 180, -1));
+        jPanel5.add(btnSearchManageMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 180, -1));
+
+        cmbSearchMealPlanInManage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option to Search", "Search By Meal Plan Name", "Search By Calorie Amount" }));
+        jPanel5.add(cmbSearchMealPlanInManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
         jTabbedPane5.addTab("                                         Manage Meal Plans                                         ", jPanel5);
 
@@ -550,25 +546,23 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         
         currentMealPlan=new MealPlan(mealPlanName,totalCalorieAmount,breakfast,lunch,dinner,snack);
         mealPlans.addMealPlan(currentMealPlan);
-        populateMeanPlanList();
+        populateMealPlanList();
     }//GEN-LAST:event_btnAddMealPlanActionPerformed
 
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
-//         int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
-//         if (yesNo == 0) {
-//              DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
-//               int i = tblUserMgt.getSelectedRow(); 
-//               String email=d.getValueAt(0, 1).toString();
-//               //System.out.println("email of selected user"+email);
-//               currentUser=users.getUserByEmail(email);
-//              // System.out.println("selected currentUser"+currentUser);
-//               users.removeUser(currentUser);
-//               populateUsersList();
-//         }
-//            
-
-
-
+         int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
+         if (yesNo == 0) {
+              DefaultTableModel d = (DefaultTableModel) tblManageMealPlans.getModel();
+               int i = tblManageMealPlans.getSelectedRow(); 
+                int id=Integer.parseInt(d.getValueAt(0, 0).toString());
+               // System.out.println("MPLID"+id);
+               
+               currentMealPlan=mealPlans.getMealPanById(id);
+            //   System.out.println("selected meal Plan"+currentMealPlan);
+               mealPlans.removeMealPlan(currentMealPlan);
+               populateMealPlanList();
+         }
+           
     }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
 
     private void btnSearchMealPlanViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMealPlanViewActionPerformed
@@ -600,9 +594,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 v.add(user.getHeight());
                 v.add(user.getWeight());
                 v.add(user.getGender());
-
-                
-               
+ 
                 dtm.addRow(v);
             }
                     
@@ -688,6 +680,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton btnSearchManageMealPlan;
     private javax.swing.JButton btnSearchMealPlanView;
     private javax.swing.JButton btnSearchUser;
+    private javax.swing.JComboBox<String> cmbSearchMealPlanInManage;
+    private javax.swing.JComboBox<String> cmbSearchMealPlanInViewMealPlan;
     private javax.swing.JComboBox<String> cmbSearchUser;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel30;
@@ -696,8 +690,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
