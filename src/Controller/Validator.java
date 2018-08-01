@@ -40,4 +40,8 @@ public class Validator {
         return email.matches("^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$");
     }
     
+    public  boolean isValidName(String name){
+    return name.matches("[a-zA-Z]+");
+}
+    
 }
