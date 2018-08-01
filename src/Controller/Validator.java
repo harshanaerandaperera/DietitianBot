@@ -35,13 +35,17 @@ public class Validator {
         }
         return status;
     }
-    
+
     public boolean isValidEmail(String email) {
         return email.matches("^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$");
     }
-    
-    public  boolean isValidName(String name){
-    return name.matches("[a-zA-Z]+");
-}
-    
+
+    public boolean isValidName(String name) {
+        return name.matches("[a-zA-Z]+");
+    }
+
+    public boolean isValidNumber(String num) {
+        return num.matches("[0-9]{1,13}(\\.[0-9]*)?");
+    }
+
 }
