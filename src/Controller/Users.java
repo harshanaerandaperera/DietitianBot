@@ -32,5 +32,21 @@ public class Users extends ArrayList<User> {
         return user;
 
     }
+    
+    
+    public Users getUserByName(String name) {
+        User user = new User();
+        Users users = new Users();
+        for (int i = 0; i < super.size(); i++) {
+            user = super.get(i);
+            if (user.getName().equals(name)) {
+                users.add(user);
+            } else {
+                user=null;
+            }
+        }
+        return users;
+    }
+
 
 }

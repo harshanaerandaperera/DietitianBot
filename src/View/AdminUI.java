@@ -504,6 +504,31 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                  populateUsersList();
                  //clearText();
                  }
+             if(cmbSearchUser.getSelectedIndex() == 1){
+                 
+                 System.out.println("user by name"+ users.getUserByName(searchKey).size());
+                  DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
+                    dtm.setRowCount(0);
+                     for (int i = 0; i < users.getUserByName(searchKey).size(); i++) {
+                User user = users.getUserByName(searchKey).get(i);
+                Vector v = new Vector();
+                v.add(user.getName());
+                v.add(user.getEmail());
+                v.add(user.getAge());
+                v.add(user.getHeight());
+                v.add(user.getWeight());
+                v.add(user.getGender());
+
+                
+               
+                dtm.addRow(v);
+            }
+                    
+                    
+             }
+             
+             
+             
              if(cmbSearchUser.getSelectedIndex() == 2){
                  try {
                    //  users.getUserByEmail(searchKey);
