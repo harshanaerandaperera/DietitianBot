@@ -498,7 +498,32 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnSearchManageMealPlanActionPerformed
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
-        // TODO add your handling code here:
+            String searchKey = txtSearchMealView1.getText();
+            
+             if (cmbSearchUser.getSelectedIndex() == 0) {
+                 populateUsersList();
+                 //clearText();
+                 }
+             if(cmbSearchUser.getSelectedIndex() == 2){
+                 try {
+                   //  users.getUserByEmail(searchKey);
+                     DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
+                     dtm.setRowCount(0);
+                        Vector v = new Vector();
+                        v.add(users.getUserByEmail(searchKey).getName());
+                        v.add(users.getUserByEmail(searchKey).getEmail());
+                        v.add(users.getUserByEmail(searchKey).getAge());
+                        v.add(users.getUserByEmail(searchKey).getHeight());
+                        v.add(users.getUserByEmail(searchKey).getWeight());
+                        v.add(users.getUserByEmail(searchKey).getGender());
+                        dtm.addRow(v);
+                    } catch (Exception e) {
+                 }
+             }
+             
+             
+             
+             
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
