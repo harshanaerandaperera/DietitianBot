@@ -2,7 +2,14 @@ package View;
 
 import View.*;
 import Controller.DietMaths;
+import Controller.Users;
+import Models.User;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
 /**
@@ -11,13 +18,56 @@ import java.io.Serializable;
  */
 public class AdminUI extends javax.swing.JFrame implements Serializable {
 
+        Users users = new Users();
+
     /**
      * Creates new form View
      */
     public AdminUI() {
         initComponents();
+        DeserializeUsers();
+        populateUsersList();
+      //  System.out.println("users count in admin ui"+users.size());
 
     }
+    
+      /**
+     * Deserialize Users
+     */
+    public void DeserializeUsers() {
+        ObjectInputStream uois = null;
+        File file = new File("users.txt");
+        try {
+
+            FileInputStream ufis = new FileInputStream(file);
+            if (ufis.available() != 0) {
+                uois = new ObjectInputStream(ufis);
+                while (uois != null) {
+                    users = (Users) uois.readObject();
+                    System.out.println(this.users.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
+     private void populateUsersList() {
+        DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
+        dtm.setRowCount(0);
+        for (User user : users) {
+            Vector v = new Vector();
+            v.add(user.getName());
+            v.add(user.getEmail());
+            v.add(user.getAge());
+            v.add(user.getHeight());
+            v.add(user.getWeight());
+            v.add(user.getGender());
+           
+            dtm.addRow(v);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -311,7 +361,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
             },
             new String [] {
-                "Meal Plan Name", "Total Calories", "Breakfast", "Lunch", "Dinner", "Snack"
+                "Name", "Email", "Age", "Height", "Weight", "Gender"
             }
         ) {
             boolean[] canEdit = new boolean [] {
