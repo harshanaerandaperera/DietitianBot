@@ -312,11 +312,11 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
             },
             new String [] {
-                "Meal Plan Name", "Total Calories", "Breakfast", "Lunch", "Dinner", "Snack"
+                "MPID", "Meal Plan Name", "Total Calories", "Breakfast", "Lunch", "Dinner", "Snack"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -552,14 +552,14 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
-        int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to delete Sensor?", " Remove Sensor ", JOptionPane.YES_NO_OPTION);
+        int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove User?", " Remove User ", JOptionPane.YES_NO_OPTION);
          if (yesNo == 0) {
               DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
                int i = tblUserMgt.getSelectedRow(); 
                String email=d.getValueAt(0, 1).toString();
-               System.out.println("email of selected user"+email);
+               //System.out.println("email of selected user"+email);
                currentUser=users.getUserByEmail(email);
-               System.out.println("selected currentUser"+currentUser);
+              // System.out.println("selected currentUser"+currentUser);
                users.removeUser(currentUser);
                populateUsersList();
          }
