@@ -30,43 +30,53 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         radGrpGender = new javax.swing.ButtonGroup();
         jTabbedPaneMainPanelAdmin = new javax.swing.JTabbedPane();
-        jPanel6 = new javax.swing.JPanel();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jPanel10 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblViewFoods = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jSeparator14 = new javax.swing.JSeparator();
-        txtFoodName = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jSeparator15 = new javax.swing.JSeparator();
-        txtFoodCalorieAmount = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jSeparator16 = new javax.swing.JSeparator();
-        txtFoodCarbsAmount = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jSeparator17 = new javax.swing.JSeparator();
-        txtFoodFatAmount = new javax.swing.JTextField();
-        jSeparator18 = new javax.swing.JSeparator();
-        txtFoodProteinAmount = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        btnRemoveFood = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblManageFoods = new javax.swing.JTable();
-        btnAddFood = new javax.swing.JButton();
-        jcbSnack = new javax.swing.JCheckBox();
-        jcbBreakfast = new javax.swing.JCheckBox();
-        jcbLunch = new javax.swing.JCheckBox();
-        jcbDinner = new javax.swing.JCheckBox();
-        jSeparator19 = new javax.swing.JSeparator();
-        txtSearchFoodName = new javax.swing.JTextField();
-        btnSearchFoodInManageFood = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tblViewMealPlans = new javax.swing.JTable();
+        jSeparator22 = new javax.swing.JSeparator();
+        txtSearchMealView = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        btnSearchMealPlanView = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jSeparator20 = new javax.swing.JSeparator();
+        txtFoodName1 = new javax.swing.JTextField();
+        jSeparator21 = new javax.swing.JSeparator();
+        txtFoodCalorieAmount1 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        btnAddMealPlan = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtBreakfastManageMealPlan = new javax.swing.JTextArea();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtBreakfastManageMealPlan1 = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtBreakfastManageMealPlan2 = new javax.swing.JTextArea();
+        jLabel37 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtBreakfastManageMealPlan3 = new javax.swing.JTextArea();
+        jLabel38 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblManageMealPlans = new javax.swing.JTable();
+        btnRemoveMealPlan = new javax.swing.JButton();
+        jSeparator23 = new javax.swing.JSeparator();
+        jLabel40 = new javax.swing.JLabel();
+        txtSearchMealManage = new javax.swing.JTextField();
+        btnSearchManageMealPlan = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblUserMgt = new javax.swing.JTable();
+        jSeparator24 = new javax.swing.JSeparator();
+        txtSearchMealView1 = new javax.swing.JTextField();
+        btnSearchUser = new javax.swing.JButton();
+        cmbSearchUser = new javax.swing.JComboBox<>();
+        btnRemoveUser = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(32, 33, 35));
@@ -80,248 +90,301 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         jTabbedPaneMainPanelAdmin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 
-        jTabbedPane4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-
-        jPanel10.setBackground(new java.awt.Color(32, 33, 35));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tblViewFoods.setBackground(new java.awt.Color(32, 33, 35));
-        tblViewFoods.setForeground(new java.awt.Color(255, 255, 255));
-        tblViewFoods.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Food Name", "Calories", "Carbs", "Fat", "Protein"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tblViewFoods);
-
-        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1180, 440));
-
-        jTabbedPane4.addTab("                                             View Foods                                          ", jPanel10);
-
-        jPanel2.setBackground(new java.awt.Color(32, 33, 35));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator14.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator14.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 90, 10));
-
-        txtFoodName.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodName.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodName.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodName.setBorder(null);
-        jPanel2.add(txtFoodName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 90, -1));
-
-        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Can be consumed for:");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 160, -1));
-
-        jSeparator15.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator15.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 90, 10));
-
-        txtFoodCalorieAmount.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodCalorieAmount.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodCalorieAmount.setBorder(null);
-        jPanel2.add(txtFoodCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 90, -1));
-
-        jLabel23.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Calories:");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 70, -1));
-
-        jSeparator16.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator16.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 90, 10));
-
-        txtFoodCarbsAmount.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodCarbsAmount.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodCarbsAmount.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodCarbsAmount.setBorder(null);
-        jPanel2.add(txtFoodCarbsAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 90, -1));
-
-        jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Carbs:");
-        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 50, -1));
-
-        jLabel25.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Fat:");
-        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 30, -1));
-
-        jSeparator17.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator17.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 90, 10));
-
-        txtFoodFatAmount.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodFatAmount.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodFatAmount.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodFatAmount.setBorder(null);
-        jPanel2.add(txtFoodFatAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 90, -1));
-
-        jSeparator18.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator18.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 90, 10));
-
-        txtFoodProteinAmount.setBackground(new java.awt.Color(32, 33, 35));
-        txtFoodProteinAmount.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtFoodProteinAmount.setForeground(new java.awt.Color(255, 255, 255));
-        txtFoodProteinAmount.setBorder(null);
-        jPanel2.add(txtFoodProteinAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 90, -1));
-
-        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Protein:");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 60, -1));
-
-        jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Food Name:");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 90, -1));
-
-        btnRemoveFood.setBackground(new java.awt.Color(38, 50, 56));
-        btnRemoveFood.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        btnRemoveFood.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemoveFood.setText("Remove Food");
-        btnRemoveFood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveFoodActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnRemoveFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 450, 140, -1));
-
-        tblManageFoods.setBackground(new java.awt.Color(32, 33, 35));
-        tblManageFoods.setForeground(new java.awt.Color(255, 255, 255));
-        tblManageFoods.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Food Name", "Calories", "Carbs", "Fat", "Protein"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(tblManageFoods);
-
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1180, 270));
-
-        btnAddFood.setBackground(new java.awt.Color(38, 50, 56));
-        btnAddFood.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        btnAddFood.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddFood.setText("Add Food");
-        btnAddFood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFoodActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnAddFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 130, 120, -1));
-
-        jcbSnack.setForeground(new java.awt.Color(255, 255, 255));
-        jcbSnack.setText("Snacks");
-        jcbSnack.setBorder(null);
-        jcbSnack.setContentAreaFilled(false);
-        jPanel2.add(jcbSnack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 100, 90, -1));
-
-        jcbBreakfast.setForeground(new java.awt.Color(255, 255, 255));
-        jcbBreakfast.setText("Breakfast");
-        jcbBreakfast.setBorder(null);
-        jcbBreakfast.setContentAreaFilled(false);
-        jPanel2.add(jcbBreakfast, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 10, 90, -1));
-
-        jcbLunch.setForeground(new java.awt.Color(255, 255, 255));
-        jcbLunch.setText("Lunch");
-        jcbLunch.setBorder(null);
-        jcbLunch.setContentAreaFilled(false);
-        jPanel2.add(jcbLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 40, 90, -1));
-
-        jcbDinner.setForeground(new java.awt.Color(255, 255, 255));
-        jcbDinner.setText("Dinner");
-        jcbDinner.setBorder(null);
-        jcbDinner.setContentAreaFilled(false);
-        jPanel2.add(jcbDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, 90, -1));
-
-        jSeparator19.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator19.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 150, 10));
-
-        txtSearchFoodName.setBackground(new java.awt.Color(32, 33, 35));
-        txtSearchFoodName.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtSearchFoodName.setForeground(new java.awt.Color(255, 255, 255));
-        txtSearchFoodName.setBorder(null);
-        jPanel2.add(txtSearchFoodName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 150, -1));
-
-        btnSearchFoodInManageFood.setBackground(new java.awt.Color(38, 50, 56));
-        btnSearchFoodInManageFood.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        btnSearchFoodInManageFood.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearchFoodInManageFood.setText("Search Food");
-        btnSearchFoodInManageFood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchFoodInManageFoodActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnSearchFoodInManageFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 150, -1));
-
-        jTabbedPane4.addTab("                                         Manage Foods                                         ", jPanel2);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        jTabbedPaneMainPanelAdmin.addTab("                      Foods                      ", jPanel6);
-
         jPanel3.setBackground(new java.awt.Color(32, 33, 35));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        jPanel11.setBackground(new java.awt.Color(32, 33, 35));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblViewMealPlans.setBackground(new java.awt.Color(32, 33, 35));
+        tblViewMealPlans.setForeground(new java.awt.Color(255, 255, 255));
+        tblViewMealPlans.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Meal Plan Name", "Total Calories", "Breakfast", "Lunch", "Dinner", "Snack"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(tblViewMealPlans);
+
+        jPanel11.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1180, 410));
+
+        jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator22.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel11.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 160, 10));
+
+        txtSearchMealView.setBackground(new java.awt.Color(32, 33, 35));
+        txtSearchMealView.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtSearchMealView.setForeground(new java.awt.Color(255, 255, 255));
+        txtSearchMealView.setBorder(null);
+        jPanel11.add(txtSearchMealView, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 160, 20));
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Enter Meal Plan Name:");
+        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 170, -1));
+
+        btnSearchMealPlanView.setBackground(new java.awt.Color(38, 50, 56));
+        btnSearchMealPlanView.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnSearchMealPlanView.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchMealPlanView.setText("Search Meal Plan");
+        btnSearchMealPlanView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchMealPlanViewActionPerformed(evt);
+            }
+        });
+        jPanel11.add(btnSearchMealPlanView, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 180, -1));
+
+        jTabbedPane5.addTab("                                             View Meal Plans                                          ", jPanel11);
+
+        jPanel5.setBackground(new java.awt.Color(32, 33, 35));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator20.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel5.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 160, 10));
+
+        txtFoodName1.setBackground(new java.awt.Color(32, 33, 35));
+        txtFoodName1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtFoodName1.setForeground(new java.awt.Color(255, 255, 255));
+        txtFoodName1.setBorder(null);
+        jPanel5.add(txtFoodName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 160, 20));
+
+        jSeparator21.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator21.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel5.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 170, 10));
+
+        txtFoodCalorieAmount1.setBackground(new java.awt.Color(32, 33, 35));
+        txtFoodCalorieAmount1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtFoodCalorieAmount1.setForeground(new java.awt.Color(255, 255, 255));
+        txtFoodCalorieAmount1.setBorder(null);
+        jPanel5.add(txtFoodCalorieAmount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 170, -1));
+
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Total Calorie Amount:");
+        jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 150, -1));
+
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("Breakfast:");
+        jPanel5.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, -1));
+
+        btnAddMealPlan.setBackground(new java.awt.Color(38, 50, 56));
+        btnAddMealPlan.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnAddMealPlan.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMealPlan.setText("Add Meal Plan");
+        btnAddMealPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMealPlanActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnAddMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 130, 140, -1));
+
+        txtBreakfastManageMealPlan.setColumns(20);
+        txtBreakfastManageMealPlan.setRows(5);
+        jScrollPane1.setViewportView(txtBreakfastManageMealPlan);
+
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 150));
+
+        jLabel35.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("Meal Plan Name:");
+        jPanel5.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, -1));
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Lunch:");
+        jPanel5.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 80, -1));
+
+        txtBreakfastManageMealPlan1.setColumns(20);
+        txtBreakfastManageMealPlan1.setRows(5);
+        jScrollPane2.setViewportView(txtBreakfastManageMealPlan1);
+
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 240, 150));
+
+        txtBreakfastManageMealPlan2.setColumns(20);
+        txtBreakfastManageMealPlan2.setRows(5);
+        jScrollPane7.setViewportView(txtBreakfastManageMealPlan2);
+
+        jPanel5.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 240, 150));
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("Dinner:");
+        jPanel5.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 80, -1));
+
+        txtBreakfastManageMealPlan3.setColumns(20);
+        txtBreakfastManageMealPlan3.setRows(5);
+        jScrollPane8.setViewportView(txtBreakfastManageMealPlan3);
+
+        jPanel5.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 240, 150));
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setText("Snack:");
+        jPanel5.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, 80, -1));
+
+        tblManageMealPlans.setBackground(new java.awt.Color(32, 33, 35));
+        tblManageMealPlans.setForeground(new java.awt.Color(255, 255, 255));
+        tblManageMealPlans.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Meal Plan Name", "Total Calories", "Breakfast", "Lunch", "Dinner", "Snack"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tblManageMealPlans);
+
+        jPanel5.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 1180, 190));
+
+        btnRemoveMealPlan.setBackground(new java.awt.Color(38, 50, 56));
+        btnRemoveMealPlan.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnRemoveMealPlan.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoveMealPlan.setText("Remove Meal Plan");
+        btnRemoveMealPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveMealPlanActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnRemoveMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 460, 190, -1));
+
+        jSeparator23.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator23.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel5.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 160, 10));
+
+        jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Enter Meal Plan Name:");
+        jPanel5.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 170, -1));
+
+        txtSearchMealManage.setBackground(new java.awt.Color(32, 33, 35));
+        txtSearchMealManage.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtSearchMealManage.setForeground(new java.awt.Color(255, 255, 255));
+        txtSearchMealManage.setBorder(null);
+        jPanel5.add(txtSearchMealManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 160, 20));
+
+        btnSearchManageMealPlan.setBackground(new java.awt.Color(38, 50, 56));
+        btnSearchManageMealPlan.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnSearchManageMealPlan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchManageMealPlan.setText("Search Meal Plan");
+        btnSearchManageMealPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchManageMealPlanActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnSearchManageMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, 180, -1));
+
+        jTabbedPane5.addTab("                                         Manage Meal Plans                                         ", jPanel5);
+
+        jPanel3.add(jTabbedPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 550));
+
         jTabbedPaneMainPanelAdmin.addTab("                      Meal Plan                     ", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblUserMgt.setBackground(new java.awt.Color(32, 33, 35));
+        tblUserMgt.setForeground(new java.awt.Color(255, 255, 255));
+        tblUserMgt.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Meal Plan Name", "Total Calories", "Breakfast", "Lunch", "Dinner", "Snack"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(tblUserMgt);
+
+        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1180, 390));
+
+        jSeparator24.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator24.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 160, 10));
+
+        txtSearchMealView1.setBackground(new java.awt.Color(32, 33, 35));
+        txtSearchMealView1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtSearchMealView1.setForeground(new java.awt.Color(255, 255, 255));
+        txtSearchMealView1.setBorder(null);
+        jPanel1.add(txtSearchMealView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 20));
+
+        btnSearchUser.setBackground(new java.awt.Color(38, 50, 56));
+        btnSearchUser.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnSearchUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchUser.setText("Search User");
+        btnSearchUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSearchUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 180, -1));
+
+        cmbSearchUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option to Search", "Search By Name", "Search By Email" }));
+        jPanel1.add(cmbSearchUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        btnRemoveUser.setBackground(new java.awt.Color(38, 50, 56));
+        btnRemoveUser.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnRemoveUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoveUser.setText("Remove User");
+        btnRemoveUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRemoveUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, 190, -1));
+
+        jTabbedPaneMainPanelAdmin.addTab("              User Management               ", jPanel1);
+
+        jPanel4.setBackground(new java.awt.Color(32, 33, 35));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel28.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Set API Key");
-        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 90, -1));
+        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 90, -1));
 
-        jTabbedPaneMainPanelAdmin.addTab("              Settings               ", jPanel1);
+        jTabbedPaneMainPanelAdmin.addTab("Settings", jPanel4);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1220, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        jTabbedPaneMainPanelAdmin.addTab("", new javax.swing.ImageIcon(getClass().getResource("/Images/SignOut.png")), jPanel4); // NOI18N
+        jTabbedPaneMainPanelAdmin.addTab("", new javax.swing.ImageIcon(getClass().getResource("/Images/SignOut.png")), jPanel2); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,28 +409,29 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_formWindowClosing
 
-    private void btnRemoveFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFoodActionPerformed
-
-    }//GEN-LAST:event_btnRemoveFoodActionPerformed
-
-    private void btnAddFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodActionPerformed
-        if (jcbBreakfast.isSelected()) {
-            System.out.println("Breakfast Selected");
-        }
-        if (jcbLunch.isSelected()) {
-            System.out.println("Lunch Selected");
-        }
-        if (jcbDinner.isSelected()) {
-            System.out.println("Dinner Selected");
-        }
-        if (jcbSnack.isSelected()) {
-            System.out.println("Snack Selected");
-        }
-    }//GEN-LAST:event_btnAddFoodActionPerformed
-
-    private void btnSearchFoodInManageFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFoodInManageFoodActionPerformed
+    private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchFoodInManageFoodActionPerformed
+    }//GEN-LAST:event_btnAddMealPlanActionPerformed
+
+    private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
+
+    private void btnSearchMealPlanViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMealPlanViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchMealPlanViewActionPerformed
+
+    private void btnSearchManageMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchManageMealPlanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchManageMealPlanActionPerformed
+
+    private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchUserActionPerformed
+
+    private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoveUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,45 +465,55 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddFood;
-    private javax.swing.JButton btnRemoveFood;
-    private javax.swing.JButton btnSearchFoodInManageFood;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
+    private javax.swing.JButton btnAddMealPlan;
+    private javax.swing.JButton btnRemoveMealPlan;
+    private javax.swing.JButton btnRemoveUser;
+    private javax.swing.JButton btnSearchManageMealPlan;
+    private javax.swing.JButton btnSearchMealPlanView;
+    private javax.swing.JButton btnSearchUser;
+    private javax.swing.JComboBox<String> cmbSearchUser;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSeparator jSeparator14;
-    private javax.swing.JSeparator jSeparator15;
-    private javax.swing.JSeparator jSeparator16;
-    private javax.swing.JSeparator jSeparator17;
-    private javax.swing.JSeparator jSeparator18;
-    private javax.swing.JSeparator jSeparator19;
-    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator20;
+    private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
+    private javax.swing.JSeparator jSeparator23;
+    private javax.swing.JSeparator jSeparator24;
+    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPaneMainPanelAdmin;
-    private javax.swing.JCheckBox jcbBreakfast;
-    private javax.swing.JCheckBox jcbDinner;
-    private javax.swing.JCheckBox jcbLunch;
-    private javax.swing.JCheckBox jcbSnack;
     private javax.swing.ButtonGroup radGrpGender;
-    private javax.swing.JTable tblManageFoods;
-    private javax.swing.JTable tblViewFoods;
-    private javax.swing.JTextField txtFoodCalorieAmount;
-    private javax.swing.JTextField txtFoodCarbsAmount;
-    private javax.swing.JTextField txtFoodFatAmount;
-    private javax.swing.JTextField txtFoodName;
-    private javax.swing.JTextField txtFoodProteinAmount;
-    private javax.swing.JTextField txtSearchFoodName;
+    private javax.swing.JTable tblManageMealPlans;
+    private javax.swing.JTable tblUserMgt;
+    private javax.swing.JTable tblViewMealPlans;
+    private javax.swing.JTextArea txtBreakfastManageMealPlan;
+    private javax.swing.JTextArea txtBreakfastManageMealPlan1;
+    private javax.swing.JTextArea txtBreakfastManageMealPlan2;
+    private javax.swing.JTextArea txtBreakfastManageMealPlan3;
+    private javax.swing.JTextField txtFoodCalorieAmount1;
+    private javax.swing.JTextField txtFoodName1;
+    private javax.swing.JTextField txtSearchMealManage;
+    private javax.swing.JTextField txtSearchMealView;
+    private javax.swing.JTextField txtSearchMealView1;
     // End of variables declaration//GEN-END:variables
 
 }
