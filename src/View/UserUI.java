@@ -221,6 +221,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtBot = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -357,6 +359,13 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel6.setText("BOT Predicted Intent: ");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
+        txtBot.setEditable(false);
+        txtBot.setColumns(20);
+        txtBot.setRows(5);
+        jScrollPane3.setViewportView(txtBot);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 520, 440));
+
         jTabbedPane1.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
 
         jTabbedPaneMainPanelUser.addTab("                     Assistant                      ", jTabbedPane1);
@@ -473,7 +482,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserGender.setText("...");
         jPanel4.add(lblUserGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 90, -1));
 
-        jTabbedPane3.addTab("                                                     Edit Profile                                                      ", jPanel4);
+        jTabbedPane3.addTab("                                                                                                  Edit Your Profile here                                                                                                     ", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -504,11 +513,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("BMI:");
-        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 50, -1));
+        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 50, -1));
 
         lblUserBMI.setForeground(new java.awt.Color(255, 255, 255));
         lblUserBMI.setText("...");
-        jPanel10.add(lblUserBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 150, -1));
+        jPanel10.add(lblUserBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 150, -1));
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -519,7 +528,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserTDEE1.setText("...");
         jPanel10.add(lblUserTDEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 150, -1));
 
-        jTabbedPane4.addTab("                                             Status                                          ", jPanel10);
+        jTabbedPane4.addTab("                                                  My Status                                                 ", jPanel10);
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -530,66 +539,66 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 cmbMyMealPlansActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbMyMealPlans, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 410, -1));
+        jPanel2.add(cmbMyMealPlans, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 500, -1));
 
         jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Breakfast:");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 80, -1));
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 80, -1));
 
+        txtBreakfastUserMealPlan.setEditable(false);
         txtBreakfastUserMealPlan.setColumns(20);
         txtBreakfastUserMealPlan.setRows(5);
-        txtBreakfastUserMealPlan.setEnabled(false);
         jScrollPane1.setViewportView(txtBreakfastUserMealPlan);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 240, 150));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 280, 280));
 
+        txtLunchUserMealPlan.setEditable(false);
         txtLunchUserMealPlan.setColumns(20);
         txtLunchUserMealPlan.setRows(5);
-        txtLunchUserMealPlan.setEnabled(false);
         jScrollPane2.setViewportView(txtLunchUserMealPlan);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 240, 150));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 280, 280));
 
         jLabel36.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Lunch:");
-        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 80, -1));
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 80, -1));
 
+        txtDinnerUserMealPlan.setEditable(false);
         txtDinnerUserMealPlan.setColumns(20);
         txtDinnerUserMealPlan.setRows(5);
-        txtDinnerUserMealPlan.setEnabled(false);
         jScrollPane7.setViewportView(txtDinnerUserMealPlan);
 
-        jPanel2.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 240, 150));
+        jPanel2.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 280, 280));
 
         jLabel37.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("Dinner:");
-        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 80, -1));
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 80, -1));
 
+        txtSnackUserMealPlan.setEditable(false);
         txtSnackUserMealPlan.setColumns(20);
         txtSnackUserMealPlan.setRows(5);
-        txtSnackUserMealPlan.setEnabled(false);
         jScrollPane8.setViewportView(txtSnackUserMealPlan);
 
-        jPanel2.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 240, 150));
+        jPanel2.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 280, 280));
 
         jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("Snack:");
-        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 80, -1));
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 170, 80, -1));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("TotalCalorie Amount:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, -1, -1));
 
         lblMealPlanTotalCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
         lblMealPlanTotalCalorieAmount.setText("...");
-        jPanel2.add(lblMealPlanTotalCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 70, 90, -1));
+        jPanel2.add(lblMealPlanTotalCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 90, -1));
 
-        jTabbedPane4.addTab("                                         My Plan                                         ", jPanel2);
+        jTabbedPane4.addTab("                                               My Diet Plans                                              ", jPanel2);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -761,6 +770,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator4;
@@ -782,6 +792,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblUserTDEE1;
     private javax.swing.JLabel lbltopintentVal;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextArea txtBot;
     private javax.swing.JTextArea txtBreakfastUserMealPlan;
     private javax.swing.JTextArea txtDinnerUserMealPlan;
     private javax.swing.JTextField txtHeight;
