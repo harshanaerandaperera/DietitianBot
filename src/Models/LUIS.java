@@ -17,17 +17,15 @@ public class LUIS {
     private Double TopScoreIntentScore;
     private String SentimentAnalysisLabel;
     private Double SentimentAnalysisScore;
-
+    
+    private String AppId = "8b2b20ad-49b4-4744-8f78-ac9078ee6c18";
+    private String SubscriptionKey = "002eceea21cf47f491faa49c75596b36";
+    
     public void ProcessQuery() {
         HttpClient httpclient = HttpClients.createDefault();
 
         try {
 
-            String AppId = "8b2b20ad-49b4-4744-8f78-ac9078ee6c18";
-
-            String SubscriptionKey = "002eceea21cf47f491faa49c75596b36";
-
-            //Query = "where is your store?";
             URIBuilder builder
                     = new URIBuilder("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/" + AppId + "?");
 
@@ -54,18 +52,7 @@ public class LUIS {
             SentimentAnalysisLabel = responseObject.getJSONObject("sentimentAnalysis").get("label").toString();
             SentimentAnalysisScore = Double.parseDouble(responseObject.getJSONObject("sentimentAnalysis").get("score").toString());
 
-//            System.out.println("Topscore Intent: " + TopScoreIntent);
-//            System.out.println("TopscoreintentScore: " + TopScoreIntentScore);
-//            System.out.println("SentimentAnalysisScore: " + SentimentAnalysisScore);
-//            System.out.println("SentimentAnalysisLabel: " + SentimentAnalysisLabel);
-            //Iterate Through the Rest of the Intents array and get each intent and it's score
-//            for (int i = 0; i < IntentsArraylength; i++) {
-//                System.out.println("Intents Array object(intent Name) " + i + " = " + responseObject.getJSONArray("intents").getJSONObject(i).get("intent"));
-//                System.out.println("Intents Array object(Intent Score) " + i + " = " + responseObject.getJSONArray("intents").getJSONObject(i).get("score"));
-//            }
-//            if (entity != null) {
-//                System.out.println(EntityUtils.toString(entity));
-//            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
