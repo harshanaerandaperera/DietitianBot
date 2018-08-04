@@ -39,7 +39,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         DeserializeUsers();
         DeserializeMealPlans();
 
-        //  populateMealPlanDetailsToComboBox();
     }
 
     /**
