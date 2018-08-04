@@ -23,11 +23,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminUI extends javax.swing.JFrame implements Serializable {
 
-        User currentUser;
-        Users users = new Users();
-        MealPlans mealPlans=new MealPlans();
-        MealPlan currentMealPlan;
-        
+    User currentUser;
+    Users users = new Users();
+    MealPlans mealPlans = new MealPlans();
+    MealPlan currentMealPlan;
 
     /**
      * Creates new form View
@@ -41,7 +40,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         populateMealPlanListTotblViewMealPlans();
 
     }
-       /**
+
+    /**
      * Serialize Users
      */
     public void SerializeUser() {
@@ -55,8 +55,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             System.out.println(e);
         }
     }
-    
-      /**
+
+    /**
      * Deserialize Users
      */
     public void DeserializeUsers() {
@@ -76,11 +76,12 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
+
     /**
      * SerializeMeal Plans
      */
-    
-     public void SerializeMealPlans() {
+
+    public void SerializeMealPlans() {
         try {
             FileOutputStream mplfos = new FileOutputStream(new File("mealPlans.txt"));
             ObjectOutputStream mplboos = new ObjectOutputStream(mplfos);
@@ -91,9 +92,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             System.out.println(e);
         }
     }
-    
-     /**
-     * Deserialize MealPlans 
+
+    /**
+     * Deserialize MealPlans
      */
     public void DeserializeMealPlans() {
         ObjectInputStream mplois = null;
@@ -112,9 +113,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         }
     }
-    
-    
-     public void populateUsersList() {
+
+    public void populateUsersList() {
         DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
         dtm.setRowCount(0);
         for (User user : users) {
@@ -125,12 +125,12 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             v.add(user.getHeight());
             v.add(user.getWeight());
             v.add(user.getGender());
-           
+
             dtm.addRow(v);
         }
     }
-     
-     public void populateMealPlanList() {
+
+    public void populateMealPlanList() {
         DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
         dtm.setRowCount(0);
         for (MealPlan mealPlan : mealPlans) {
@@ -145,7 +145,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             dtm.addRow(v);
         }
     }
-     public void populateMealPlanListTotblViewMealPlans() {
+
+    public void populateMealPlanListTotblViewMealPlans() {
         DefaultTableModel dtm = (DefaultTableModel) tblViewMealPlans.getModel();
         dtm.setRowCount(0);
         for (MealPlan mealPlan : mealPlans) {
@@ -160,8 +161,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             dtm.addRow(v);
         }
     }
-     
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -238,13 +237,13 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         setBackground(new java.awt.Color(32, 33, 35));
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         jTabbedPaneMainPanelAdmin.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTabbedPaneMainPanelAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneMainPanelAdminMouseClicked(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(32, 33, 35));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -611,153 +610,145 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
-        SerializeUser();
-        SerializeMealPlans();
-        
-    }//GEN-LAST:event_formWindowClosing
-
     private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
 
-        String mealPlanName=txtMealPlanName.getText();
-        double totalCalorieAmount=Double.parseDouble(txtMealPlanCalorieAmount.getText());
-        String breakfast=txtBreakfastManageMealPlan.getText();
-        String lunch=txtLunchManageMealPlan.getText();
-        String dinner=txtDinnerManageMealPlan.getText();
-        String snack=txtSnackManageMealPlan.getText();
-        
-        currentMealPlan=new MealPlan(mealPlanName,totalCalorieAmount,breakfast,lunch,dinner,snack);
+        String mealPlanName = txtMealPlanName.getText();
+        double totalCalorieAmount = Double.parseDouble(txtMealPlanCalorieAmount.getText());
+        String breakfast = txtBreakfastManageMealPlan.getText();
+        String lunch = txtLunchManageMealPlan.getText();
+        String dinner = txtDinnerManageMealPlan.getText();
+        String snack = txtSnackManageMealPlan.getText();
+
+        currentMealPlan = new MealPlan(mealPlanName, totalCalorieAmount, breakfast, lunch, dinner, snack);
         mealPlans.addMealPlan(currentMealPlan);
         clear();
         populateMealPlanList();
         populateMealPlanListTotblViewMealPlans();
     }//GEN-LAST:event_btnAddMealPlanActionPerformed
 
-      public void clear() {
-          txtMealPlanName.setText("");
+    public void clear() {
+        txtMealPlanName.setText("");
     }
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
-         int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
-         if (yesNo == 0) {
-              DefaultTableModel d = (DefaultTableModel) tblManageMealPlans.getModel();
-               int i = tblManageMealPlans.getSelectedRow(); 
-                int id=Integer.parseInt(d.getValueAt(0, 0).toString());
-                System.out.println("MPLID"+id);
-               
-               currentMealPlan=mealPlans.getMealPlanById(id);
-            //   System.out.println("selected meal Plan"+currentMealPlan);
-               mealPlans.removeMealPlan(currentMealPlan);
-               populateMealPlanList();
-               populateMealPlanListTotblViewMealPlans();
+        int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
+        if (yesNo == 0) {
+            DefaultTableModel d = (DefaultTableModel) tblManageMealPlans.getModel();
+            int i = tblManageMealPlans.getSelectedRow();
+            int id = Integer.parseInt(d.getValueAt(0, 0).toString());
+            System.out.println("MPLID" + id);
 
-         }
-           
+            currentMealPlan = mealPlans.getMealPlanById(id);
+            //   System.out.println("selected meal Plan"+currentMealPlan);
+            mealPlans.removeMealPlan(currentMealPlan);
+            populateMealPlanList();
+            populateMealPlanListTotblViewMealPlans();
+
+        }
+
     }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
 
     private void btnSearchMealPlanViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMealPlanViewActionPerformed
-        String searchKey=txtSearchMealView.getText();
-           if (cmbSearchMealPlanInViewMealPlan.getSelectedIndex() == 0) {
-                populateMealPlanListTotblViewMealPlans();
-                }
-             if(cmbSearchMealPlanInViewMealPlan.getSelectedIndex() == 1){
-                 //  System.out.println("MealPlan by name"+ mealPlans.getMealPlanByName(searchKey).size());
-                   DefaultTableModel dtm = (DefaultTableModel) tblViewMealPlans.getModel();
-                    dtm.setRowCount(0);
-                     for (int i = 0; i < mealPlans.getMealPlanByName(searchKey).size(); i++) {
-                         MealPlan mealPlan=mealPlans.getMealPlanByName(searchKey).get(i);
-                         Vector v = new Vector();
-                          v.add(mealPlan.getId());
-                          v.add(mealPlan.getName());
-                          v.add(mealPlan.getCalorieAmount());
-                          v.add(mealPlan.getBreakfast());
-                          v.add(mealPlan.getLunch());
-                          v.add(mealPlan.getDinner());
-                          v.add(mealPlan.getSnack());
-                          dtm.addRow(v);
-                         
-                     }
-             }
-               if(cmbSearchMealPlanInViewMealPlan.getSelectedIndex() == 2){
-              // System.out.println("MealPlan by calorie amount"+ mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size());
-                     DefaultTableModel dtm = (DefaultTableModel) tblViewMealPlans.getModel();
-                    dtm.setRowCount(0);
-                     for (int i = 0; i < mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size(); i++) {
-                         MealPlan mealPlan=mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).get(i);
-                         Vector v = new Vector();
-                          v.add(mealPlan.getId());
-                          v.add(mealPlan.getName());
-                          v.add(mealPlan.getCalorieAmount());
-                          v.add(mealPlan.getBreakfast());
-                          v.add(mealPlan.getLunch());
-                          v.add(mealPlan.getDinner());
-                          v.add(mealPlan.getSnack());
-                          dtm.addRow(v);
-                         
-                     }
-               }
+        String searchKey = txtSearchMealView.getText();
+        if (cmbSearchMealPlanInViewMealPlan.getSelectedIndex() == 0) {
+            populateMealPlanListTotblViewMealPlans();
+        }
+        if (cmbSearchMealPlanInViewMealPlan.getSelectedIndex() == 1) {
+            //  System.out.println("MealPlan by name"+ mealPlans.getMealPlanByName(searchKey).size());
+            DefaultTableModel dtm = (DefaultTableModel) tblViewMealPlans.getModel();
+            dtm.setRowCount(0);
+            for (int i = 0; i < mealPlans.getMealPlanByName(searchKey).size(); i++) {
+                MealPlan mealPlan = mealPlans.getMealPlanByName(searchKey).get(i);
+                Vector v = new Vector();
+                v.add(mealPlan.getId());
+                v.add(mealPlan.getName());
+                v.add(mealPlan.getCalorieAmount());
+                v.add(mealPlan.getBreakfast());
+                v.add(mealPlan.getLunch());
+                v.add(mealPlan.getDinner());
+                v.add(mealPlan.getSnack());
+                dtm.addRow(v);
+
+            }
+        }
+        if (cmbSearchMealPlanInViewMealPlan.getSelectedIndex() == 2) {
+            // System.out.println("MealPlan by calorie amount"+ mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size());
+            DefaultTableModel dtm = (DefaultTableModel) tblViewMealPlans.getModel();
+            dtm.setRowCount(0);
+            for (int i = 0; i < mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size(); i++) {
+                MealPlan mealPlan = mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).get(i);
+                Vector v = new Vector();
+                v.add(mealPlan.getId());
+                v.add(mealPlan.getName());
+                v.add(mealPlan.getCalorieAmount());
+                v.add(mealPlan.getBreakfast());
+                v.add(mealPlan.getLunch());
+                v.add(mealPlan.getDinner());
+                v.add(mealPlan.getSnack());
+                dtm.addRow(v);
+
+            }
+        }
                  }//GEN-LAST:event_btnSearchMealPlanViewActionPerformed
 
     private void btnSearchManageMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchManageMealPlanActionPerformed
 
-        String searchKey=txtSearchMealManage.getText();
-           if (cmbSearchMealPlanInManage.getSelectedIndex() == 0) {
-                populateMealPlanList();
-           }
-             if(cmbSearchMealPlanInManage.getSelectedIndex() == 1){
-                 //  System.out.println("MealPlan by name"+ mealPlans.getMealPlanByName(searchKey).size());
-                   DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
-                    dtm.setRowCount(0);
-                     for (int i = 0; i < mealPlans.getMealPlanByName(searchKey).size(); i++) {
-                         MealPlan mealPlan=mealPlans.getMealPlanByName(searchKey).get(i);
-                         Vector v = new Vector();
-                          v.add(mealPlan.getId());
-                          v.add(mealPlan.getName());
-                          v.add(mealPlan.getCalorieAmount());
-                          v.add(mealPlan.getBreakfast());
-                          v.add(mealPlan.getLunch());
-                          v.add(mealPlan.getDinner());
-                          v.add(mealPlan.getSnack());
-                          dtm.addRow(v);
-                         
-                     }
-             }
-               if(cmbSearchMealPlanInManage.getSelectedIndex() == 2){
-              // System.out.println("MealPlan by calorie amount"+ mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size());
-                     DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
-                    dtm.setRowCount(0);
-                     for (int i = 0; i < mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size(); i++) {
-                         MealPlan mealPlan=mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).get(i);
-                         Vector v = new Vector();
-                          v.add(mealPlan.getId());
-                          v.add(mealPlan.getName());
-                          v.add(mealPlan.getCalorieAmount());
-                          v.add(mealPlan.getBreakfast());
-                          v.add(mealPlan.getLunch());
-                          v.add(mealPlan.getDinner());
-                          v.add(mealPlan.getSnack());
-                          dtm.addRow(v);
-                         
-                     }
-               }
-             
+        String searchKey = txtSearchMealManage.getText();
+        if (cmbSearchMealPlanInManage.getSelectedIndex() == 0) {
+            populateMealPlanList();
+        }
+        if (cmbSearchMealPlanInManage.getSelectedIndex() == 1) {
+            //  System.out.println("MealPlan by name"+ mealPlans.getMealPlanByName(searchKey).size());
+            DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
+            dtm.setRowCount(0);
+            for (int i = 0; i < mealPlans.getMealPlanByName(searchKey).size(); i++) {
+                MealPlan mealPlan = mealPlans.getMealPlanByName(searchKey).get(i);
+                Vector v = new Vector();
+                v.add(mealPlan.getId());
+                v.add(mealPlan.getName());
+                v.add(mealPlan.getCalorieAmount());
+                v.add(mealPlan.getBreakfast());
+                v.add(mealPlan.getLunch());
+                v.add(mealPlan.getDinner());
+                v.add(mealPlan.getSnack());
+                dtm.addRow(v);
+
+            }
+        }
+        if (cmbSearchMealPlanInManage.getSelectedIndex() == 2) {
+            // System.out.println("MealPlan by calorie amount"+ mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size());
+            DefaultTableModel dtm = (DefaultTableModel) tblManageMealPlans.getModel();
+            dtm.setRowCount(0);
+            for (int i = 0; i < mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).size(); i++) {
+                MealPlan mealPlan = mealPlans.getMealPlanBycalorieAmount(Double.parseDouble(searchKey)).get(i);
+                Vector v = new Vector();
+                v.add(mealPlan.getId());
+                v.add(mealPlan.getName());
+                v.add(mealPlan.getCalorieAmount());
+                v.add(mealPlan.getBreakfast());
+                v.add(mealPlan.getLunch());
+                v.add(mealPlan.getDinner());
+                v.add(mealPlan.getSnack());
+                dtm.addRow(v);
+
+            }
+        }
 
 
     }//GEN-LAST:event_btnSearchManageMealPlanActionPerformed
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
-            String searchKey = txtSearchMealView1.getText();
-            
-             if (cmbSearchUser.getSelectedIndex() == 0) {
-                 populateUsersList();
-                 //clearText();
-                 }
-             if(cmbSearchUser.getSelectedIndex() == 1){
-                 
-                 System.out.println("user by name"+ users.getUserByName(searchKey).size());
-                  DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
-                    dtm.setRowCount(0);
-                     for (int i = 0; i < users.getUserByName(searchKey).size(); i++) {
+        String searchKey = txtSearchMealView1.getText();
+
+        if (cmbSearchUser.getSelectedIndex() == 0) {
+            populateUsersList();
+            //clearText();
+        }
+        if (cmbSearchUser.getSelectedIndex() == 1) {
+
+            System.out.println("user by name" + users.getUserByName(searchKey).size());
+            DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
+            dtm.setRowCount(0);
+            for (int i = 0; i < users.getUserByName(searchKey).size(); i++) {
                 User user = users.getUserByName(searchKey).get(i);
                 Vector v = new Vector();
                 v.add(user.getName());
@@ -766,73 +757,70 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 v.add(user.getHeight());
                 v.add(user.getWeight());
                 v.add(user.getGender());
- 
+
                 dtm.addRow(v);
             }
-                    
-                    
-             }
-             
-             
-             
-             if(cmbSearchUser.getSelectedIndex() == 2){
-                 try {
-                   //  users.getUserByEmail(searchKey);
-                     DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
-                     dtm.setRowCount(0);
-                        Vector v = new Vector();
-                        v.add(users.getUserByEmail(searchKey).getName());
-                        v.add(users.getUserByEmail(searchKey).getEmail());
-                        v.add(users.getUserByEmail(searchKey).getAge());
-                        v.add(users.getUserByEmail(searchKey).getHeight());
-                        v.add(users.getUserByEmail(searchKey).getWeight());
-                        v.add(users.getUserByEmail(searchKey).getGender());
-                        dtm.addRow(v);
-                    } catch (Exception e) {
-                 }
-             }
-             
-             
-             
-             
+
+        }
+
+        if (cmbSearchUser.getSelectedIndex() == 2) {
+            try {
+                //  users.getUserByEmail(searchKey);
+                DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
+                dtm.setRowCount(0);
+                Vector v = new Vector();
+                v.add(users.getUserByEmail(searchKey).getName());
+                v.add(users.getUserByEmail(searchKey).getEmail());
+                v.add(users.getUserByEmail(searchKey).getAge());
+                v.add(users.getUserByEmail(searchKey).getHeight());
+                v.add(users.getUserByEmail(searchKey).getWeight());
+                v.add(users.getUserByEmail(searchKey).getGender());
+                dtm.addRow(v);
+            } catch (Exception e) {
+            }
+        }
+
+
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
         int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove User?", " Remove User ", JOptionPane.YES_NO_OPTION);
-         if (yesNo == 0) {
-              DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
-               int i = tblUserMgt.getSelectedRow(); 
-               String email=d.getValueAt(0, 1).toString();
-               //System.out.println("email of selected user"+email);
-               currentUser=users.getUserByEmail(email);
-              // System.out.println("selected currentUser"+currentUser);
-               users.removeUser(currentUser);
-               populateUsersList();
-         }
-
+        if (yesNo == 0) {
+            DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
+            int i = tblUserMgt.getSelectedRow();
+            String email = d.getValueAt(0, 1).toString();
+            //System.out.println("email of selected user"+email);
+            currentUser = users.getUserByEmail(email);
+            // System.out.println("selected currentUser"+currentUser);
+            users.removeUser(currentUser);
+            populateUsersList();
+        }
 
 
     }//GEN-LAST:event_btnRemoveUserActionPerformed
 
     private void tblManageMealPlansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblManageMealPlansMouseClicked
-              
-                
+
+
     }//GEN-LAST:event_tblManageMealPlansMouseClicked
 
     private void tblViewMealPlansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewMealPlansMouseClicked
-              DefaultTableModel d = (DefaultTableModel) tblViewMealPlans.getModel();
-              int i = tblViewMealPlans.getSelectedRow(); 
-              int id=Integer.parseInt(d.getValueAt(i, 0).toString());
-              currentMealPlan=mealPlans.getMealPlanById(id);
-             // System.out.println("Selected meal paln :"+mealPlans.getMealPlanById(id).getName());
-             txtBreakfastviewMealPlan.setText(currentMealPlan.getBreakfast());
-             txtLunchViewMealPlan.setText(currentMealPlan.getLunch());
-             txtDinnerViewMealPlan.setText(currentMealPlan.getDinner());
-             txtSnackViewMealPlan.setText(currentMealPlan.getSnack());
-           
-             
-             
+        DefaultTableModel d = (DefaultTableModel) tblViewMealPlans.getModel();
+        int i = tblViewMealPlans.getSelectedRow();
+        int id = Integer.parseInt(d.getValueAt(i, 0).toString());
+        currentMealPlan = mealPlans.getMealPlanById(id);
+        // System.out.println("Selected meal paln :"+mealPlans.getMealPlanById(id).getName());
+        txtBreakfastviewMealPlan.setText(currentMealPlan.getBreakfast());
+        txtLunchViewMealPlan.setText(currentMealPlan.getLunch());
+        txtDinnerViewMealPlan.setText(currentMealPlan.getDinner());
+        txtSnackViewMealPlan.setText(currentMealPlan.getSnack());
+
+
     }//GEN-LAST:event_tblViewMealPlansMouseClicked
+
+    private void jTabbedPaneMainPanelAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMainPanelAdminMouseClicked
+        switchTabs();
+    }//GEN-LAST:event_jTabbedPaneMainPanelAdminMouseClicked
 
     /**
      * @param args the command line arguments
@@ -929,6 +917,25 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextArea txtSnackViewMealPlan;
     // End of variables declaration//GEN-END:variables
 
-  
+    public void switchTabs() {
+
+        int selectedIndex = jTabbedPaneMainPanelAdmin.getSelectedIndex();
+
+        if (selectedIndex == 3) {
+            int answer = JOptionPane.showConfirmDialog(null, "Do you really want to Exit?", " AI Dietitian ", JOptionPane.YES_NO_OPTION);
+
+            if (answer == 0) {
+                System.out.println("SerializeUser And MealPlans");
+                SerializeUser();
+                SerializeMealPlans();
+                SignInUI SI = new SignInUI();
+                SI.setVisible(true);
+                this.dispose();
+            }
+            if (answer == 1) {
+                jTabbedPaneMainPanelAdmin.setSelectedIndex(0);
+            }
+        }
+    }
 
 }
