@@ -80,8 +80,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         } else if (currentUser.getGender().equals("Female")) {
+            TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
             System.out.println("calaerie of " + currentUser.getEmail() + dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
-            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+            lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         }
 
@@ -90,12 +91,12 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public void populateMealPlanDetailsToComboBox() {
         for (int i = 0; i < myPlans.size(); i++) {
             System.out.println("plan meat");
-            cmbMyMealPlans.addItem("-"+myPlans.get(i).getId()+"-   "+myPlans.get(i).getName());
+            cmbMyMealPlans.addItem("-" + myPlans.get(i).getId() + "-   " + myPlans.get(i).getName());
         }
 
     }
-    
-     public String getMatchedMealPlanId(String cmbValue) {
+
+    public String getMatchedMealPlanId(String cmbValue) {
         Pattern p = Pattern.compile("[0-9]{1,13}(\\.[0-9]*)?");
         Matcher m = p.matcher(cmbValue);
         if (m.find()) {
@@ -108,17 +109,81 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public void getMyPlan() {
         for (int i = 0; i < mealPlans.size(); i++) {
             System.out.println("TDEE loop" + TDEE);
-            if (TDEE > 0 && TDEE <= 500) {
 
-                if (mealPlans.get(i).getCalorieAmount() > 0 && mealPlans.get(i).getCalorieAmount() <= 500) {
+            if (TDEE > 0 && TDEE <= 250) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 0 && mealPlans.get(i).getCalorieAmount() <= 250) {
 
                     myPlans.addMealPlan(mealPlans.get(i));
                 }
 
             }
-            if (TDEE > 500 && TDEE <= 1000) {
+            if (TDEE > 250 && TDEE <= 500) {
 
-                if (mealPlans.get(i).getCalorieAmount() > 500 && mealPlans.get(i).getCalorieAmount() <= 1000) {
+                if (mealPlans.get(i).getCalorieAmount() > 250 && mealPlans.get(i).getCalorieAmount() <= 500) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 500 && TDEE <= 750) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 500 && mealPlans.get(i).getCalorieAmount() <= 750) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 750 && TDEE <= 1000) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 750 && mealPlans.get(i).getCalorieAmount() <= 1000) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 1000 && TDEE <= 1250) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 1000 && mealPlans.get(i).getCalorieAmount() <= 1250) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 1250 && TDEE <= 1500) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 1250 && mealPlans.get(i).getCalorieAmount() <= 1500) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 1500 && TDEE <= 1750) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 1500 && mealPlans.get(i).getCalorieAmount() <= 1750) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 1750 && TDEE <= 2000) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 1750 && mealPlans.get(i).getCalorieAmount() <= 2000) {
+
+                    myPlans.addMealPlan(mealPlans.get(i));
+                }
+
+            }
+
+            if (TDEE > 2000 && TDEE <= 2250) {
+
+                if (mealPlans.get(i).getCalorieAmount() > 2000 && mealPlans.get(i).getCalorieAmount() <= 2250) {
 
                     myPlans.addMealPlan(mealPlans.get(i));
                 }
@@ -127,7 +192,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
         populateMealPlanDetailsToComboBox();
-        System.out.println("size" + myPlans.size());
+        System.out.println("My plan size" + myPlans.size());
     }
 
     /**
@@ -658,6 +723,27 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         currentUser = users.getUserByEmail(currentUser.getEmail());
         showBMI();
         getTDEE();
+
+        if (myPlans.size() != 0) {
+            myPlans = new MealPlans();
+            System.out.println("creted new object");
+            try {
+                   for(int i=cmbMyMealPlans.getItemCount()-1;i>=1;i--){
+                cmbMyMealPlans.removeItemAt(i);
+                lblMealPlanTotalCalorieAmount.setText("");
+                txtBreakfastUserMealPlan.setText("");
+                txtLunchUserMealPlan.setText("");
+                txtDinnerUserMealPlan.setText("");
+                txtSnackUserMealPlan.setText("");
+                
+                   }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        getMyPlan();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
@@ -689,19 +775,19 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_formWindowClosing
 
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
+        System.out.println("getSelectedIndex"+cmbMyMealPlans.getSelectedItem());
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
             getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString());
-            myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
+            myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
             //System.out.println("my plan name : "+myPlans.getMealPlanById(Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getName());
-            
-            txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
-            txtLunchUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
-            txtDinnerUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getDinner());
-            txtSnackUserMealPlan.setText(myPlans.getMealPlanById(  Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getSnack());
-             lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
-             
+
+            txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
+            txtLunchUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
+            txtDinnerUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getDinner());
+            txtSnackUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getSnack());
+            lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
+
             // System.out.println("Selected Plan ID ="+getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()));
-            
         }
     }//GEN-LAST:event_cmbMyMealPlansActionPerformed
 
