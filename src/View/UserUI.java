@@ -344,13 +344,13 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         setBackground(new java.awt.Color(32, 33, 35));
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTabbedPaneMainPanelUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneMainPanelUserMouseClicked(evt);
+            }
+        });
 
         jTabbedPaneAssistant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -772,11 +772,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        System.out.println("SerializeUser");
-        SerializeUser();
-    }//GEN-LAST:event_formWindowClosing
-
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
         System.out.println("getSelectedIndex" + cmbMyMealPlans.getSelectedItem());
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
@@ -793,6 +788,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             // System.out.println("Selected Plan ID ="+getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()));
         }
     }//GEN-LAST:event_cmbMyMealPlansActionPerformed
+
+    private void jTabbedPaneMainPanelUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMainPanelUserMouseClicked
+        switchTabs();
+    }//GEN-LAST:event_jTabbedPaneMainPanelUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -891,5 +890,25 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextField txtUserQuery;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
+
+    public void switchTabs() {
+        
+        int selectedIndex = jTabbedPaneMainPanelUser.getSelectedIndex();
+        
+        if (selectedIndex == 3) {
+            int answer = JOptionPane.showConfirmDialog(null, "Do you really want to Exit?", " AI Dietitian ", JOptionPane.YES_NO_OPTION);
+            
+            if (answer == 0) {
+                System.out.println("SerializeUser");
+                SerializeUser();
+                SignInUI SI=new SignInUI();
+                SI.setVisible(true);
+                this.dispose();
+            }
+            if(answer==1){
+                jTabbedPaneMainPanelUser.setSelectedIndex(0);
+            }
+        }
+    }
 
 }
