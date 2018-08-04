@@ -54,6 +54,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         showBMI();
         getTDEE();
         getMyPlan();
+        jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
+
         System.out.println("Current User is" + currentUser.getName());
     }
 
@@ -271,7 +273,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private void initComponents() {
 
         jTabbedPaneMainPanelUser = new javax.swing.JTabbedPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPaneAssistant = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -289,7 +291,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtBot = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jTabbedPaneEditProfile = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -350,7 +352,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jTabbedPaneMainPanelUser.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
 
-        jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jTabbedPaneAssistant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
         jPanel1.setVerifyInputWhenFocusTarget(false);
@@ -431,11 +433,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 520, 440));
 
-        jTabbedPane1.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
+        jTabbedPaneAssistant.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
 
-        jTabbedPaneMainPanelUser.addTab("                     Assistant                      ", jTabbedPane1);
+        jTabbedPaneMainPanelUser.addTab("                     Assistant                      ", jTabbedPaneAssistant);
 
-        jTabbedPane3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jTabbedPaneEditProfile.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(32, 33, 35));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -547,17 +549,17 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserGender.setText("...");
         jPanel4.add(lblUserGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 90, -1));
 
-        jTabbedPane3.addTab("                                                                                                  Edit Your Profile here                                                                                                     ", jPanel4);
+        jTabbedPaneEditProfile.addTab("                                                                                                  Edit Your Profile here                                                                                                     ", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPaneEditProfile, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPaneEditProfile, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         jTabbedPaneMainPanelUser.addTab("                    Profile                     ", jPanel5);
@@ -723,20 +725,21 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         currentUser = users.getUserByEmail(currentUser.getEmail());
         showBMI();
         getTDEE();
+        jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
 
         if (myPlans.size() != 0) {
             myPlans = new MealPlans();
             System.out.println("creted new object");
             try {
-                   for(int i=cmbMyMealPlans.getItemCount()-1;i>=1;i--){
-                cmbMyMealPlans.removeItemAt(i);
-                lblMealPlanTotalCalorieAmount.setText("");
-                txtBreakfastUserMealPlan.setText("");
-                txtLunchUserMealPlan.setText("");
-                txtDinnerUserMealPlan.setText("");
-                txtSnackUserMealPlan.setText("");
-                
-                   }
+                for (int i = cmbMyMealPlans.getItemCount() - 1; i >= 1; i--) {
+                    cmbMyMealPlans.removeItemAt(i);
+                    lblMealPlanTotalCalorieAmount.setText("");
+                    txtBreakfastUserMealPlan.setText("");
+                    txtLunchUserMealPlan.setText("");
+                    txtDinnerUserMealPlan.setText("");
+                    txtSnackUserMealPlan.setText("");
+
+                }
 
             } catch (Exception e) {
                 System.out.println(e);
@@ -775,7 +778,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_formWindowClosing
 
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
-        System.out.println("getSelectedIndex"+cmbMyMealPlans.getSelectedItem());
+        System.out.println("getSelectedIndex" + cmbMyMealPlans.getSelectedItem());
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
             getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString());
             myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
@@ -864,9 +867,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPaneAssistant;
+    private javax.swing.JTabbedPane jTabbedPaneEditProfile;
     private javax.swing.JTabbedPane jTabbedPaneMainPanelUser;
     private javax.swing.JLabel lblJResponse;
     private javax.swing.JLabel lblMealPlanTotalCalorieAmount;
