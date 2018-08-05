@@ -46,7 +46,7 @@ public class LUIS {
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
             String JsonResponse = EntityUtils.toString(entity);
-            //System.out.println(JsonResponse);   //print as a jsonString format
+            System.out.println(JsonResponse);   //print as a jsonString format
             JSONObject responseObject = new JSONObject(JsonResponse);   //convert JsonString to an object
             System.out.println(responseObject);   //print the response object
 

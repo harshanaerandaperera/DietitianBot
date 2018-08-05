@@ -55,7 +55,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         getMyPlan();
         jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
 
-        System.out.println("Current User is" + currentUser.getName());
+        System.out.println("Current User is: " + currentUser.getName());
     }
 
     public void createProfile() {
@@ -70,19 +70,18 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     public void showBMI() {
         lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
-        System.out.println("BMI" + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
+        System.out.println("Current User BMI: " + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
     }
 
     public void getTDEE() {
         if (currentUser.getGender().equals("Male")) {
             TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-            System.out.println("TDEE above" + TDEE);
-            System.out.println("calaerie of " + currentUser.getEmail() + dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+            System.out.println("calorie Requirement of " + currentUser.getEmail() +" is "+ dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
             lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         } else if (currentUser.getGender().equals("Female")) {
             TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-            System.out.println("calaerie of " + currentUser.getEmail() + dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+            System.out.println("calorie Requirement of " + currentUser.getEmail() +" is "+ dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
             lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         }
@@ -91,7 +90,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     public void populateMealPlanDetailsToComboBox() {
         for (int i = 0; i < myPlans.size(); i++) {
-            System.out.println("plan meat");
             cmbMyMealPlans.addItem("-" + myPlans.get(i).getId() + "-   " + myPlans.get(i).getName());
         }
 
@@ -192,7 +190,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
         populateMealPlanDetailsToComboBox();
-        System.out.println("My plan size" + myPlans.size());
+        System.out.println("My plan size: " + myPlans.size());
     }
 
     /**

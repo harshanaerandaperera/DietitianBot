@@ -38,7 +38,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
                 uois = new ObjectInputStream(ufis);
                 while (uois != null) {
                     users = (Users) uois.readObject();
-                    System.out.println(this.users.size());
+                    System.out.println("User Count: "+this.users.size());
 
                 }
             }

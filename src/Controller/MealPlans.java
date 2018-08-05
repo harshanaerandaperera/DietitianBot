@@ -24,7 +24,7 @@ public class MealPlans extends ArrayList<MealPlan> {
         }
 
         System.out.println("Meal Plan Added Succesfully..!");
-        System.out.println("Mealplans ArrayList size" + super.size());
+        System.out.println("Mealplans ArrayList size: " + super.size());
 
     }
 
