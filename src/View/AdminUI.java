@@ -226,7 +226,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jScrollPane10 = new javax.swing.JScrollPane();
         tblUserMgt = new javax.swing.JTable();
         jSeparator24 = new javax.swing.JSeparator();
-        txtSearchMealView1 = new javax.swing.JTextField();
+        txtSearchUser = new javax.swing.JTextField();
         btnSearchUser = new javax.swing.JButton();
         cmbSearchUser = new javax.swing.JComboBox<>();
         btnRemoveUser = new javax.swing.JButton();
@@ -510,7 +510,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         jPanel3.add(jTabbedPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 550));
 
-        jTabbedPaneMainPanelAdmin.addTab("                      Meal Plan                     ", jPanel3);
+        jTabbedPaneMainPanelAdmin.addTab("                       Meal Plan Management                        ", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -541,11 +541,11 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jSeparator24.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 160, 10));
 
-        txtSearchMealView1.setBackground(new java.awt.Color(32, 33, 35));
-        txtSearchMealView1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtSearchMealView1.setForeground(new java.awt.Color(255, 255, 255));
-        txtSearchMealView1.setBorder(null);
-        jPanel1.add(txtSearchMealView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 20));
+        txtSearchUser.setBackground(new java.awt.Color(32, 33, 35));
+        txtSearchUser.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtSearchUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtSearchUser.setBorder(null);
+        jPanel1.add(txtSearchUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 20));
 
         btnSearchUser.setBackground(new java.awt.Color(38, 50, 56));
         btnSearchUser.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -559,6 +559,11 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         jPanel1.add(btnSearchUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 180, -1));
 
         cmbSearchUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Option to Search", "Search By Name", "Search By Email" }));
+        cmbSearchUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSearchUserActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbSearchUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         btnRemoveUser.setBackground(new java.awt.Color(38, 50, 56));
@@ -764,33 +769,34 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
-        String searchKey = txtSearchMealView1.getText();
+        String searchKey = txtSearchUser.getText();
 
         if (cmbSearchUser.getSelectedIndex() == 0) {
             populateUsersList();
         }
         if (cmbSearchUser.getSelectedIndex() == 1) {
 
-            System.out.println("user by name" + users.getUserByName(searchKey).size());
-            DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
-            dtm.setRowCount(0);
-            for (int i = 0; i < users.getUserByName(searchKey).size(); i++) {
-                User user = users.getUserByName(searchKey).get(i);
-                Vector v = new Vector();
-                v.add(user.getName());
-                v.add(user.getEmail());
-                v.add(user.getAge());
-                v.add(user.getHeight());
-                v.add(user.getWeight());
-                v.add(user.getGender());
-
-                dtm.addRow(v);
+            if (!searchKey.isEmpty()) {
+                DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
+                dtm.setRowCount(0);
+                for (int i = 0; i < users.getUserByName(searchKey).size(); i++) {
+                    User user = users.getUserByName(searchKey).get(i);
+                    Vector v = new Vector();
+                    v.add(user.getName());
+                    v.add(user.getEmail());
+                    v.add(user.getAge());
+                    v.add(user.getHeight());
+                    v.add(user.getWeight());
+                    v.add(user.getGender());
+                    dtm.addRow(v);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid User Name, Please Re-Enter User Name !", " User Name ", JOptionPane.ERROR_MESSAGE);
             }
-
         }
 
         if (cmbSearchUser.getSelectedIndex() == 2) {
-            try {
+            if (validator.isValidEmail(searchKey)) {
                 DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
                 dtm.setRowCount(0);
                 Vector v = new Vector();
@@ -801,11 +807,10 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
                 v.add(users.getUserByEmail(searchKey).getWeight());
                 v.add(users.getUserByEmail(searchKey).getGender());
                 dtm.addRow(v);
-            } catch (Exception e) {
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Email, Please Re-Enter Email !", " Email ", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
@@ -851,6 +856,13 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             txtSearchMealManage.setText("");
         }
     }//GEN-LAST:event_cmbSearchMealPlanInManageActionPerformed
+
+    private void cmbSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSearchUserActionPerformed
+        if (cmbSearchUser.getSelectedIndex() == 0) {
+            populateUsersList();
+            txtSearchUser.setText("");
+        }
+    }//GEN-LAST:event_cmbSearchUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -942,7 +954,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextField txtMealPlanName;
     private javax.swing.JTextField txtSearchMealManage;
     private javax.swing.JTextField txtSearchMealView;
-    private javax.swing.JTextField txtSearchMealView1;
+    private javax.swing.JTextField txtSearchUser;
     private javax.swing.JTextArea txtSnackManageMealPlan;
     private javax.swing.JTextArea txtSnackViewMealPlan;
     // End of variables declaration//GEN-END:variables
