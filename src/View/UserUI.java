@@ -109,7 +109,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     public void getMyPlan() {
         for (int i = 0; i < mealPlans.size(); i++) {
-            System.out.println("TDEE loop" + TDEE);
 
             if (TDEE > 0 && TDEE <= 250) {
 
@@ -335,7 +334,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jScrollPane8 = new javax.swing.JScrollPane();
         txtSnackUserMealPlan = new javax.swing.JTextArea();
         jLabel38 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lbldisplayTotCal = new javax.swing.JLabel();
         lblMealPlanTotalCalorieAmount = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -655,10 +654,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel38.setText("Snack:");
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 170, 80, -1));
 
-        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("TotalCalorie Amount:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, -1, -1));
+        lbldisplayTotCal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbldisplayTotCal.setForeground(new java.awt.Color(255, 255, 255));
+        lbldisplayTotCal.setText("TotalCalorie Amount:");
+        jPanel2.add(lbldisplayTotCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, -1, -1));
 
         lblMealPlanTotalCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
         lblMealPlanTotalCalorieAmount.setText("...");
@@ -713,7 +712,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
-        // System.out.println("prev"+users.getUserByEmail(currentUser.getEmail()).getActivityLevel()); 
         users.getUserByEmail(currentUser.getEmail()).setName(txtUpdateUserName.getText());
         users.getUserByEmail(currentUser.getEmail()).setAge(Integer.parseInt(txtAge.getText()));
         users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(txtWeight.getText()));
@@ -772,19 +770,24 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btntestingpurposeActionPerformed
 
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
-        System.out.println("getSelectedIndex" + cmbMyMealPlans.getSelectedItem());
+        if (cmbMyMealPlans.getSelectedIndex() == 0) {
+            lbldisplayTotCal.setVisible(false); //Hide Total Calorie Amount Label
+            lblMealPlanTotalCalorieAmount.setText("");
+            txtBreakfastUserMealPlan.setText("");
+            txtLunchUserMealPlan.setText("");
+            txtDinnerUserMealPlan.setText("");
+            txtSnackUserMealPlan.setText("");
+        }
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
             getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString());
             myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
-            //System.out.println("my plan name : "+myPlans.getMealPlanById(Integer.parseInt( getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getName());
-
+            lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
             txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
             txtLunchUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
             txtDinnerUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getDinner());
             txtSnackUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getSnack());
-            lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
 
-            // System.out.println("Selected Plan ID ="+getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()));
+            lbldisplayTotCal.setVisible(true);  //Show Total Calorie Amount Label
         }
     }//GEN-LAST:event_cmbMyMealPlansActionPerformed
 
@@ -835,7 +838,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
@@ -877,6 +879,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblUserEmail;
     private javax.swing.JLabel lblUserGender;
     private javax.swing.JLabel lblUserTDEE1;
+    private javax.swing.JLabel lbldisplayTotCal;
     private javax.swing.JLabel lbltopintentVal;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextArea txtBot;
@@ -891,20 +894,20 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     // End of variables declaration//GEN-END:variables
 
     public void switchTabs() {
-        
+
         int selectedIndex = jTabbedPaneMainPanelUser.getSelectedIndex();
-        
+
         if (selectedIndex == 3) {
             int answer = JOptionPane.showConfirmDialog(null, "Do you really want to Exit?", " AI Dietitian ", JOptionPane.YES_NO_OPTION);
-            
+
             if (answer == 0) {
                 System.out.println("SerializeUser");
                 SerializeUser();
-                SignInUI SI=new SignInUI();
+                SignInUI SI = new SignInUI();
                 SI.setVisible(true);
                 this.dispose();
             }
-            if(answer==1){
+            if (answer == 1) {
                 jTabbedPaneMainPanelUser.setSelectedIndex(0);
             }
         }
