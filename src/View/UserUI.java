@@ -30,6 +30,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     MealPlans myPlans = new MealPlans();
     MealPlan currentMealPlan = new MealPlan();
     int TDEE;
+    double BMI;
+    LUIS L = new LUIS();
 
     /**
      * Creates new form View
@@ -65,23 +67,29 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         txtHeight.setText(Double.toString(currentUser.getHeight()));
         lblUserEmail.setText(currentUser.getEmail());
         lblUserGender.setText(currentUser.getGender());
+        jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
+        showBMI();
+        getTDEE();
+
+        System.out.println("Profile created");
 
     }
 
     public void showBMI() {
         lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
+        BMI = dm.BMI(currentUser.getWeight(), currentUser.getHeight());
         System.out.println("Current User BMI: " + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
     }
 
     public void getTDEE() {
         if (currentUser.getGender().equals("Male")) {
             TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-            System.out.println("calorie Requirement of " + currentUser.getEmail() +" is "+ dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+            System.out.println("calorie Requirement of " + currentUser.getEmail() + " is " + dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
             lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         } else if (currentUser.getGender().equals("Female")) {
             TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-            System.out.println("calorie Requirement of " + currentUser.getEmail() +" is "+ dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+            System.out.println("calorie Requirement of " + currentUser.getEmail() + " is " + dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
             lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
         }
@@ -193,6 +201,28 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         System.out.println("My plan size: " + myPlans.size());
     }
 
+    public void generateMyPlan() {
+        if (myPlans.size() != 0) {
+            myPlans = new MealPlans();
+            System.out.println("creted new object");
+            try {
+                for (int i = cmbMyMealPlans.getItemCount() - 1; i >= 1; i--) {
+                    cmbMyMealPlans.removeItemAt(i);
+                    lblMealPlanTotalCalorieAmount.setText("");
+                    txtBreakfastUserMealPlan.setText("");
+                    txtLunchUserMealPlan.setText("");
+                    txtDinnerUserMealPlan.setText("");
+                    txtSnackUserMealPlan.setText("");
+
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+    }
+
     /**
      * Serialize Users
      */
@@ -272,18 +302,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jTabbedPaneAssistant = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
         btnSendQuery = new javax.swing.JButton();
         txtUserQuery = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        check = new javax.swing.JLabel();
-        lblJResponse = new javax.swing.JLabel();
+        lblTopScoreIntentName = new javax.swing.JLabel();
         lbltopintentVal = new javax.swing.JLabel();
         lblSenAna = new javax.swing.JLabel();
         lblSenScore = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtBot = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
@@ -360,10 +387,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel2.setText("Query Sentiment Score:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 20));
 
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 212, 10));
-
         btnSendQuery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/send (64).png"))); // NOI18N
         btnSendQuery.setBorder(null);
         btnSendQuery.setContentAreaFilled(false);
@@ -384,13 +407,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chatbar.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 480, 90));
 
-        check.setForeground(new java.awt.Color(255, 255, 255));
-        check.setText("Top Score Intent");
-        jPanel1.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
-
-        lblJResponse.setForeground(new java.awt.Color(255, 255, 255));
-        lblJResponse.setText("Response");
-        jPanel1.add(lblJResponse, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+        lblTopScoreIntentName.setForeground(new java.awt.Color(255, 255, 255));
+        lblTopScoreIntentName.setText("Top Score Intent");
+        jPanel1.add(lblTopScoreIntentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
         lbltopintentVal.setForeground(new java.awt.Color(255, 255, 255));
         lbltopintentVal.setText("Top Intent Score Val");
@@ -415,12 +434,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("BOT Predicted Top Intent: ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("BOT Predicted Intent: ");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         txtBot.setEditable(false);
         txtBot.setColumns(20);
@@ -506,6 +519,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         cmbActivityLevel.setForeground(new java.awt.Color(255, 255, 255));
         cmbActivityLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lightly active (moderate exercise but sedentary job)", "Moderately active (intense exercise but sedentary job)", "Very active (moderate exercise and active job)", "Extra active (intense exercise and active job)" }));
+        cmbActivityLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbActivityLevelActionPerformed(evt);
+            }
+        });
         jPanel4.add(cmbActivityLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 355, 349, -1));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -721,42 +739,172 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         showBMI();
         getTDEE();
         jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
-
-        if (myPlans.size() != 0) {
-            myPlans = new MealPlans();
-            System.out.println("creted new object");
-            try {
-                for (int i = cmbMyMealPlans.getItemCount() - 1; i >= 1; i--) {
-                    cmbMyMealPlans.removeItemAt(i);
-                    lblMealPlanTotalCalorieAmount.setText("");
-                    txtBreakfastUserMealPlan.setText("");
-                    txtLunchUserMealPlan.setText("");
-                    txtDinnerUserMealPlan.setText("");
-                    txtSnackUserMealPlan.setText("");
-
-                }
-
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
+        generateMyPlan();
 
         getMyPlan();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
 
-        LUIS L = new LUIS();
         L.setQuery(txtUserQuery.getText());
         L.ProcessQuery();
-        check.setText(L.getTopScoreIntent());
+        lblTopScoreIntentName.setText(L.getTopScoreIntent());
         lbltopintentVal.setText(L.getTopScoreIntentScore().toString());
         lblSenAna.setText(L.getSentimentAnalysisLabel());
         lblSenScore.setText(L.getSentimentAnalysisScore().toString());
+        AssistantProcessor();
 
 
     }//GEN-LAST:event_btnSendQueryActionPerformed
 
+    public void AssistantProcessor() {
+        /**
+         * Setters
+         */
+        System.out.println("AssistantProcessor herer ");
+
+        if (L.getTopScoreIntent().equals("setHeight")) {
+
+            if (L.getEntityType1().equals("height")) {
+
+                currentUser.setHeight(Double.parseDouble(L.getEntityValue1()));
+                users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(L.getEntityValue1()));
+
+                createProfile();
+                generateMyPlan();
+                getMyPlan();
+
+            }
+        }
+        if (L.getTopScoreIntent().equals("setWeight")) {
+
+            if (L.getEntityType1().equals("weight")) {
+
+                currentUser.setWeight(Double.parseDouble(L.getEntityValue1()));
+                users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(L.getEntityValue1()));
+
+                createProfile();
+                generateMyPlan();
+                getMyPlan();
+            }
+        }
+        if (L.getTopScoreIntent().equals("setName")) {
+
+            if (L.getEntityType1().equals("username")) {
+
+                currentUser.setName((L.getEntityValue1()));
+                users.getUserByEmail(currentUser.getEmail()).setName((L.getEntityValue1()));
+
+                createProfile();
+
+            }
+        }
+
+        if (L.getTopScoreIntent().equals("setAge")) {
+
+            if (L.getEntityType1().equals("age")) {
+
+                currentUser.setName((L.getEntityValue1()));
+                users.getUserByEmail(currentUser.getEmail()).setName((L.getEntityValue1()));
+
+                createProfile();
+                generateMyPlan();
+                getMyPlan();
+
+            }
+        }
+
+        if (L.getTopScoreIntent().equals("setActivityLevel")) {
+
+            if (L.getEntityType1().equals("activitylevel")) {
+
+                if (L.getEntityValue1().equals("lightlyactive")) {
+
+                    currentUser.setActivityLevel("Lightly active (moderate exercise but sedentary job)");
+                    users.getUserByEmail(currentUser.getEmail()).setActivityLevel("Lightly active (moderate exercise but sedentary job)");
+                    createProfile();
+                    generateMyPlan();
+                    getMyPlan();
+
+                }
+            }
+        }
+
+        /**
+         * getters
+         */
+        if (L.getTopScoreIntent().equals("getActivityLevel")) {
+            txtBot.setText("Your Acivity Level is " + currentUser.getActivityLevel());
+        }
+        if (L.getTopScoreIntent().equals("getAge")) {
+            txtBot.setText("Your Age is " + currentUser.getAge());
+        }
+        if (L.getTopScoreIntent().equals("getBMI")) {
+            txtBot.setText("Your BMI is " + Double.toString(this.BMI));
+        }
+        if (L.getTopScoreIntent().equals("getEmail")) {
+            txtBot.setText("Your Email is " + currentUser.getEmail());
+        }
+        if (L.getTopScoreIntent().equals("getGender")) {
+            txtBot.setText("Your Gender is " + currentUser.getGender());
+        }
+        if (L.getTopScoreIntent().equals("getGoal")) {
+            txtBot.setText("Your Goal is " + currentUser.getGoal());
+        }
+        if (L.getTopScoreIntent().equals("getHeight")) {
+            txtBot.setText("Your Height is " + Double.toString(currentUser.getHeight()));
+        }
+        if (L.getTopScoreIntent().equals("getName")) {
+            txtBot.setText("Your Name is " + currentUser.getName());
+        }
+        if (L.getTopScoreIntent().equals("getTDEE")) {
+            txtBot.setText("Your Daily calorie requirement is " + Integer.toString(this.TDEE));
+        }
+        if (L.getTopScoreIntent().equals("getWeight")) {
+            txtBot.setText("Your Weight is " + Double.toString(currentUser.getWeight()));
+        }
+        if (L.getTopScoreIntent().equals("getDietPlans")) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < myPlans.size(); i++) {
+                this.currentMealPlan = myPlans.get(i);
+                sb.append("\n");
+                sb.append("               Meal Plan ID : " + this.currentMealPlan.getId());
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("<=====================================================>");
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("---Breakfast----");
+                sb.append("\n");
+                sb.append("               " + this.currentMealPlan.getBreakfast());
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("---Lunch----");
+                sb.append("\n");
+                sb.append("               "+this.currentMealPlan.getLunch());
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("---Dinner----");
+                sb.append("\n");
+                sb.append("               " + this.currentMealPlan.getDinner());
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("---Snack----");
+                sb.append("\n");
+                sb.append("               " + this.currentMealPlan.getSnack());
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("<=====================================================>");
+                sb.append("\n");
+                sb.append("\n");
+            }
+            txtBot.setText(sb.toString());
+        }
+        if (L.getTopScoreIntent().equals("None")) {
+            txtBot.setText("Out Of Domain !");
+        }
+
+    }
     private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
 
         DietMaths t = new DietMaths();
@@ -793,6 +941,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         switchTabs();
     }//GEN-LAST:event_jTabbedPaneMainPanelUserMouseClicked
 
+    private void cmbActivityLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbActivityLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbActivityLevelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -825,7 +977,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton btnSendQuery;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btntestingpurpose;
-    private javax.swing.JLabel check;
     private javax.swing.JComboBox<String> cmbActivityLevel;
     private javax.swing.JComboBox<String> cmbGoal;
     private javax.swing.JComboBox<String> cmbMyMealPlans;
@@ -844,7 +995,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -860,7 +1010,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
@@ -869,10 +1018,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTabbedPane jTabbedPaneAssistant;
     private javax.swing.JTabbedPane jTabbedPaneEditProfile;
     private javax.swing.JTabbedPane jTabbedPaneMainPanelUser;
-    private javax.swing.JLabel lblJResponse;
     private javax.swing.JLabel lblMealPlanTotalCalorieAmount;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblSenScore;
+    private javax.swing.JLabel lblTopScoreIntentName;
     private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserEmail;
     private javax.swing.JLabel lblUserGender;

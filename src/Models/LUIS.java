@@ -22,6 +22,7 @@ public class LUIS {
     private String SentimentAnalysisLabel;
     private Double SentimentAnalysisScore;
     
+    
     private String EntityType1;
     private String EntityValue1;
     private Double EntityScore1;
@@ -73,19 +74,14 @@ public class LUIS {
             EntityValue1 = responseObject.getJSONArray("entities").getJSONObject(0).get("entity").toString();
             EntityScore1 = Double.parseDouble(responseObject.getJSONArray("entities").getJSONObject(0).get("score").toString());
             
-            EntityType2 = responseObject.getJSONArray("entities").getJSONObject(1).get("type").toString();
-            EntityValue2 = responseObject.getJSONArray("entities").getJSONObject(1).get("entity").toString();
-            EntityScore2 = Double.parseDouble(responseObject.getJSONArray("entities").getJSONObject(1).get("score").toString());
-            
-            EntityType3 = responseObject.getJSONArray("entities").getJSONObject(2).get("type").toString();
-            EntityValue3 = responseObject.getJSONArray("entities").getJSONObject(2).get("entity").toString();
-            EntityScore3 = Double.parseDouble(responseObject.getJSONArray("entities").getJSONObject(2).get("score").toString());
-            
-            if (EntityScore1 == null) {
-                System.out.println("EntityScore1 is null");
-            } else {
-                System.out.println("EntityType1 "+EntityType1);
-            }
+//            EntityType2 = responseObject.getJSONArray("entities").getJSONObject(1).get("type").toString();
+//            EntityValue2 = responseObject.getJSONArray("entities").getJSONObject(1).get("entity").toString();
+//            EntityScore2 = Double.parseDouble(responseObject.getJSONArray("entities").getJSONObject(1).get("score").toString());
+//            
+//            EntityType3 = responseObject.getJSONArray("entities").getJSONObject(2).get("type").toString();
+//            EntityValue3 = responseObject.getJSONArray("entities").getJSONObject(2).get("entity").toString();
+//            EntityScore3 = Double.parseDouble(responseObject.getJSONArray("entities").getJSONObject(2).get("score").toString());
+           
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
