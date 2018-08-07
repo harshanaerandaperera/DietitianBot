@@ -814,16 +814,20 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUserActionPerformed
-
-        int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove User?", " Remove User ", JOptionPane.YES_NO_OPTION);
-        if (yesNo == 0) {
-            DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
-            int selectedRow = tblUserMgt.getSelectedRow();
-            String email = d.getValueAt(selectedRow, 1).toString();
-            currentUser = users.getUserByEmail(email);
-            users.removeUser(currentUser);
-            populateUsersList();
+        int selectedRow = tblUserMgt.getSelectedRow();
+        if (selectedRow != -1) {
+            int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove User?", " Remove User ", JOptionPane.YES_NO_OPTION);
+            if (yesNo == 0) {
+                DefaultTableModel d = (DefaultTableModel) tblUserMgt.getModel();
+                String email = d.getValueAt(selectedRow, 1).toString();
+                currentUser = users.getUserByEmail(email);
+                users.removeUser(currentUser);
+                populateUsersList();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please Select a user First to remove !", " Remove User ", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btnRemoveUserActionPerformed
 
     private void tblViewMealPlansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblViewMealPlansMouseClicked
