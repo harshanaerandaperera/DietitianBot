@@ -647,20 +647,23 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void btnRemoveMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMealPlanActionPerformed
-
-        int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
-        if (yesNo == 0) {
-            DefaultTableModel d = (DefaultTableModel) tblManageMealPlans.getModel();
-            int selectedRow = tblManageMealPlans.getSelectedRow();
-            int MPID = Integer.parseInt(d.getValueAt(selectedRow, 0).toString());
-            System.out.println("MPLID   " + MPID);
-            currentMealPlan = mealPlans.getMealPlanById(MPID);
-            mealPlans.removeMealPlan(currentMealPlan);
-            populateMealPlanList();
-            populateMealPlanListTotblViewMealPlans();
+        int selectedRow = tblManageMealPlans.getSelectedRow();
+        if (selectedRow != -1) {
+            int yesNo = JOptionPane.showConfirmDialog(null, "Do you really want to remove Meal Plan?", " Remove Meal Plan ", JOptionPane.YES_NO_OPTION);
+            if (yesNo == 0) {
+                DefaultTableModel d = (DefaultTableModel) tblManageMealPlans.getModel();
+                int MPID = Integer.parseInt(d.getValueAt(selectedRow, 0).toString());
+                System.out.println("MPLID   " + MPID);
+                currentMealPlan = mealPlans.getMealPlanById(MPID);
+                mealPlans.removeMealPlan(currentMealPlan);
+                populateMealPlanList();
+                populateMealPlanListTotblViewMealPlans();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please Select a Meal Plan First to remove !", " Remove Meal Plan ", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
 
+    }//GEN-LAST:event_btnRemoveMealPlanActionPerformed
 
     private void btnSearchMealPlanViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMealPlanViewActionPerformed
         String searchKey = txtSearchMealView.getText();
