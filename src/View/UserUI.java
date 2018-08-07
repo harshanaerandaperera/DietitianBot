@@ -865,36 +865,39 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         }
         if (L.getTopScoreIntent().equals("getDietPlans")) {
             StringBuilder sb = new StringBuilder();
+            sb.append("Here is your available Meal plans !!!!! ");
             for (int i = 0; i < myPlans.size(); i++) {
                 this.currentMealPlan = myPlans.get(i);
                 sb.append("\n");
-                sb.append("               Meal Plan ID : " + this.currentMealPlan.getId());
+                sb.append("\n");
+                sb.append(this.currentMealPlan.getId()+": "+this.currentMealPlan.getName());  //mealPlan Id and MealOPlan name
+                sb.append("\n");
+                sb.append("<=============================================================>");
                 sb.append("\n");
                 sb.append("\n");
-                sb.append("<=====================================================>");
+                sb.append("---------------------Breakfast-----------------");
+                sb.append("\n");
+                sb.append(this.currentMealPlan.getBreakfast());
                 sb.append("\n");
                 sb.append("\n");
-                sb.append("---Breakfast----");
+                sb.append("---------------------Lunch---------------------");
                 sb.append("\n");
-                sb.append("               " + this.currentMealPlan.getBreakfast());
-                sb.append("\n");
-                sb.append("\n");
-                sb.append("---Lunch----");
-                sb.append("\n");
-                sb.append("               "+this.currentMealPlan.getLunch());
+                sb.append(this.currentMealPlan.getLunch());
                 sb.append("\n");
                 sb.append("\n");
-                sb.append("---Dinner----");
+                sb.append("---------------------Dinner--------------------");
                 sb.append("\n");
-                sb.append("               " + this.currentMealPlan.getDinner());
-                sb.append("\n");
-                sb.append("\n");
-                sb.append("---Snack----");
-                sb.append("\n");
-                sb.append("               " + this.currentMealPlan.getSnack());
+                sb.append(this.currentMealPlan.getDinner());
                 sb.append("\n");
                 sb.append("\n");
-                sb.append("<=====================================================>");
+                sb.append("---------------------Snack---------------------");
+                sb.append("\n");
+                sb.append(this.currentMealPlan.getSnack());
+                sb.append("\n");
+                sb.append("\n");
+                sb.append("<=============================================================>");
+                sb.append("\n");
+                sb.append("\n");
                 sb.append("\n");
                 sb.append("\n");
             }
