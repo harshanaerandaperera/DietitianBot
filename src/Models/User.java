@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String name;
-    //uniqe
+    //unique
     private String email;
     private int age;
     private double height;

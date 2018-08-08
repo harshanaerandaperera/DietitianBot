@@ -247,8 +247,12 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextArea" name="txtBreakfastviewMealPlan">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Default Cursor"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -299,6 +303,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextArea" name="txtLunchViewMealPlan">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
@@ -335,6 +340,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextArea" name="txtDinnerViewMealPlan">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
@@ -371,6 +377,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextArea" name="txtSnackViewMealPlan">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
