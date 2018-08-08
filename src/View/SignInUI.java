@@ -98,7 +98,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
         txtUname.setBackground(new java.awt.Color(255, 255, 255));
         txtUname.setForeground(new java.awt.Color(102, 102, 102));
-        txtUname.setToolTipText("Enter Your Email");
+        txtUname.setToolTipText("Please Enter Your Email");
         txtUname.setBorder(null);
         txtUname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -135,6 +135,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
         txtPwd.setBackground(new java.awt.Color(255, 255, 255));
         txtPwd.setForeground(new java.awt.Color(102, 102, 102));
+        txtPwd.setToolTipText("Please Enter Your Password");
         txtPwd.setBorder(null);
         txtPwd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -186,7 +187,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
 
         lbl_loader.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_loader.setForeground(new java.awt.Color(41, 168, 73));
-        lbl_loader.setText("Loggin in....");
+        lbl_loader.setText("SignIn in....");
         loader.add(lbl_loader, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 276, -1, -1));
 
         jPanel1.add(loader, "card3");

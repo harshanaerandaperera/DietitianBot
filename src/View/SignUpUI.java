@@ -137,7 +137,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtName.setBackground(new java.awt.Color(255, 255, 255));
         txtName.setForeground(new java.awt.Color(102, 102, 102));
-        txtName.setToolTipText("Name");
+        txtName.setToolTipText("Enter Your Name !!");
         txtName.setBorder(null);
         txtName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -174,7 +174,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtPwd.setBackground(new java.awt.Color(255, 255, 255));
         txtPwd.setForeground(new java.awt.Color(102, 102, 102));
-        txtPwd.setToolTipText("Password");
+        txtPwd.setToolTipText("Enter Your Password here !!");
         txtPwd.setBorder(null);
         txtPwd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -222,7 +222,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtConfirmPwd.setBackground(new java.awt.Color(255, 255, 255));
         txtConfirmPwd.setForeground(new java.awt.Color(102, 102, 102));
-        txtConfirmPwd.setToolTipText("Confirm Password");
+        txtConfirmPwd.setToolTipText("Please Retype Your Password to Confirm Password");
         txtConfirmPwd.setBorder(null);
         txtConfirmPwd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -240,7 +240,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtAge.setBackground(new java.awt.Color(255, 255, 255));
         txtAge.setForeground(new java.awt.Color(102, 102, 102));
-        txtAge.setToolTipText("Age");
+        txtAge.setToolTipText("Enter Your Age !!");
         txtAge.setBorder(null);
         txtAge.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -255,7 +255,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtHeight.setBackground(new java.awt.Color(255, 255, 255));
         txtHeight.setForeground(new java.awt.Color(102, 102, 102));
-        txtHeight.setToolTipText("Enter Height in centimeters");
+        txtHeight.setToolTipText("Enter Your Height in centimeters !!");
         txtHeight.setBorder(null);
         txtHeight.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -276,7 +276,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtWeight.setBackground(new java.awt.Color(255, 255, 255));
         txtWeight.setForeground(new java.awt.Color(102, 102, 102));
-        txtWeight.setToolTipText("Weight");
+        txtWeight.setToolTipText("Enter Your weight in Kilograms !!");
         txtWeight.setBorder(null);
         txtWeight.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -312,7 +312,7 @@ public class SignUpUI extends javax.swing.JFrame {
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setForeground(new java.awt.Color(102, 102, 102));
-        txtEmail.setToolTipText("Email");
+        txtEmail.setToolTipText("Enter Your Email !!");
         txtEmail.setBorder(null);
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

@@ -279,7 +279,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         });
         jScrollPane9.setViewportView(tblViewMealPlans);
 
-        jPanel11.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1180, 230));
+        jPanel11.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1180, 200));
 
         jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator22.setForeground(new java.awt.Color(255, 255, 255));
@@ -314,23 +314,23 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         txtBreakfastviewMealPlan.setRows(5);
         jScrollPane3.setViewportView(txtBreakfastviewMealPlan);
 
-        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 240, 150));
+        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 270, 150));
 
         jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Breakfast:");
-        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 80, -1));
+        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 80, -1));
 
         jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Lunch:");
-        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 80, -1));
+        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 80, -1));
 
         txtLunchViewMealPlan.setColumns(20);
         txtLunchViewMealPlan.setRows(5);
         jScrollPane4.setViewportView(txtLunchViewMealPlan);
 
-        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 240, 150));
+        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 150));
 
         jLabel41.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,18 +341,18 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         txtDinnerViewMealPlan.setRows(5);
         jScrollPane11.setViewportView(txtDinnerViewMealPlan);
 
-        jPanel11.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 240, 150));
+        jPanel11.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 280, 150));
 
         jLabel42.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("Snack:");
-        jPanel11.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 80, -1));
+        jPanel11.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 320, 80, -1));
 
         txtSnackViewMealPlan.setColumns(20);
         txtSnackViewMealPlan.setRows(5);
         jScrollPane12.setViewportView(txtSnackViewMealPlan);
 
-        jPanel11.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, 240, 150));
+        jPanel11.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 270, 150));
 
         jTabbedPane5.addTab("                                             View Meal Plans                                          ", jPanel11);
 
