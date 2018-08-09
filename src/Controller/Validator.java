@@ -46,7 +46,11 @@ public class Validator {
     }
 
     public boolean isValidAge(String age) {                          //Age Accepting 16 to 120
-        return age.matches("^15*(?:[1-9][0-9]?|120)$");       
+        boolean status = false;
+        if (age.matches("[0-9]{1,13}(\\[0-9]*)?") && Double.parseDouble(age) >=16 && Double.parseDouble(age)<=120) {
+            status=true;
+        }
+        return status;     
     }
 
     public boolean isValidHeight(String height) {                 //height Accepting 90 to 240 centimeters with decimal values
@@ -64,5 +68,5 @@ public class Validator {
         }
         return status;
     }
-
+  
 }
