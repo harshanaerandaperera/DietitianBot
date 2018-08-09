@@ -397,7 +397,7 @@ public class SignUpUI extends javax.swing.JFrame {
         String password2 = txtConfirmPwd.getText();
         if (validator.isValidName(txtName.getText())) {
             if (validator.isValidEmail(email)) {
-                if (validator.isValidNumber(txtAge.getText())) {
+                if (validator.isValidAge(txtAge.getText())) {
                     if (validator.isValidNumber(txtHeight.getText())) {
                         if (validator.isValidNumber(txtWeight.getText())) {
                             if (radGrpGender.getSelection() != null) {

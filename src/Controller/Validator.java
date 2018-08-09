@@ -1,5 +1,7 @@
 package Controller;
 
+import jdk.nashorn.internal.ir.BreakNode;
+
 /**
  *
  * @author Harshana
@@ -42,9 +44,19 @@ public class Validator {
     public boolean isValidNumber(String num) {
         return num.matches("[0-9]{1,13}(\\.[0-9]*)?");
     }
-    
-    public boolean isValidAge(String age){
-        return age.matches("^15*(?:[1-9][0-9]?|120)$");        //Age Accepting 16 to 120
+
+    public boolean isValidAge(String age) {                          //Age Accepting 16 to 120
+        return age.matches("^15*(?:[1-9][0-9]?|120)$");       
     }
+
+    public boolean isValidHeight(String height) {                 //height Accepting 90 to 240 centimeters with decimal values
+        boolean status = false;
+        if (height.matches("[0-9]{1,13}(\\.[0-9]*)?") && Double.parseDouble(height) >=90 && Double.parseDouble(height)<=240) {
+            status=true;
+        }
+        return status;
+    }
+
    
+
 }
