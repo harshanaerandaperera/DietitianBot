@@ -106,7 +106,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             if (cmbGoal.getSelectedIndex() == 1) {
                 System.out.println("index 1 cmbGoal");
 
-                TDEE = TDEE - 500;
+                TDEE = TDEE - 250;
                 lblUserTDEE1.setText(Double.toString(TDEE));
                 System.out.println("Reduced Tdee" + TDEE);
 
@@ -897,7 +897,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 sb.append("<=============================================================>");
                 sb.append("\n");
                 sb.append("\n");
-                sb.append(this.currentMealPlan.getNutrition());
+                sb.append(this.currentMealPlan.getMacro());
                 sb.append("\n");
                 sb.append("\n");
                 sb.append("<=============================================================>");
@@ -935,7 +935,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             
             myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
             lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
-            txtNutrition.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getNutrition());
+            txtNutrition.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getMacro());
             txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
             txtLunchUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
             txtDinnerUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getDinner());

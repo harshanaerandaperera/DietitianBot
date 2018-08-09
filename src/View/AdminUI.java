@@ -44,78 +44,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     }
 
-    /**
-     * Serialize Users
-     */
-    public void SerializeUser() {
-        try {
-            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
-            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
-            uboos.writeObject(users);
-            uboos.flush();
-            uboos.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    /**
-     * Deserialize Users
-     */
-    public void DeserializeUsers() {
-        ObjectInputStream uois = null;
-        File file = new File("users.txt");
-        try {
-
-            FileInputStream ufis = new FileInputStream(file);
-            if (ufis.available() != 0) {
-                uois = new ObjectInputStream(ufis);
-                while (uois != null) {
-                    users = (Users) uois.readObject();
-                    System.out.println(this.users.size());
-                }
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
-    /**
-     * SerializeMeal Plans
-     */
-    public void SerializeMealPlans() {
-        try {
-            FileOutputStream mplfos = new FileOutputStream(new File("mealPlans.txt"));
-            ObjectOutputStream mplboos = new ObjectOutputStream(mplfos);
-            mplboos.writeObject(mealPlans);
-            mplboos.flush();
-            mplboos.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    /**
-     * Deserialize MealPlans
-     */
-    public void DeserializeMealPlans() {
-        ObjectInputStream mplois = null;
-        File file = new File("mealPlans.txt");
-        try {
-
-            FileInputStream mplfis = new FileInputStream(file);
-            if (mplfis.available() != 0) {
-                mplois = new ObjectInputStream(mplfis);
-                while (mplois != null) {
-                    mealPlans = (MealPlans) mplois.readObject();
-                    System.out.println(this.mealPlans.size());
-                }
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
     public void populateUsersList() {
         DefaultTableModel dtm = (DefaultTableModel) tblUserMgt.getModel();
         dtm.setRowCount(0);
@@ -635,9 +563,9 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         String lunch = txtLunchManageMealPlan.getText();
         String dinner = txtDinnerManageMealPlan.getText();
         String snack = txtSnackManageMealPlan.getText();
-        String nutrition=dm.MNUTRIENT(totalCalorieAmount);
+        String nutrition = dm.MNUTRIENT(totalCalorieAmount);
 
-        currentMealPlan = new MealPlan(mealPlanName, totalCalorieAmount, breakfast, lunch, dinner, snack,nutrition);
+        currentMealPlan = new MealPlan(mealPlanName, totalCalorieAmount, breakfast, lunch, dinner, snack, nutrition);
         mealPlans.addMealPlan(currentMealPlan);
         clearText();
         populateMealPlanList();
@@ -979,6 +907,78 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextArea txtSnackManageMealPlan;
     private javax.swing.JTextArea txtSnackViewMealPlan;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Serialize Users
+     */
+    public void SerializeUser() {
+        try {
+            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
+            uboos.writeObject(users);
+            uboos.flush();
+            uboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * Deserialize Users
+     */
+    public void DeserializeUsers() {
+        ObjectInputStream uois = null;
+        File file = new File("users.txt");
+        try {
+
+            FileInputStream ufis = new FileInputStream(file);
+            if (ufis.available() != 0) {
+                uois = new ObjectInputStream(ufis);
+                while (uois != null) {
+                    users = (Users) uois.readObject();
+                    System.out.println(this.users.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * SerializeMeal Plans
+     */
+    public void SerializeMealPlans() {
+        try {
+            FileOutputStream mplfos = new FileOutputStream(new File("mealPlans.txt"));
+            ObjectOutputStream mplboos = new ObjectOutputStream(mplfos);
+            mplboos.writeObject(mealPlans);
+            mplboos.flush();
+            mplboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * Deserialize MealPlans
+     */
+    public void DeserializeMealPlans() {
+        ObjectInputStream mplois = null;
+        File file = new File("mealPlans.txt");
+        try {
+
+            FileInputStream mplfis = new FileInputStream(file);
+            if (mplfis.available() != 0) {
+                mplois = new ObjectInputStream(mplfis);
+                while (mplois != null) {
+                    mealPlans = (MealPlans) mplois.readObject();
+                    System.out.println(this.mealPlans.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
 
     public void switchTabs() {
 

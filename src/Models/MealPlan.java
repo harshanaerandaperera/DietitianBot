@@ -6,11 +6,8 @@ import java.io.Serializable;
  *
  * @author Harshana
  */
-public class MealPlan implements Serializable{
+public class MealPlan implements Serializable {
 
-   
-
-   
     private int id;
     private String name;
     private double calorieAmount;
@@ -18,24 +15,23 @@ public class MealPlan implements Serializable{
     private String lunch;
     private String dinner;
     private String snack;
-    private  String nutrition;
-    
-    public MealPlan(){
-        
+    private String macro;
+
+    public MealPlan() {
+
     }
-    
-    public MealPlan(String name,double calorieAmount,String breakfast,String lunch,String dinner,String snack,String nutrition ){
-        this.name=name;
-        this.calorieAmount=calorieAmount;
-        this.breakfast=breakfast;
-        this.lunch=lunch;
-        this.dinner=dinner;
-        this.snack=snack;
-        this.nutrition=nutrition;
-      }
-    
-    
-     /**
+
+    public MealPlan(String name, double calorieAmount, String breakfast, String lunch, String dinner, String snack, String nutrient) {
+        this.name = name;
+        this.calorieAmount = calorieAmount;
+        this.breakfast = breakfast;
+        this.lunch = lunch;
+        this.dinner = dinner;
+        this.snack = snack;
+        this.macro = nutrient;
+    }
+
+    /**
      * @return the id
      */
     public int getId() {
@@ -56,15 +52,12 @@ public class MealPlan implements Serializable{
         return name;
     }
 
-  
-
     /**
      * @return the calorieAmount
      */
     public double getCalorieAmount() {
         return calorieAmount;
     }
-
 
     /**
      * @return the breakfast
@@ -73,16 +66,12 @@ public class MealPlan implements Serializable{
         return breakfast;
     }
 
- 
-
     /**
      * @return the lunch
      */
     public String getLunch() {
         return lunch;
     }
-
- 
 
     /**
      * @return the dinner
@@ -91,8 +80,6 @@ public class MealPlan implements Serializable{
         return dinner;
     }
 
- 
-
     /**
      * @return the snack
      */
@@ -100,13 +87,11 @@ public class MealPlan implements Serializable{
         return snack;
     }
 
-
-    
     /**
-     * @return the nutrition
+     * @return the macro
      */
-    public String getNutrition() {
-        return nutrition;
+    public String getMacro() {
+        return macro;
     }
 
 }

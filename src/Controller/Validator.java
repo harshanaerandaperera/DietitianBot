@@ -42,5 +42,9 @@ public class Validator {
     public boolean isValidNumber(String num) {
         return num.matches("[0-9]{1,13}(\\.[0-9]*)?");
     }
-
+    
+    public boolean isValidAge(String age){
+        return age.matches("^15*(?:[1-9][0-9]?|120)$");        //Age Accepting 16 to 120
+    }
+   
 }
