@@ -56,7 +56,13 @@ public class Validator {
         }
         return status;
     }
-
-   
+    
+    public boolean isValidWeight(String weight) {                 //weight Accepting 30 to 300 Kg with decimal values
+        boolean status = false;
+        if (weight.matches("[0-9]{1,13}(\\.[0-9]*)?") && Double.parseDouble(weight) >=30 && Double.parseDouble(weight)<=300) {
+            status=true;
+        }
+        return status;
+    }
 
 }

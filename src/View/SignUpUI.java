@@ -398,8 +398,8 @@ public class SignUpUI extends javax.swing.JFrame {
         if (validator.isValidName(txtName.getText())) {
             if (validator.isValidEmail(email)) {
                 if (validator.isValidAge(txtAge.getText())) {
-                    if (validator.isValidNumber(txtHeight.getText())) {
-                        if (validator.isValidNumber(txtWeight.getText())) {
+                    if (validator.isValidHeight(txtHeight.getText())) {
+                        if (validator.isValidWeight(txtWeight.getText())) {
                             if (radGrpGender.getSelection() != null) {
                                 if (!password1.isEmpty()) {
                                     if (!password2.isEmpty()) {
