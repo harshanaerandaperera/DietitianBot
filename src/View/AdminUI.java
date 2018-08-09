@@ -29,6 +29,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     Users users = new Users();
     MealPlans mealPlans = new MealPlans();
     MealPlan currentMealPlan;
+    DietMaths dm = new DietMaths();
 
     /**
      * Creates new form View
@@ -629,13 +630,14 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private void btnAddMealPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMealPlanActionPerformed
 
         String mealPlanName = txtMealPlanName.getText();
-        double totalCalorieAmount = Double.parseDouble(txtMealPlanCalorieAmount.getText());
+        int totalCalorieAmount = Integer.parseInt(txtMealPlanCalorieAmount.getText());
         String breakfast = txtBreakfastManageMealPlan.getText();
         String lunch = txtLunchManageMealPlan.getText();
         String dinner = txtDinnerManageMealPlan.getText();
         String snack = txtSnackManageMealPlan.getText();
+        String nutrition=dm.MNUTRIENT(totalCalorieAmount);
 
-        currentMealPlan = new MealPlan(mealPlanName, totalCalorieAmount, breakfast, lunch, dinner, snack);
+        currentMealPlan = new MealPlan(mealPlanName, totalCalorieAmount, breakfast, lunch, dinner, snack,nutrition);
         mealPlans.addMealPlan(currentMealPlan);
         clearText();
         populateMealPlanList();

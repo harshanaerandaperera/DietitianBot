@@ -83,36 +83,46 @@ public class DietMaths {
         int TDEE = (int) Math.round(REE * ActivityLevel);
         return TDEE;
     }
-/** MACRONUTRIENT Calculator
+    
+/** General NUTRIENT Calculator
  * 
  * @param GoalIndex
  * @param cals 
  */
-    public void MACRONUTRIENT(int GoalIndex, int cals) {
+    public String MNUTRIENT(double cals) {
 
         double protein = 0;
         double fats = 0;
         double carbs = 0;
-
-        if (GoalIndex == 0) {    //ModerateI suitable for maintaining weight
+        //(Moderate Ratio) Carbs/Protein/Fat(50/30/20)     
+        { 
             carbs = cals * .5;
-            protein = cals * .25;
-            fats = cals * .25;
+            protein = cals * .3;
+            fats = cals * .2;
         }
-        if (GoalIndex == 1) {      
+  
+        StringBuilder sb=new StringBuilder();
+        sb.append("Calories for protein : ");
+        sb.append(protein);
+        sb.append("\n");
+        sb.append("Calories for fats : ");
+        sb.append(fats);
+        sb.append("\n");
+        sb.append("Calories for carbs : ");
+        sb.append(carbs);
+        sb.append("\n");
+        sb.append("Grams for protein : ");
+        sb.append(protein/4);
+        sb.append("\n");
+        sb.append("Grams for fats : ");
+        sb.append(fats/9);
+        sb.append("\n");
+        sb.append("Grams for carbs : ");
+        sb.append(carbs/4);
 
-            carbs = cals * .5;
-            protein = cals * .25;
-            fats = cals * .25;
-        }
-
-        //for a 1 day
-        System.out.println("Calories for protein " + protein);
-        System.out.println("Calories for fats " + fats);
-        System.out.println("Calories for carbs " + carbs);
-        System.out.println("Grams for protein " + protein / 4);
-        System.out.println("Grams for fats " + fats / 9);
-        System.out.println("Grams for carbs " + carbs / 4);
+        
+        return sb.toString();
+        
     }
 
 }

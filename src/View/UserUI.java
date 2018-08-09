@@ -77,23 +77,54 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     public void showBMI() {
         lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
+        lblUserBMIProfile.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
         BMI = dm.BMI(currentUser.getWeight(), currentUser.getHeight());
         System.out.println("Current User BMI: " + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
     }
 
     public void getTDEE() {
-        if (currentUser.getGender().equals("Male")) {
-            TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-            System.out.println("calorie Requirement of " + currentUser.getEmail() + " is " + dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
-            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
 
-        } else if (currentUser.getGender().equals("Female")) {
-            TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-            System.out.println("calorie Requirement of " + currentUser.getEmail() + " is " + dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
-            lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+        //for newly created user
+        if (this.currentUser.getActivityLevel() == null && this.currentUser.getGoal() == null) {
+            System.out.println("cal IDEE for new user");
 
+        } else {
+            //maintainance
+            if (cmbGoal.getSelectedIndex() == 0) {
+                System.out.println("Index 0");
+
+                if (currentUser.getGender().equals("Male")) {
+                    TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
+                    lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+
+                } else if (currentUser.getGender().equals("Female")) {
+                    TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
+                    lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+                }
+
+            }
+            if (cmbGoal.getSelectedIndex() == 1) {
+                System.out.println("index 1 cmbGoal");
+
+                TDEE = TDEE - 500;
+                lblUserTDEE1.setText(Double.toString(TDEE));
+                System.out.println("Reduced Tdee" + TDEE);
+
+            }
         }
 
+//Orignal Code Here
+//        if (currentUser.getGender().equals("Male")) {
+//            TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
+//            System.out.println("calorie Requirement of " + currentUser.getEmail() + " is " + dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+//            lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+//
+//        } else if (currentUser.getGender().equals("Female")) {
+//            TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
+//            System.out.println("calorie Requirement of " + currentUser.getEmail() + " is " + dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()));
+//            lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+//
+        //   }
     }
 
     public void populateMealPlanDetailsToComboBox() {
@@ -223,70 +254,12 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     }
 
-    /**
-     * Serialize Users
-     */
-    public void SerializeUser() {
-        try {
-            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
-            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
-            uboos.writeObject(users);
-            uboos.flush();
-            uboos.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    /**
-     * Deserialize Users
-     */
-    public void DeserializeUsers() {
-        ObjectInputStream uois = null;
-        File file = new File("users.txt");
-        try {
-
-            FileInputStream ufis = new FileInputStream(file);
-            if (ufis.available() != 0) {
-                uois = new ObjectInputStream(ufis);
-                while (uois != null) {
-                    users = (Users) uois.readObject();
-                    System.out.println(this.users.size());
-                }
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
-    /**
-     * Deserialize MealPlans
-     */
-    public void DeserializeMealPlans() {
-        ObjectInputStream mplois = null;
-        File file = new File("mealPlans.txt");
-        try {
-
-            FileInputStream mplfis = new FileInputStream(file);
-            if (mplfis.available() != 0) {
-                mplois = new ObjectInputStream(mplfis);
-                while (mplois != null) {
-                    mealPlans = (MealPlans) mplois.readObject();
-                    System.out.println(this.mealPlans.size());
-                }
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
     public void populateGoalsToComboBox(String goal) {
         cmbGoal.setSelectedItem(goal);
     }
 
     public void populateActivityLevelToComboBox(String ActivityLevel) {
         cmbActivityLevel.setSelectedItem(ActivityLevel);
-        System.out.println("Activity Level Index" + cmbActivityLevel.getSelectedIndex());
     }
 
     /**
@@ -337,6 +310,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         txtUpdateUserName = new javax.swing.JTextField();
         lblUserEmail = new javax.swing.JLabel();
         lblUserGender = new javax.swing.JLabel();
+        lblUserBMIProfile = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
@@ -361,6 +336,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel38 = new javax.swing.JLabel();
         lbldisplayTotCal = new javax.swing.JLabel();
         lblMealPlanTotalCalorieAmount = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        txtNutrition = new javax.swing.JTextArea();
+        jLabel39 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -563,6 +541,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserGender.setText("...");
         jPanel4.add(lblUserGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 90, -1));
 
+        lblUserBMIProfile.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserBMIProfile.setText("...");
+        jPanel4.add(lblUserBMIProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 150, -1));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("BMI:");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 50, -1));
+
         jTabbedPaneEditProfile.addTab("                                                                                                  Edit Your Profile here                                                                                                     ", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -589,7 +576,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 btntestingpurposeActionPerformed(evt);
             }
         });
-        jPanel10.add(btntestingpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
+        jPanel10.add(btntestingpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 50, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -655,8 +642,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jLabel37.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("Dinner:");
-        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 80, -1));
+        jLabel37.setText("Nutri:");
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 120, 40, -1));
 
         txtSnackUserMealPlan.setEditable(false);
         txtSnackUserMealPlan.setColumns(20);
@@ -678,6 +665,18 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblMealPlanTotalCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
         lblMealPlanTotalCalorieAmount.setText("...");
         jPanel2.add(lblMealPlanTotalCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 90, -1));
+
+        txtNutrition.setEditable(false);
+        txtNutrition.setColumns(20);
+        txtNutrition.setRows(5);
+        jScrollPane9.setViewportView(txtNutrition);
+
+        jPanel2.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 280, 130));
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Dinner:");
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 80, -1));
 
         jTabbedPane4.addTab("                                               My Diet Plans                                              ", jPanel2);
 
@@ -870,7 +869,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 this.currentMealPlan = myPlans.get(i);
                 sb.append("\n");
                 sb.append("\n");
-                sb.append(this.currentMealPlan.getId()+": "+this.currentMealPlan.getName());  //mealPlan Id and MealOPlan name
+                sb.append(this.currentMealPlan.getId() + ": " + this.currentMealPlan.getName());  //mealPlan Id and MealOPlan name
                 sb.append("\n");
                 sb.append("<=============================================================>");
                 sb.append("\n");
@@ -898,9 +897,13 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 sb.append("<=============================================================>");
                 sb.append("\n");
                 sb.append("\n");
+                sb.append(this.currentMealPlan.getNutrition());
                 sb.append("\n");
                 sb.append("\n");
+                sb.append("<=============================================================>");
+
             }
+
             txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("None")) {
@@ -914,7 +917,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         //  System.out.println(t.TDEE_M(88, 183, 29, 3));
         //  t.TDEE_M(88, 183, 29, 3);
         // System.out.println(t.BMI(80,180));
-        t.MACRONUTRIENT(1, 2000);
+        t.MNUTRIENT(2000);
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
 
@@ -926,11 +929,13 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             txtLunchUserMealPlan.setText("");
             txtDinnerUserMealPlan.setText("");
             txtSnackUserMealPlan.setText("");
+            txtNutrition.setText("");
         }
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
-            getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString());
+            
             myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
             lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
+            txtNutrition.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getNutrition());
             txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
             txtLunchUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
             txtDinnerUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getDinner());
@@ -990,12 +995,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -1013,6 +1020,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
@@ -1026,6 +1034,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblSenScore;
     private javax.swing.JLabel lblTopScoreIntentName;
     private javax.swing.JLabel lblUserBMI;
+    private javax.swing.JLabel lblUserBMIProfile;
     private javax.swing.JLabel lblUserEmail;
     private javax.swing.JLabel lblUserGender;
     private javax.swing.JLabel lblUserTDEE1;
@@ -1037,11 +1046,69 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextArea txtDinnerUserMealPlan;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextArea txtLunchUserMealPlan;
+    private javax.swing.JTextArea txtNutrition;
     private javax.swing.JTextArea txtSnackUserMealPlan;
     private javax.swing.JTextField txtUpdateUserName;
     private javax.swing.JTextField txtUserQuery;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Serialize Users
+     */
+    public void SerializeUser() {
+        try {
+            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            ObjectOutputStream uboos = new ObjectOutputStream(ufos);
+            uboos.writeObject(users);
+            uboos.flush();
+            uboos.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * Deserialize Users
+     */
+    public void DeserializeUsers() {
+        ObjectInputStream uois = null;
+        File file = new File("users.txt");
+        try {
+
+            FileInputStream ufis = new FileInputStream(file);
+            if (ufis.available() != 0) {
+                uois = new ObjectInputStream(ufis);
+                while (uois != null) {
+                    users = (Users) uois.readObject();
+                    System.out.println(this.users.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * Deserialize MealPlans
+     */
+    public void DeserializeMealPlans() {
+        ObjectInputStream mplois = null;
+        File file = new File("mealPlans.txt");
+        try {
+
+            FileInputStream mplfis = new FileInputStream(file);
+            if (mplfis.available() != 0) {
+                mplois = new ObjectInputStream(mplfis);
+                while (mplois != null) {
+                    mealPlans = (MealPlans) mplois.readObject();
+                    System.out.println(this.mealPlans.size());
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
 
     public void switchTabs() {
 
