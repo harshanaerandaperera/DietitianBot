@@ -7,15 +7,22 @@ import Controller.Validator;
 import Models.LUIS;
 import Models.MealPlan;
 import Models.User;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 //IT16083424 Perera P.A.H.E     SHU ID=27045240 
 /**
@@ -35,6 +42,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     LUIS L = new LUIS();
     Validator V = new Validator();
     StringBuilder sb = new StringBuilder();
+    StyledDocument doc;
+    Style st;
 
     /**
      * Creates new form View
@@ -43,7 +52,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         initComponents();
         DeserializeUsers();
         DeserializeMealPlans();
-
+        doc = txtAssistant.getStyledDocument();
+        st = txtAssistant.addStyle("", null);
     }
 
     /**
@@ -61,8 +71,17 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
 
         System.out.println("Current User is: " + currentUser.getName());
+
+//        StyledDocument doc = txtAssistant.getStyledDocument();
+//        Style st = txtAssistant.addStyle("", null);
+        StyleConstants.setForeground(st, Color.GREEN);
         sb.append("  Hi " + currentUser.getName() + " How can i help ?");
-        txtBot.setText(sb.toString());
+
+        try {
+            doc.insertString(doc.getLength(), sb.toString(), st);
+        } catch (BadLocationException ex) {
+        }
+        sb.setLength(0);
 
     }
 
@@ -290,8 +309,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblSenScore = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtBot = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtAssistant = new javax.swing.JTextPane();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPaneEditProfile = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -427,12 +446,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel5.setText("BOT Predicted Top Intent: ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
-        txtBot.setEditable(false);
-        txtBot.setColumns(20);
-        txtBot.setRows(5);
-        jScrollPane3.setViewportView(txtBot);
+        jScrollPane4.setViewportView(txtAssistant);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 520, 440));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 630, 370));
 
         jTabbedPaneAssistant.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
 
@@ -767,7 +783,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             if (L.getEntityType1().equals("height")) {
 
                 if (V.isValidHeight(L.getEntityValue1())) {
-
                     currentUser.setHeight(Double.parseDouble(L.getEntityValue1()));
                     users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(L.getEntityValue1()));
 
@@ -778,14 +793,34 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Your height is set to " + L.getEntityValue1() + " centimeters");
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+ 
 
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
                 } else {
 
                     sb.append("\n");
                     sb.append("  Invalid Height, your height should be 90 to 240 centimeters");
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
 
                 }
 
@@ -807,14 +842,33 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Your weight is set to " + L.getEntityValue1() + " Kilograms");
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
 
                 } else {
 
                     sb.append("\n");
                     sb.append("  Invalid Weight, your weight should be 30 to 500 Kilograms");
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
                 }
 
             }
@@ -832,12 +886,32 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Your name is set to " + L.getEntityValue1());
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
+
                 } else {
                     sb.append("\n");
                     sb.append("  Invalid Name");
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
                 }
 
             }
@@ -859,13 +933,32 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Your Age is set to " + L.getEntityValue1());
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
                 } else {
 
                     sb.append("\n");
                     sb.append("  Invalid Age, your Age should be 16 to 120");
                     sb.append("\n");
-                    txtBot.setText(sb.toString());
+
+//                    StyledDocument doc = txtAssistant.getStyledDocument();
+//                    Style st = txtAssistant.addStyle("", null);
+
+                    StyleConstants.setForeground(st, Color.GREEN);
+
+                    try {
+                        doc.insertString(doc.getLength(), sb.toString(), st);
+                    } catch (BadLocationException ex) {
+                    }
+                    sb.setLength(0);
 
                 }
 
@@ -891,68 +984,138 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
          * getters
          */
         if (L.getTopScoreIntent().equals("getActivityLevel")) {
-            //txtBot.setText("Your Acivity Level is " + currentUser.getActivityLevel());
             sb.append("\n");
             sb.append("  Your Acivity Level is " + currentUser.getActivityLevel());
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("getAge")) {
-            //txtBot.setText("Your Age is " + currentUser.getAge());
             sb.append("\n");
             sb.append("  Your Age is " + currentUser.getAge());
             sb.append("\n");
-            txtBot.setText(sb.toString());
+
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
 
         }
         if (L.getTopScoreIntent().equals("getBMI")) {
-            // txtBot.setText("Your BMI is " + Double.toString(this.BMI));
             sb.append("\n");
             sb.append("  Your BMI is " + Double.toString(this.BMI));
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
         }
         if (L.getTopScoreIntent().equals("getEmail")) {
-            // txtBot.setText("Your Email is " + currentUser.getEmail());
             sb.append("\n");
             sb.append("  Your Email is " + currentUser.getEmail());
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
         }
         if (L.getTopScoreIntent().equals("getGender")) {
-            // txtBot.setText("Your Gender is " + currentUser.getGender());
             sb.append("\n");
             sb.append("  Your Gender is " + currentUser.getGender());
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("getGoal")) {
-            // txtBot.setText("Your Goal is " + currentUser.getGoal());
             sb.append("\n");
             sb.append("  Your Goal is " + currentUser.getGoal());
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("getHeight")) {
-            //      txtBot.setText("Your Height is " + Double.toString(currentUser.getHeight()));
             sb.append("\n");
             sb.append("  Your Height is " + Double.toString(currentUser.getHeight()));
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("getName")) {
-            //     txtBot.setText("Your Name is " + currentUser.getName());
 
             sb.append("\n");
             sb.append("  Your Name is " + currentUser.getName());
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
         }
         if (L.getTopScoreIntent().equals("getTDEE")) {
             // txtBot.setText("Your Daily calorie requirement is " + Integer.toString(this.TDEE));
@@ -960,14 +1123,34 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Daily calorie requirement is " + Integer.toString(this.TDEE));
 
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("getWeight")) {
             //    txtBot.setText("Your Weight is " + Double.toString(currentUser.getWeight()));
             sb.append("\n");
             sb.append("  Your Weight is " + Double.toString(currentUser.getWeight()));
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("getDietPlans")) {
             //StringBuilder sb = new StringBuilder();
@@ -1011,7 +1194,17 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+
         }
         if (L.getTopScoreIntent().equals("Greeting")) {
             // txtBot.setText("Out Of Domain !");
@@ -1019,7 +1212,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("\n");
             sb.append("  Thanks. You are welcome!! ");
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
 
         }
         if (L.getTopScoreIntent().equals("None")) {
@@ -1028,7 +1230,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("\n");
             sb.append("  Out Of Domain !");
             sb.append("\n");
-            txtBot.setText(sb.toString());
+//            StyledDocument doc = txtAssistant.getStyledDocument();
+//            Style st = txtAssistant.addStyle("", null);
+
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
 
         }
 
@@ -1076,35 +1287,36 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_cmbActivityLevelActionPerformed
 
     private void btnSendQueryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendQueryMouseReleased
-        System.out.println("mouse released");
-        txtBot.setText("mouse released");
-        
-        
+
         L.setQuery(txtUserQuery.getText());
         L.ProcessQuery();
         lblTopScoreIntentName.setText(L.getTopScoreIntent());
         lbltopintentVal.setText(L.getTopScoreIntentScore().toString());
         lblSenAna.setText(L.getSentimentAnalysisLabel());
         lblSenScore.setText(L.getSentimentAnalysisScore().toString());
-        
-//          sb.append("\n");
-//        sb.append("\n");
-//
-//        sb.append("                                                                                                             " + txtUserQuery.getText().toString());
-//        sb.append("\n");
-//        sb.append("\n");
-//        txtBot.setText(sb.toString());
+
         AssistantProcessor();
     }//GEN-LAST:event_btnSendQueryMouseReleased
 
     private void btnSendQueryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendQueryMousePressed
-        sb.append("\n");
-        sb.append("\n");
 
+        StyledDocument doc = txtAssistant.getStyledDocument();
+        Style st = txtAssistant.addStyle("", null);
+
+        StyleConstants.setForeground(st, Color.RED);
+
+        sb.append("\n");
+        sb.append("\n");
         sb.append("                                                                                                             " + txtUserQuery.getText().toString());
         sb.append("\n");
         sb.append("\n");
-        txtBot.setText(sb.toString());
+
+        try {
+            doc.insertString(doc.getLength(), sb.toString(), st);
+        } catch (BadLocationException ex) {
+        }
+        sb.setLength(0);
+
     }//GEN-LAST:event_btnSendQueryMousePressed
 
     private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
@@ -1175,7 +1387,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
@@ -1199,7 +1411,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lbldisplayTotCal;
     private javax.swing.JLabel lbltopintentVal;
     private javax.swing.JTextField txtAge;
-    private javax.swing.JTextArea txtBot;
+    private javax.swing.JTextPane txtAssistant;
     private javax.swing.JTextArea txtBreakfastUserMealPlan;
     private javax.swing.JTextArea txtDinnerUserMealPlan;
     private javax.swing.JTextField txtHeight;
