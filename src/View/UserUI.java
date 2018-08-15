@@ -14,8 +14,6 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -44,7 +42,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     Validator V = new Validator();
     StringBuilder sb = new StringBuilder();
     StyledDocument doc;
-    Style st;
+    Style style;
 
     /**
      * Creates new form View
@@ -54,7 +52,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         DeserializeUsers();
         DeserializeMealPlans();
         doc = txtAssistant.getStyledDocument();
-        st = txtAssistant.addStyle("", null);
+        style = txtAssistant.addStyle("", null);
     }
 
     /**
@@ -73,17 +71,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("Current User is: " + currentUser.getName());
 
-//        StyledDocument doc = txtAssistant.getStyledDocument();
-//        Style st = txtAssistant.addStyle("", null);
-        StyleConstants.setForeground(st, Color.GREEN);
         sb.append("  Hi " + currentUser.getName() + " How can i help ?");
-
-        try {
-            doc.insertString(doc.getLength(), sb.toString(), st);
-        } catch (BadLocationException ex) {
-        }
-        sb.setLength(0);
-
+        
+        giveBotResponse();
     }
 
     public void createProfile() {
@@ -106,7 +96,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserBMIProfile.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
         BMI = dm.BMI(currentUser.getWeight(), currentUser.getHeight());
         showRecomendation();
-
         System.out.println("Current User BMI: " + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
     }
 
@@ -130,6 +119,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
+            
             sbrecomendations.setLength(0);
         }
         if (this.BMI >= 18.5 && this.BMI < 24.9) {
@@ -149,6 +139,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
+            
             sbrecomendations.setLength(0);
 
         }
@@ -170,6 +161,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
+            
             sbrecomendations.setLength(0);
         }
         if (this.BMI >= 29.9) {
@@ -190,6 +182,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
+            
             sbrecomendations.setLength(0);
 
         }
@@ -894,28 +887,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Your height is set to " + L.getEntityValue1() + " centimeters");
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
+                    
                 } else {
 
                     sb.append("\n");
                     sb.append("  Invalid Height, your height should be 90 to 240 centimeters");
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
 
                 }
 
@@ -938,14 +918,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Your weight is set to " + L.getEntityValue1() + " Kilograms");
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
 
                 } else {
 
@@ -953,14 +926,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Invalid Weight, your weight should be 30 to 500 Kilograms");
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
                 }
 
             }
@@ -979,28 +945,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Your name is set to " + L.getEntityValue1());
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
 
                 } else {
                     sb.append("\n");
                     sb.append("  Invalid Name");
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
                 }
 
             }
@@ -1023,34 +975,20 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Your Age is set to " + L.getEntityValue1());
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
+                    
                 } else {
 
                     sb.append("\n");
                     sb.append("  Invalid Age, your Age should be 16 to 120");
                     sb.append("\n");
 
-
-                    StyleConstants.setForeground(st, Color.GREEN);
-
-                    try {
-                        doc.insertString(doc.getLength(), sb.toString(), st);
-                    } catch (BadLocationException ex) {
-                    }
-                    sb.setLength(0);
+                    giveBotResponse();
 
                 }
 
             }
         }
-
 
         /**
          * getters
@@ -1060,14 +998,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Acivity Level is " + currentUser.getActivityLevel());
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getAge")) {
@@ -1075,13 +1006,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Age is " + currentUser.getAge());
             sb.append("\n");
 
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getBMI")) {
@@ -1089,56 +1014,33 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your BMI is " + Double.toString(this.BMI));
             sb.append("\n");
 
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
         }
-        
+
         if (L.getTopScoreIntent().equals("getRecommandation")) {
             sb.append("\n");
             sb.append("  Here is your recommandation ");
             sb.append("\n");
             sb.append(this.recommandation);
             sb.append("\n");
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
-        }
+            
+            giveBotResponse();
         
+        }
+
         if (L.getTopScoreIntent().equals("getEmail")) {
             sb.append("\n");
             sb.append("  Your Email is " + currentUser.getEmail());
             sb.append("\n");
 
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
         }
         if (L.getTopScoreIntent().equals("getGender")) {
             sb.append("\n");
             sb.append("  Your Gender is " + currentUser.getGender());
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getGoal")) {
@@ -1146,14 +1048,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Goal is " + currentUser.getGoal());
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getHeight")) {
@@ -1161,14 +1056,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Height is " + Double.toString(currentUser.getHeight()));
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getName")) {
@@ -1177,30 +1065,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Name is " + currentUser.getName());
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
         }
         if (L.getTopScoreIntent().equals("getTDEE")) {
-            // txtBot.setText("Your Daily calorie requirement is " + Integer.toString(this.TDEE));
+            
             sb.append("\n");
             sb.append("  Your Daily calorie requirement is " + Integer.toString(this.TDEE));
-
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getWeight")) {
@@ -1209,18 +1082,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Weight is " + Double.toString(currentUser.getWeight()));
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("getDietPlans")) {
- 
+
             sb.append("  Here is your available Meal plans !!!!! ");
             for (int i = 0; i < myPlans.size(); i++) {
                 this.currentMealPlan = myPlans.get(i);
@@ -1261,14 +1127,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("Greeting")) {
@@ -1277,31 +1136,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Thanks. You are welcome!! ");
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
         if (L.getTopScoreIntent().equals("None")) {
-
 
             sb.append("\n");
             sb.append("  Out Of Domain !");
             sb.append("\n");
 
-
-            StyleConstants.setForeground(st, Color.GREEN);
-
-            try {
-                doc.insertString(doc.getLength(), sb.toString(), st);
-            } catch (BadLocationException ex) {
-            }
-            sb.setLength(0);
+            giveBotResponse();
 
         }
 
@@ -1314,6 +1158,25 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
 
+    
+    public void giveUserResponse() {
+        StyleConstants.setForeground(style, Color.GRAY);
+        try {
+            doc.insertString(doc.getLength(), sb.toString(), style);
+        } catch (BadLocationException ex) {
+        }
+        sb.setLength(0);
+    }
+    
+    public void giveBotResponse() {
+        StyleConstants.setForeground(style, Color.RED);
+        try {
+            doc.insertString(doc.getLength(), sb.toString(), style);
+        } catch (BadLocationException ex) {
+        }
+        sb.setLength(0);
+    }
+    
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
         if (cmbMyMealPlans.getSelectedIndex() == 0) {
             lbldisplayTotCal.setVisible(false); //Hide Total Calorie Amount Label
@@ -1365,10 +1228,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         sb.append("                                                                                                             " + txtUserQuery.getText().toString());
         sb.append("\n");
         sb.append("\n");
-        
-        StyleConstants.setForeground(st, Color.RED);
+
+        StyleConstants.setForeground(style, Color.RED);
         try {
-            doc.insertString(doc.getLength(), sb.toString(), st);
+            doc.insertString(doc.getLength(), sb.toString(), style);
         } catch (BadLocationException ex) {
         }
         sb.setLength(0);
