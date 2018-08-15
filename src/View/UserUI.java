@@ -39,6 +39,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     MealPlan currentMealPlan = new MealPlan();
     int TDEE;
     double BMI;
+    String recommandation;
     LUIS L = new LUIS();
     Validator V = new Validator();
     StringBuilder sb = new StringBuilder();
@@ -104,7 +105,94 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserBMI.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
         lblUserBMIProfile.setText(Double.toString(dm.BMI(currentUser.getWeight(), currentUser.getHeight())));
         BMI = dm.BMI(currentUser.getWeight(), currentUser.getHeight());
+        showRecomendation();
+
         System.out.println("Current User BMI: " + dm.BMI(currentUser.getWeight(), currentUser.getHeight()));
+    }
+
+    public void showRecomendation() {
+        StringBuilder sbrecomendations = new StringBuilder();
+
+        if (this.BMI < 18.5) {
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("You are Under Weight !");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("good");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("bad");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            recommandation = sbrecomendations.toString();
+            txtUserRecommandation.setText(recommandation);
+            sbrecomendations.setLength(0);
+        }
+        if (this.BMI >= 18.5 && this.BMI < 24.9) {
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("Healthy weight");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("good");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("bad");
+
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            recommandation = sbrecomendations.toString();
+            txtUserRecommandation.setText(recommandation);
+            sbrecomendations.setLength(0);
+
+        }
+        if (this.BMI >= 24.9 && this.BMI < 29.9) {
+
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("Overweight");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("good");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("bad");
+
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            recommandation = sbrecomendations.toString();
+            txtUserRecommandation.setText(recommandation);
+            sbrecomendations.setLength(0);
+        }
+        if (this.BMI >= 29.9) {
+
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("Obese");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("good");
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+
+            sbrecomendations.append("bad");
+
+            sbrecomendations.append("\n");
+            sbrecomendations.append("\n");
+            recommandation = sbrecomendations.toString();
+            txtUserRecommandation.setText(recommandation);
+            sbrecomendations.setLength(0);
+
+        }
     }
 
     public void getTDEE() {
@@ -345,6 +433,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserBMI = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         lblUserTDEE1 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtUserRecommandation = new javax.swing.JTextPane();
         jPanel2 = new javax.swing.JPanel();
         cmbMyMealPlans = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
@@ -620,11 +711,20 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("TDEE:");
-        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 50, -1));
+        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 210, 50, -1));
 
         lblUserTDEE1.setForeground(new java.awt.Color(255, 255, 255));
         lblUserTDEE1.setText("...");
-        jPanel10.add(lblUserTDEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 150, -1));
+        jPanel10.add(lblUserTDEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 210, 150, -1));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Recommandation:");
+        jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 140, -1));
+
+        jScrollPane3.setViewportView(txtUserRecommandation);
+
+        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 460, 260));
 
         jTabbedPane4.addTab("                                                  My Status                                                 ", jPanel10);
 
@@ -793,10 +893,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Your height is set to " + L.getEntityValue1() + " centimeters");
                     sb.append("\n");
- 
 
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -811,8 +908,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Invalid Height, your height should be 90 to 240 centimeters");
                     sb.append("\n");
 
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -843,8 +938,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Your weight is set to " + L.getEntityValue1() + " Kilograms");
                     sb.append("\n");
 
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -859,8 +952,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Invalid Weight, your weight should be 30 to 500 Kilograms");
                     sb.append("\n");
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
+
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -887,8 +979,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Your name is set to " + L.getEntityValue1());
                     sb.append("\n");
 
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -902,8 +992,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Invalid Name");
                     sb.append("\n");
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
+
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -933,8 +1022,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
                     sb.append("  Your Age is set to " + L.getEntityValue1());
                     sb.append("\n");
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
+
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -949,8 +1037,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("  Invalid Age, your Age should be 16 to 120");
                     sb.append("\n");
 
-//                    StyledDocument doc = txtAssistant.getStyledDocument();
-//                    Style st = txtAssistant.addStyle("", null);
 
                     StyleConstants.setForeground(st, Color.GREEN);
 
@@ -965,21 +1051,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             }
         }
 
-//        if (L.getTopScoreIntent().equals("setActivityLevel")) {
-//
-//            if (L.getEntityType1().equals("activitylevel")) {
-//
-//                if (L.getEntityValue1().equals("lightlyactive")) {
-//
-//                    currentUser.setActivityLevel("Lightly active (moderate exercise but sedentary job)");
-//                    users.getUserByEmail(currentUser.getEmail()).setActivityLevel("Lightly active (moderate exercise but sedentary job)");
-//                    createProfile();
-//                    generateMyPlan();
-//                    getMyPlan();
-//
-//                }
-//            }
-//        }
+
         /**
          * getters
          */
@@ -987,8 +1059,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("\n");
             sb.append("  Your Acivity Level is " + currentUser.getActivityLevel());
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1004,9 +1075,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Age is " + currentUser.getAge());
             sb.append("\n");
 
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
-
             StyleConstants.setForeground(st, Color.GREEN);
 
             try {
@@ -1019,10 +1087,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (L.getTopScoreIntent().equals("getBMI")) {
             sb.append("\n");
             sb.append("  Your BMI is " + Double.toString(this.BMI));
-
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1032,13 +1097,26 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             }
             sb.setLength(0);
         }
+        
+        if (L.getTopScoreIntent().equals("getRecommandation")) {
+            sb.append("\n");
+            sb.append("  Here is your recommandation ");
+            sb.append("\n");
+            sb.append(this.recommandation);
+            sb.append("\n");
+            StyleConstants.setForeground(st, Color.GREEN);
+
+            try {
+                doc.insertString(doc.getLength(), sb.toString(), st);
+            } catch (BadLocationException ex) {
+            }
+            sb.setLength(0);
+        }
+        
         if (L.getTopScoreIntent().equals("getEmail")) {
             sb.append("\n");
             sb.append("  Your Email is " + currentUser.getEmail());
-
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1051,11 +1129,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (L.getTopScoreIntent().equals("getGender")) {
             sb.append("\n");
             sb.append("  Your Gender is " + currentUser.getGender());
-
             sb.append("\n");
-//
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1069,10 +1144,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (L.getTopScoreIntent().equals("getGoal")) {
             sb.append("\n");
             sb.append("  Your Goal is " + currentUser.getGoal());
-
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1086,10 +1159,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (L.getTopScoreIntent().equals("getHeight")) {
             sb.append("\n");
             sb.append("  Your Height is " + Double.toString(currentUser.getHeight()));
-
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1104,10 +1175,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             sb.append("\n");
             sb.append("  Your Name is " + currentUser.getName());
-
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1123,8 +1192,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("  Your Daily calorie requirement is " + Integer.toString(this.TDEE));
 
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1136,12 +1204,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
         if (L.getTopScoreIntent().equals("getWeight")) {
-            //    txtBot.setText("Your Weight is " + Double.toString(currentUser.getWeight()));
+
             sb.append("\n");
             sb.append("  Your Weight is " + Double.toString(currentUser.getWeight()));
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1153,7 +1220,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
         if (L.getTopScoreIntent().equals("getDietPlans")) {
-            //StringBuilder sb = new StringBuilder();
+ 
             sb.append("  Here is your available Meal plans !!!!! ");
             for (int i = 0; i < myPlans.size(); i++) {
                 this.currentMealPlan = myPlans.get(i);
@@ -1194,8 +1261,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1207,13 +1272,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
         if (L.getTopScoreIntent().equals("Greeting")) {
-            // txtBot.setText("Out Of Domain !");
 
             sb.append("\n");
             sb.append("  Thanks. You are welcome!! ");
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1225,13 +1288,12 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         }
         if (L.getTopScoreIntent().equals("None")) {
-            // txtBot.setText("Out Of Domain !");
+
 
             sb.append("\n");
             sb.append("  Out Of Domain !");
             sb.append("\n");
-//            StyledDocument doc = txtAssistant.getStyledDocument();
-//            Style st = txtAssistant.addStyle("", null);
+
 
             StyleConstants.setForeground(st, Color.GREEN);
 
@@ -1247,9 +1309,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
 
         DietMaths t = new DietMaths();
-        //  System.out.println(t.TDEE_M(88, 183, 29, 3));
-        //  t.TDEE_M(88, 183, 29, 3);
-        // System.out.println(t.BMI(80,180));
+
         t.MNUTRIENT(2000);
 
     }//GEN-LAST:event_btntestingpurposeActionPerformed
@@ -1300,17 +1360,13 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     private void btnSendQueryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendQueryMousePressed
 
-        StyledDocument doc = txtAssistant.getStyledDocument();
-        Style st = txtAssistant.addStyle("", null);
-
-        StyleConstants.setForeground(st, Color.RED);
-
         sb.append("\n");
         sb.append("\n");
         sb.append("                                                                                                             " + txtUserQuery.getText().toString());
         sb.append("\n");
         sb.append("\n");
-
+        
+        StyleConstants.setForeground(st, Color.RED);
         try {
             doc.insertString(doc.getLength(), sb.toString(), st);
         } catch (BadLocationException ex) {
@@ -1366,6 +1422,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
@@ -1387,6 +1444,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -1420,6 +1478,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextArea txtSnackUserMealPlan;
     private javax.swing.JTextField txtUpdateUserName;
     private javax.swing.JTextField txtUserQuery;
+    private javax.swing.JTextPane txtUserRecommandation;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 
