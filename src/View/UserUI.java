@@ -3,6 +3,7 @@ package View;
 import Controller.DietMaths;
 import Controller.SetOfMealPlans;
 import Controller.SetOfUsers;
+import Controller.Validator;
 import Models.LUIS;
 import Models.MealPlan;
 import Models.User;
@@ -32,6 +33,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     int TDEE;
     double BMI;
     LUIS L = new LUIS();
+    Validator V = new Validator();
+    StringBuilder sb = new StringBuilder();
 
     /**
      * Creates new form View
@@ -58,6 +61,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
 
         System.out.println("Current User is: " + currentUser.getName());
+        sb.append("  Hi " + currentUser.getName() + " How can i help ?");
+        txtBot.setText(sb.toString());
+
     }
 
     public void createProfile() {
@@ -370,6 +376,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         btnSendQuery.setContentAreaFilled(false);
         btnSendQuery.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/send(32)red.png"))); // NOI18N
         btnSendQuery.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/send(64)red.png"))); // NOI18N
+        btnSendQuery.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSendQueryMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSendQueryMouseReleased(evt);
+            }
+        });
         btnSendQuery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendQueryActionPerformed(evt);
@@ -743,35 +757,37 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         getMyPlan();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
-
-        L.setQuery(txtUserQuery.getText());
-        L.ProcessQuery();
-        lblTopScoreIntentName.setText(L.getTopScoreIntent());
-        lbltopintentVal.setText(L.getTopScoreIntentScore().toString());
-        lblSenAna.setText(L.getSentimentAnalysisLabel());
-        lblSenScore.setText(L.getSentimentAnalysisScore().toString());
-        AssistantProcessor();
-
-
-    }//GEN-LAST:event_btnSendQueryActionPerformed
-
     public void AssistantProcessor() {
         /**
          * Setters
          */
-        System.out.println("AssistantProcessor herer ");
 
         if (L.getTopScoreIntent().equals("setHeight")) {
 
             if (L.getEntityType1().equals("height")) {
 
-                currentUser.setHeight(Double.parseDouble(L.getEntityValue1()));
-                users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(L.getEntityValue1()));
+                if (V.isValidHeight(L.getEntityValue1())) {
 
-                createProfile();
-                generateMyPlan();
-                getMyPlan();
+                    currentUser.setHeight(Double.parseDouble(L.getEntityValue1()));
+                    users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(L.getEntityValue1()));
+
+                    createProfile();
+                    generateMyPlan();
+                    getMyPlan();
+
+                    sb.append("\n");
+                    sb.append("  Your height is set to " + L.getEntityValue1() + " centimeters");
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+
+                } else {
+
+                    sb.append("\n");
+                    sb.append("  Invalid Height, your height should be 90 to 240 centimeters");
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+
+                }
 
             }
         }
@@ -779,22 +795,50 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             if (L.getEntityType1().equals("weight")) {
 
-                currentUser.setWeight(Double.parseDouble(L.getEntityValue1()));
-                users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(L.getEntityValue1()));
+                if (V.isValidWeight(L.getEntityValue1())) {
 
-                createProfile();
-                generateMyPlan();
-                getMyPlan();
+                    currentUser.setWeight(Double.parseDouble(L.getEntityValue1()));
+                    users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(L.getEntityValue1()));
+
+                    createProfile();
+                    generateMyPlan();
+                    getMyPlan();
+
+                    sb.append("\n");
+                    sb.append("  Your weight is set to " + L.getEntityValue1() + " Kilograms");
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+
+                } else {
+
+                    sb.append("\n");
+                    sb.append("  Invalid Weight, your weight should be 30 to 500 Kilograms");
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+                }
+
             }
         }
         if (L.getTopScoreIntent().equals("setName")) {
 
             if (L.getEntityType1().equals("username")) {
 
-                currentUser.setName((L.getEntityValue1()));
-                users.getUserByEmail(currentUser.getEmail()).setName((L.getEntityValue1()));
+                if (V.isValidName(L.getEntityValue1())) {
+                    currentUser.setName((L.getEntityValue1()));
+                    users.getUserByEmail(currentUser.getEmail()).setName((L.getEntityValue1()));
 
-                createProfile();
+                    createProfile();
+
+                    sb.append("\n");
+                    sb.append("  Your name is set to " + L.getEntityValue1());
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+                } else {
+                    sb.append("\n");
+                    sb.append("  Invalid Name");
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+                }
 
             }
         }
@@ -803,68 +847,131 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             if (L.getEntityType1().equals("age")) {
 
-                currentUser.setName((L.getEntityValue1()));
-                users.getUserByEmail(currentUser.getEmail()).setName((L.getEntityValue1()));
+                if (V.isValidAge(L.getEntityValue1())) {
 
-                createProfile();
-                generateMyPlan();
-                getMyPlan();
+                    currentUser.setName((L.getEntityValue1()));
+                    users.getUserByEmail(currentUser.getEmail()).setName((L.getEntityValue1()));
 
-            }
-        }
-
-        if (L.getTopScoreIntent().equals("setActivityLevel")) {
-
-            if (L.getEntityType1().equals("activitylevel")) {
-
-                if (L.getEntityValue1().equals("lightlyactive")) {
-
-                    currentUser.setActivityLevel("Lightly active (moderate exercise but sedentary job)");
-                    users.getUserByEmail(currentUser.getEmail()).setActivityLevel("Lightly active (moderate exercise but sedentary job)");
                     createProfile();
                     generateMyPlan();
                     getMyPlan();
 
+                    sb.append("\n");
+                    sb.append("  Your Age is set to " + L.getEntityValue1());
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+                } else {
+
+                    sb.append("\n");
+                    sb.append("  Invalid Age, your Age should be 16 to 120");
+                    sb.append("\n");
+                    txtBot.setText(sb.toString());
+
                 }
+
             }
         }
 
+//        if (L.getTopScoreIntent().equals("setActivityLevel")) {
+//
+//            if (L.getEntityType1().equals("activitylevel")) {
+//
+//                if (L.getEntityValue1().equals("lightlyactive")) {
+//
+//                    currentUser.setActivityLevel("Lightly active (moderate exercise but sedentary job)");
+//                    users.getUserByEmail(currentUser.getEmail()).setActivityLevel("Lightly active (moderate exercise but sedentary job)");
+//                    createProfile();
+//                    generateMyPlan();
+//                    getMyPlan();
+//
+//                }
+//            }
+//        }
         /**
          * getters
          */
         if (L.getTopScoreIntent().equals("getActivityLevel")) {
-            txtBot.setText("Your Acivity Level is " + currentUser.getActivityLevel());
+            //txtBot.setText("Your Acivity Level is " + currentUser.getActivityLevel());
+            sb.append("\n");
+            sb.append("  Your Acivity Level is " + currentUser.getActivityLevel());
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getAge")) {
-            txtBot.setText("Your Age is " + currentUser.getAge());
+            //txtBot.setText("Your Age is " + currentUser.getAge());
+            sb.append("\n");
+            sb.append("  Your Age is " + currentUser.getAge());
+            sb.append("\n");
+            txtBot.setText(sb.toString());
+
         }
         if (L.getTopScoreIntent().equals("getBMI")) {
-            txtBot.setText("Your BMI is " + Double.toString(this.BMI));
+            // txtBot.setText("Your BMI is " + Double.toString(this.BMI));
+            sb.append("\n");
+            sb.append("  Your BMI is " + Double.toString(this.BMI));
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getEmail")) {
-            txtBot.setText("Your Email is " + currentUser.getEmail());
+            // txtBot.setText("Your Email is " + currentUser.getEmail());
+            sb.append("\n");
+            sb.append("  Your Email is " + currentUser.getEmail());
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getGender")) {
-            txtBot.setText("Your Gender is " + currentUser.getGender());
+            // txtBot.setText("Your Gender is " + currentUser.getGender());
+            sb.append("\n");
+            sb.append("  Your Gender is " + currentUser.getGender());
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getGoal")) {
-            txtBot.setText("Your Goal is " + currentUser.getGoal());
+            // txtBot.setText("Your Goal is " + currentUser.getGoal());
+            sb.append("\n");
+            sb.append("  Your Goal is " + currentUser.getGoal());
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getHeight")) {
-            txtBot.setText("Your Height is " + Double.toString(currentUser.getHeight()));
+            //      txtBot.setText("Your Height is " + Double.toString(currentUser.getHeight()));
+            sb.append("\n");
+            sb.append("  Your Height is " + Double.toString(currentUser.getHeight()));
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getName")) {
-            txtBot.setText("Your Name is " + currentUser.getName());
+            //     txtBot.setText("Your Name is " + currentUser.getName());
+
+            sb.append("\n");
+            sb.append("  Your Name is " + currentUser.getName());
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getTDEE")) {
-            txtBot.setText("Your Daily calorie requirement is " + Integer.toString(this.TDEE));
+            // txtBot.setText("Your Daily calorie requirement is " + Integer.toString(this.TDEE));
+            sb.append("\n");
+            sb.append("  Your Daily calorie requirement is " + Integer.toString(this.TDEE));
+
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getWeight")) {
-            txtBot.setText("Your Weight is " + Double.toString(currentUser.getWeight()));
+            //    txtBot.setText("Your Weight is " + Double.toString(currentUser.getWeight()));
+            sb.append("\n");
+            sb.append("  Your Weight is " + Double.toString(currentUser.getWeight()));
+            sb.append("\n");
+            txtBot.setText(sb.toString());
         }
         if (L.getTopScoreIntent().equals("getDietPlans")) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Here is your available Meal plans !!!!! ");
+            //StringBuilder sb = new StringBuilder();
+            sb.append("  Here is your available Meal plans !!!!! ");
             for (int i = 0; i < myPlans.size(); i++) {
                 this.currentMealPlan = myPlans.get(i);
                 sb.append("\n");
@@ -906,8 +1013,23 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
             txtBot.setText(sb.toString());
         }
+        if (L.getTopScoreIntent().equals("Greeting")) {
+            // txtBot.setText("Out Of Domain !");
+
+            sb.append("\n");
+            sb.append("  Thanks. You are welcome!! ");
+            sb.append("\n");
+            txtBot.setText(sb.toString());
+
+        }
         if (L.getTopScoreIntent().equals("None")) {
-            txtBot.setText("Out Of Domain !");
+            // txtBot.setText("Out Of Domain !");
+
+            sb.append("\n");
+            sb.append("  Out Of Domain !");
+            sb.append("\n");
+            txtBot.setText(sb.toString());
+
         }
 
     }
@@ -932,7 +1054,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             txtNutrition.setText("");
         }
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
-            
+
             myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
             lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
             txtNutrition.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getMacro());
@@ -952,6 +1074,42 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private void cmbActivityLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbActivityLevelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbActivityLevelActionPerformed
+
+    private void btnSendQueryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendQueryMouseReleased
+        System.out.println("mouse released");
+        txtBot.setText("mouse released");
+        
+        
+        L.setQuery(txtUserQuery.getText());
+        L.ProcessQuery();
+        lblTopScoreIntentName.setText(L.getTopScoreIntent());
+        lbltopintentVal.setText(L.getTopScoreIntentScore().toString());
+        lblSenAna.setText(L.getSentimentAnalysisLabel());
+        lblSenScore.setText(L.getSentimentAnalysisScore().toString());
+        
+//          sb.append("\n");
+//        sb.append("\n");
+//
+//        sb.append("                                                                                                             " + txtUserQuery.getText().toString());
+//        sb.append("\n");
+//        sb.append("\n");
+//        txtBot.setText(sb.toString());
+        AssistantProcessor();
+    }//GEN-LAST:event_btnSendQueryMouseReleased
+
+    private void btnSendQueryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendQueryMousePressed
+        sb.append("\n");
+        sb.append("\n");
+
+        sb.append("                                                                                                             " + txtUserQuery.getText().toString());
+        sb.append("\n");
+        sb.append("\n");
+        txtBot.setText(sb.toString());
+    }//GEN-LAST:event_btnSendQueryMousePressed
+
+    private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
+        // dont write anything
+    }//GEN-LAST:event_btnSendQueryActionPerformed
 
     /**
      * @param args the command line arguments

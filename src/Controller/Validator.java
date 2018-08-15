@@ -59,7 +59,7 @@ public class Validator {
         return status;
     }
     
-    public boolean isValidWeight(String weight) {                 //weight Accepting 30 to 300 Kg with decimal values     according to https://en.wikipedia.org/wiki/List_of_the_heaviest_people ,I set the maximum weight 500 because average weight of 26 people in the list was 493.4230769230769
+    public boolean isValidWeight(String weight) {                 //weight Accepting 30 to 500 Kg with decimal values     according to https://en.wikipedia.org/wiki/List_of_the_heaviest_people ,I set the maximum weight 500 because average weight of 26 people in the list was 493.4230769230769
         boolean status = false;
         if (weight.matches("[0-9]{1,13}(\\.[0-9]*)?") && Double.parseDouble(weight) >=30 && Double.parseDouble(weight)<=500) {
             status=true;
