@@ -7,9 +7,9 @@ import java.util.ArrayList;
  *
  * @author Harshana
  */
-public class Users extends ArrayList<User> {
+public class SetOfUsers extends ArrayList<User> {
 
-    public Users() {
+    public SetOfUsers() {
 
     }
     public void registerUser(User user) {
@@ -34,9 +34,9 @@ public class Users extends ArrayList<User> {
     }
     
     
-    public Users getUserByName(String name) {
+    public SetOfUsers getUserByName(String name) {
         User user = new User();
-        Users users = new Users();
+        SetOfUsers users = new SetOfUsers();
         for (int i = 0; i < super.size(); i++) {
             user = super.get(i);
             if (user.getName().equals(name)) {

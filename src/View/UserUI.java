@@ -1,8 +1,8 @@
 package View;
 
 import Controller.DietMaths;
-import Controller.MealPlans;
-import Controller.Users;
+import Controller.SetOfMealPlans;
+import Controller.SetOfUsers;
 import Models.LUIS;
 import Models.MealPlan;
 import Models.User;
@@ -24,10 +24,10 @@ import javax.swing.JOptionPane;
 public class UserUI extends javax.swing.JFrame implements Serializable {
 
     User currentUser;
-    Users users = new Users();
+    SetOfUsers users = new SetOfUsers();
     DietMaths dm = new DietMaths();
-    MealPlans mealPlans = new MealPlans();
-    MealPlans myPlans = new MealPlans();
+    SetOfMealPlans mealPlans = new SetOfMealPlans();
+    SetOfMealPlans myPlans = new SetOfMealPlans();
     MealPlan currentMealPlan = new MealPlan();
     int TDEE;
     double BMI;
@@ -234,7 +234,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     public void generateMyPlan() {
         if (myPlans.size() != 0) {
-            myPlans = new MealPlans();
+            myPlans = new SetOfMealPlans();
             System.out.println("creted new object");
             try {
                 for (int i = cmbMyMealPlans.getItemCount() - 1; i >= 1; i--) {
@@ -1054,7 +1054,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Serialize Users
+     * Serialize SetOfUsers
      */
     public void SerializeUser() {
         try {
@@ -1069,7 +1069,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
 
     /**
-     * Deserialize Users
+     * Deserialize SetOfUsers
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
@@ -1080,7 +1080,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             if (ufis.available() != 0) {
                 uois = new ObjectInputStream(ufis);
                 while (uois != null) {
-                    users = (Users) uois.readObject();
+                    users = (SetOfUsers) uois.readObject();
                     System.out.println(this.users.size());
                 }
             }
@@ -1090,7 +1090,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
 
     /**
-     * Deserialize MealPlans
+     * Deserialize SetOfMealPlans
      */
     public void DeserializeMealPlans() {
         ObjectInputStream mplois = null;
@@ -1101,7 +1101,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             if (mplfis.available() != 0) {
                 mplois = new ObjectInputStream(mplfis);
                 while (mplois != null) {
-                    mealPlans = (MealPlans) mplois.readObject();
+                    mealPlans = (SetOfMealPlans) mplois.readObject();
                     System.out.println(this.mealPlans.size());
                 }
             }

@@ -14,7 +14,7 @@ public class Validator {
         }
     }
 
-    public boolean isUniqueEmail(String email, Users users) {
+    public boolean isUniqueEmail(String email, SetOfUsers users) {
         boolean status = true;
         if (users.size() == 0) {
             status = true;

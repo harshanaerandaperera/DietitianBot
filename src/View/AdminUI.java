@@ -2,8 +2,8 @@ package View;
 
 import View.*;
 import Controller.DietMaths;
-import Controller.MealPlans;
-import Controller.Users;
+import Controller.SetOfMealPlans;
+import Controller.SetOfUsers;
 import Controller.Validator;
 import Models.MealPlan;
 import Models.User;
@@ -26,8 +26,8 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
     public Validator validator = new Validator();
     User currentUser;
-    Users users = new Users();
-    MealPlans mealPlans = new MealPlans();
+    SetOfUsers users = new SetOfUsers();
+    SetOfMealPlans mealPlans = new SetOfMealPlans();
     MealPlan currentMealPlan;
     DietMaths dm = new DietMaths();
 
@@ -909,7 +909,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Serialize Users
+     * Serialize SetOfUsers
      */
     public void SerializeUser() {
         try {
@@ -924,7 +924,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }
 
     /**
-     * Deserialize Users
+     * Deserialize SetOfUsers
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
@@ -935,7 +935,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             if (ufis.available() != 0) {
                 uois = new ObjectInputStream(ufis);
                 while (uois != null) {
-                    users = (Users) uois.readObject();
+                    users = (SetOfUsers) uois.readObject();
                     System.out.println(this.users.size());
                 }
             }
@@ -960,7 +960,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     }
 
     /**
-     * Deserialize MealPlans
+     * Deserialize SetOfMealPlans
      */
     public void DeserializeMealPlans() {
         ObjectInputStream mplois = null;
@@ -971,7 +971,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
             if (mplfis.available() != 0) {
                 mplois = new ObjectInputStream(mplfis);
                 while (mplois != null) {
-                    mealPlans = (MealPlans) mplois.readObject();
+                    mealPlans = (SetOfMealPlans) mplois.readObject();
                     System.out.println(this.mealPlans.size());
                 }
             }

@@ -7,9 +7,9 @@ import java.util.ArrayList;
  *
  * @author Harshana
  */
-public class MealPlans extends ArrayList<MealPlan> {
+public class SetOfMealPlans extends ArrayList<MealPlan> {
 
-    public MealPlans() {
+    public SetOfMealPlans() {
 
     }
 
@@ -32,9 +32,9 @@ public class MealPlans extends ArrayList<MealPlan> {
         super.remove(mealPlan);
     }
 
-    public MealPlans getMealPlanByName(String name) {
+    public SetOfMealPlans getMealPlanByName(String name) {
         MealPlan mealPlan = new MealPlan();
-        MealPlans mealPlans = new MealPlans();
+        SetOfMealPlans mealPlans = new SetOfMealPlans();
         for (int i = 0; i < super.size(); i++) {
             mealPlan = super.get(i);
             if (mealPlan.getName().equals(name)) {
@@ -46,9 +46,9 @@ public class MealPlans extends ArrayList<MealPlan> {
         return mealPlans;
     }
 
-    public MealPlans getMealPlanBycalorieAmount(double amount) {
+    public SetOfMealPlans getMealPlanBycalorieAmount(double amount) {
         MealPlan mealPlan = new MealPlan();
-        MealPlans mealPlans = new MealPlans();
+        SetOfMealPlans mealPlans = new SetOfMealPlans();
         for (int i = 0; i < super.size(); i++) {
             mealPlan = super.get(i);
             if (mealPlan.getCalorieAmount() == amount) {

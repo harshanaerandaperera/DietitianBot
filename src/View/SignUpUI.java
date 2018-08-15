@@ -1,6 +1,6 @@
 package View;
 
-import Controller.Users;
+import Controller.SetOfUsers;
 import Controller.Validator;
 import Models.User;
 import java.io.File;
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class SignUpUI extends javax.swing.JFrame {
 
     public Validator validator = new Validator();
-    Users users = new Users();
+    SetOfUsers users = new SetOfUsers();
     public User registerUser;
     public User currentUser;
 
@@ -32,7 +32,7 @@ public class SignUpUI extends javax.swing.JFrame {
     }
 
     /**
-     * Serialize Users
+     * Serialize SetOfUsers
      */
     public void SerializeUser() {
         try {
@@ -47,7 +47,7 @@ public class SignUpUI extends javax.swing.JFrame {
     }
 
     /**
-     * Deserialize Users
+     * Deserialize SetOfUsers
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
@@ -58,7 +58,7 @@ public class SignUpUI extends javax.swing.JFrame {
             if (ufis.available() != 0) {
                 uois = new ObjectInputStream(ufis);
                 while (uois != null) {
-                    users = (Users) uois.readObject();
+                    users = (SetOfUsers) uois.readObject();
                     System.out.println(this.users.size());
                 }
             }

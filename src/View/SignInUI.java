@@ -1,6 +1,6 @@
 package View;
 
-import Controller.Users;
+import Controller.SetOfUsers;
 import Models.User;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class SignInUI extends javax.swing.JFrame implements Serializable {
 
-    Users users = new Users();
+    SetOfUsers users = new SetOfUsers();
     public User currentUser;
 
     public SignInUI() {
@@ -26,7 +26,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
     }
 
     /**
-     * Deserialize Users
+     * Deserialize SetOfUsers
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
@@ -37,7 +37,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
             if (ufis.available() != 0) {
                 uois = new ObjectInputStream(ufis);
                 while (uois != null) {
-                    users = (Users) uois.readObject();
+                    users = (SetOfUsers) uois.readObject();
                     System.out.println("User Count: "+this.users.size());
 
                 }
