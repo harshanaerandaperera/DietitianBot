@@ -1229,13 +1229,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         sb.append("\n");
         sb.append("\n");
 
-        StyleConstants.setForeground(style, Color.RED);
-        try {
-            doc.insertString(doc.getLength(), sb.toString(), style);
-        } catch (BadLocationException ex) {
-        }
-        sb.setLength(0);
-
+        giveUserResponse();
+        
     }//GEN-LAST:event_btnSendQueryMousePressed
 
     private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
