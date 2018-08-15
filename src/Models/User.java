@@ -1,6 +1,6 @@
 package Models;
 
-import Controller.SetOfUsers;
+
 import java.io.Serializable;
 
 /**

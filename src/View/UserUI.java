@@ -100,23 +100,24 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
 
     public void showRecomendation() {
+        
         StringBuilder sbrecomendations = new StringBuilder();
 
         if (this.BMI < 18.5) {
-            sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
             sbrecomendations.append("You are Under Weight !");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("good");
+            sbrecomendations.append("Proper Recommandation");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("bad");
+            sbrecomendations.append("Treatments");
+
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
+            
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
             
@@ -124,19 +125,19 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         }
         if (this.BMI >= 18.5 && this.BMI < 24.9) {
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
+            
             sbrecomendations.append("Healthy weight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("good");
+            sbrecomendations.append("Proper Recommandation");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("bad");
+            sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
+            
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
             
@@ -146,19 +147,19 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (this.BMI >= 24.9 && this.BMI < 29.9) {
 
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
+            
             sbrecomendations.append("Overweight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("good");
+            sbrecomendations.append("Proper Recommandation");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("bad");
+            sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
+            
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
             
@@ -167,19 +168,18 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (this.BMI >= 29.9) {
 
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
             sbrecomendations.append("Obese");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("good");
+            sbrecomendations.append("Proper Recommandation");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("bad");
+            sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            sbrecomendations.append("\n");
+            
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
             
@@ -1024,6 +1024,23 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append(this.recommandation);
             sb.append("\n");
             
+            giveBotResponse();
+        
+        }
+        if (L.getTopScoreIntent().equals("getStatus")) {
+            sb.append("  Here is your Current Status ");
+            sb.append("\n");
+            sb.append("<=============================================================>");
+            sb.append("\n");
+            sb.append("  Total Daily Energy Expenditure : "+Integer.toString(this.TDEE));
+            sb.append("\n");
+            sb.append("  BMI : " + Double.toString(this.BMI));
+            sb.append("\n");
+            sb.append("  Following are the recommandations ");
+            sb.append("\n");
+            sb.append(this.recommandation);
+            sb.append("\n");
+            sb.append("<=============================================================>");
             giveBotResponse();
         
         }
