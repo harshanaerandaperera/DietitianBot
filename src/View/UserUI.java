@@ -53,6 +53,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         DeserializeMealPlans();
         doc = txtAssistant.getStyledDocument();
         style = txtAssistant.addStyle("", null);
+        
+       
+        //set Transparent to txtAssistant 
+        jScrollPane4.getViewport().setOpaque(false);
+        jScrollPane4.setBorder(null);
+        jScrollPane4.setViewportBorder(null);
+        txtAssistant.setOpaque(false);
+        txtAssistant.setBorder(null);
+        txtAssistant.setBackground( new Color(0, 0, 0, 0) );
+      
     }
 
     /**
@@ -380,18 +390,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jTabbedPaneMainPanelUser = new javax.swing.JTabbedPane();
         jTabbedPaneAssistant = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         btnSendQuery = new javax.swing.JButton();
         txtUserQuery = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblChatBarImage = new javax.swing.JLabel();
         lblTopScoreIntentName = new javax.swing.JLabel();
-        lbltopintentVal = new javax.swing.JLabel();
         lblSenAna = new javax.swing.JLabel();
-        lblSenScore = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAssistant = new javax.swing.JTextPane();
+        lblAssistantImage = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPaneEditProfile = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -464,15 +470,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jTabbedPaneAssistant.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(32, 33, 35));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 153));
+        jPanel1.setOpaque(false);
         jPanel1.setVerifyInputWhenFocusTarget(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Query Sentiment Score:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 20));
 
         btnSendQuery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/send (64).png"))); // NOI18N
         btnSendQuery.setBorder(null);
@@ -499,40 +500,32 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         txtUserQuery.setBorder(null);
         jPanel1.add(txtUserQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 340, 50));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chatbar.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 480, 90));
+        lblChatBarImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chatbar.png"))); // NOI18N
+        jPanel1.add(lblChatBarImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 480, 90));
 
-        lblTopScoreIntentName.setForeground(new java.awt.Color(255, 255, 255));
+        lblTopScoreIntentName.setForeground(new java.awt.Color(0, 0, 0));
         lblTopScoreIntentName.setText("Top Score Intent");
-        jPanel1.add(lblTopScoreIntentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+        jPanel1.add(lblTopScoreIntentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, -1, -1));
 
-        lbltopintentVal.setForeground(new java.awt.Color(255, 255, 255));
-        lbltopintentVal.setText("Top Intent Score Val");
-        jPanel1.add(lbltopintentVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 130, -1));
-
-        lblSenAna.setForeground(new java.awt.Color(255, 255, 255));
+        lblSenAna.setForeground(new java.awt.Color(0, 0, 0));
         lblSenAna.setText("Query sentiment Analysis label");
-        jPanel1.add(lblSenAna, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 170, -1));
+        jPanel1.add(lblSenAna, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 170, -1));
 
-        lblSenScore.setForeground(new java.awt.Color(255, 255, 255));
-        lblSenScore.setText("Query Sentiment Score");
-        jPanel1.add(lblSenScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setOpaque(false);
+        jScrollPane4.setRequestFocusEnabled(false);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Query sentiment Analysis label:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("BOT Predicted Top Intent: ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-
+        txtAssistant.setEditable(false);
+        txtAssistant.setBorder(null);
+        txtAssistant.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        txtAssistant.setOpaque(false);
         jScrollPane4.setViewportView(txtAssistant);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 630, 370));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1170, 370));
+
+        lblAssistantImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ABackground.png"))); // NOI18N
+        lblAssistantImage.setText("jLabel1");
+        jPanel1.add(lblAssistantImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1240, 520));
 
         jTabbedPaneAssistant.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
 
@@ -820,7 +813,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1220, Short.MAX_VALUE)
+            .addGap(0, 1232, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1231,9 +1224,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         L.setQuery(txtUserQuery.getText());
         L.ProcessQuery();
         lblTopScoreIntentName.setText(L.getTopScoreIntent());
-        lbltopintentVal.setText(L.getTopScoreIntentScore().toString());
+
         lblSenAna.setText(L.getSentimentAnalysisLabel());
-        lblSenScore.setText(L.getSentimentAnalysisScore().toString());
 
         AssistantProcessor();
     }//GEN-LAST:event_btnSendQueryMouseReleased
@@ -1298,15 +1290,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1332,9 +1320,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTabbedPane jTabbedPaneAssistant;
     private javax.swing.JTabbedPane jTabbedPaneEditProfile;
     private javax.swing.JTabbedPane jTabbedPaneMainPanelUser;
+    private javax.swing.JLabel lblAssistantImage;
+    private javax.swing.JLabel lblChatBarImage;
     private javax.swing.JLabel lblMealPlanTotalCalorieAmount;
     private javax.swing.JLabel lblSenAna;
-    private javax.swing.JLabel lblSenScore;
     private javax.swing.JLabel lblTopScoreIntentName;
     private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserBMIProfile;
@@ -1342,7 +1331,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblUserGender;
     private javax.swing.JLabel lblUserTDEE1;
     private javax.swing.JLabel lbldisplayTotCal;
-    private javax.swing.JLabel lbltopintentVal;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextPane txtAssistant;
     private javax.swing.JTextArea txtBreakfastUserMealPlan;
