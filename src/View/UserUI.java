@@ -53,14 +53,14 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         DeserializeMealPlans();
         doc = txtAssistant.getStyledDocument();
         style = txtAssistant.addStyle("", null);
+        
+        
+         
+        //hide total calorie amount of meal plan in my diet plans 
+        lbldisplayTotCal.setVisible(false);
+        lblMealPlanTotalCalorieAmount.setVisible(false);
 
-        //set Transparent to txtAssistant 
-        jScrollPane4.getViewport().setOpaque(false);
-        jScrollPane4.setBorder(null);
-        jScrollPane4.setViewportBorder(null);
-        txtAssistant.setOpaque(false);
-        txtAssistant.setBorder(null);
-        txtAssistant.setBackground(new Color(0, 0, 0, 0));
+        maketransparent();
 
     }
 
@@ -210,11 +210,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
                 if (currentUser.getGender().equals("Male")) {
                     TDEE = dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-                    lblUserTDEE1.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+                    lblUserTDEE.setText(Double.toString(dm.TDEE_M(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex()))+" Kcal");
 
                 } else if (currentUser.getGender().equals("Female")) {
                     TDEE = dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex());
-                    lblUserTDEE1.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
+                    lblUserTDEE.setText(Double.toString(dm.TDEE_F(currentUser.getWeight(), currentUser.getHeight(), currentUser.getAge(), cmbActivityLevel.getSelectedIndex())));
                 }
 
             }
@@ -222,7 +222,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("index 1 cmbGoal");
 
                 TDEE = TDEE - 250;
-                lblUserTDEE1.setText(Double.toString(TDEE));
+                lblUserTDEE.setText(Double.toString(TDEE));
                 System.out.println("Reduced Tdee" + TDEE);
 
             }
@@ -429,10 +429,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel15 = new javax.swing.JLabel();
         lblUserBMI = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        lblUserTDEE1 = new javax.swing.JLabel();
+        lblUserTDEE = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtUserRecommandation = new javax.swing.JTextPane();
+        lblMyStatusImage = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         cmbMyMealPlans = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
@@ -452,6 +453,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jScrollPane9 = new javax.swing.JScrollPane();
         txtNutrition = new javax.swing.JTextArea();
         jLabel39 = new javax.swing.JLabel();
+        lblMyStatusImage1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -690,114 +692,144 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jPanel10.setBackground(new java.awt.Color(32, 33, 35));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("BMI:");
-        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 50, -1));
+        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 50, -1));
 
-        lblUserBMI.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserBMI.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblUserBMI.setForeground(new java.awt.Color(51, 51, 51));
         lblUserBMI.setText("...");
-        jPanel10.add(lblUserBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 150, -1));
+        jPanel10.add(lblUserBMI, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 150, -1));
 
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("TDEE:");
-        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 210, 50, -1));
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("My Daily Calorie Requirement(TDEE):");
+        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 290, -1));
 
-        lblUserTDEE1.setForeground(new java.awt.Color(255, 255, 255));
-        lblUserTDEE1.setText("...");
-        jPanel10.add(lblUserTDEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 210, 150, -1));
+        lblUserTDEE.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblUserTDEE.setForeground(new java.awt.Color(51, 51, 51));
+        lblUserTDEE.setText("...");
+        jPanel10.add(lblUserTDEE, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 40, 150, -1));
 
-        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Recommandation:");
-        jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 140, -1));
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Obesity level and Recommandations");
+        jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 450, -1));
 
+        txtUserRecommandation.setEditable(false);
+        txtUserRecommandation.setBorder(null);
+        txtUserRecommandation.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        txtUserRecommandation.setForeground(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(txtUserRecommandation);
 
-        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 460, 260));
+        jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 1160, 310));
+
+        lblMyStatusImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ABackground.png"))); // NOI18N
+        jPanel10.add(lblMyStatusImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1240, 520));
 
         jTabbedPane4.addTab("                                                  My Status                                                 ", jPanel10);
 
         jPanel2.setBackground(new java.awt.Color(32, 33, 35));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cmbMyMealPlans.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        cmbMyMealPlans.setForeground(new java.awt.Color(0, 0, 0));
         cmbMyMealPlans.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Click Here To View Availabale Meal Plans for me" }));
         cmbMyMealPlans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMyMealPlansActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbMyMealPlans, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 500, -1));
+        jPanel2.add(cmbMyMealPlans, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 500, -1));
 
-        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Breakfast:");
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setText("Breakfast");
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 80, -1));
 
         txtBreakfastUserMealPlan.setEditable(false);
         txtBreakfastUserMealPlan.setColumns(20);
+        txtBreakfastUserMealPlan.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtBreakfastUserMealPlan.setForeground(new java.awt.Color(51, 51, 51));
         txtBreakfastUserMealPlan.setRows(5);
+        txtBreakfastUserMealPlan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportView(txtBreakfastUserMealPlan);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 280, 280));
 
         txtLunchUserMealPlan.setEditable(false);
         txtLunchUserMealPlan.setColumns(20);
+        txtLunchUserMealPlan.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtLunchUserMealPlan.setForeground(new java.awt.Color(51, 51, 51));
         txtLunchUserMealPlan.setRows(5);
+        txtLunchUserMealPlan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane2.setViewportView(txtLunchUserMealPlan);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 280, 280));
 
-        jLabel36.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Lunch:");
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel36.setText("Lunch");
         jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 80, -1));
 
         txtDinnerUserMealPlan.setEditable(false);
         txtDinnerUserMealPlan.setColumns(20);
+        txtDinnerUserMealPlan.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtDinnerUserMealPlan.setForeground(new java.awt.Color(51, 51, 51));
         txtDinnerUserMealPlan.setRows(5);
+        txtDinnerUserMealPlan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane7.setViewportView(txtDinnerUserMealPlan);
 
         jPanel2.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 280, 280));
 
         jLabel37.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("Nutri:");
-        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 120, 40, -1));
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setText("Macro Nutrition:");
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 120, -1));
 
         txtSnackUserMealPlan.setEditable(false);
         txtSnackUserMealPlan.setColumns(20);
+        txtSnackUserMealPlan.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtSnackUserMealPlan.setForeground(new java.awt.Color(51, 51, 51));
         txtSnackUserMealPlan.setRows(5);
+        txtSnackUserMealPlan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane8.setViewportView(txtSnackUserMealPlan);
 
         jPanel2.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 280, 280));
 
-        jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Snack:");
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Snack");
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 170, 80, -1));
 
         lbldisplayTotCal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbldisplayTotCal.setForeground(new java.awt.Color(255, 255, 255));
-        lbldisplayTotCal.setText("TotalCalorie Amount:");
-        jPanel2.add(lbldisplayTotCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, -1, -1));
+        lbldisplayTotCal.setForeground(new java.awt.Color(0, 0, 0));
+        lbldisplayTotCal.setText("Total Calorie amount of meal plan:");
+        jPanel2.add(lbldisplayTotCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        lblMealPlanTotalCalorieAmount.setForeground(new java.awt.Color(255, 255, 255));
+        lblMealPlanTotalCalorieAmount.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblMealPlanTotalCalorieAmount.setForeground(new java.awt.Color(0, 0, 0));
         lblMealPlanTotalCalorieAmount.setText("...");
-        jPanel2.add(lblMealPlanTotalCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 90, -1));
+        jPanel2.add(lblMealPlanTotalCalorieAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 90, -1));
 
         txtNutrition.setEditable(false);
         txtNutrition.setColumns(20);
+        txtNutrition.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtNutrition.setForeground(new java.awt.Color(51, 51, 51));
         txtNutrition.setRows(5);
+        txtNutrition.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane9.setViewportView(txtNutrition);
 
-        jPanel2.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 280, 130));
+        jPanel2.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 280, 130));
 
-        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Dinner:");
+        jLabel39.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setText("Dinner");
         jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 80, -1));
+
+        lblMyStatusImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ABackground.png"))); // NOI18N
+        jPanel2.add(lblMyStatusImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1240, 520));
 
         jTabbedPane4.addTab("                                               My Diet Plans                                              ", jPanel2);
 
@@ -1217,7 +1249,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         if (cmbMyMealPlans.getSelectedIndex() != 0) {
 
             myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString())));
-            lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount()));
+            lblMealPlanTotalCalorieAmount.setText(Double.toString(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getCalorieAmount())+" Kcal");
             txtNutrition.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getMacro());
             txtBreakfastUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getBreakfast());
             txtLunchUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getLunch());
@@ -1225,6 +1257,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             txtSnackUserMealPlan.setText(myPlans.getMealPlanById(Integer.parseInt(getMatchedMealPlanId(cmbMyMealPlans.getSelectedItem().toString()))).getSnack());
 
             lbldisplayTotCal.setVisible(true);  //Show Total Calorie Amount Label
+            lblMealPlanTotalCalorieAmount.setVisible(true);
         }
     }//GEN-LAST:event_cmbMyMealPlansActionPerformed
 
@@ -1338,13 +1371,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblAssistantImage;
     private javax.swing.JLabel lblChatBarImage;
     private javax.swing.JLabel lblMealPlanTotalCalorieAmount;
+    private javax.swing.JLabel lblMyStatusImage;
+    private javax.swing.JLabel lblMyStatusImage1;
     private javax.swing.JLabel lblProfileImage;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserBMIProfile;
     private javax.swing.JLabel lblUserEmail;
     private javax.swing.JLabel lblUserGender;
-    private javax.swing.JLabel lblUserTDEE1;
+    private javax.swing.JLabel lblUserTDEE;
     private javax.swing.JLabel lbldisplayTotCal;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextPane txtAssistant;
@@ -1435,6 +1470,53 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 jTabbedPaneMainPanelUser.setSelectedIndex(0);
             }
         }
+    }
+    
+    public void maketransparent(){
+    //set Transparent to txtAssistant 
+        jScrollPane4.getViewport().setOpaque(false);
+        jScrollPane4.setBorder(null);
+        jScrollPane4.setViewportBorder(null);
+        txtAssistant.setOpaque(false);
+        txtAssistant.setBorder(null);
+        txtAssistant.setBackground(new Color(0, 0, 0, 0));
+        
+        //set Transparent to txtUserRecommandation
+        jScrollPane3.getViewport().setOpaque(false);
+        jScrollPane3.setBorder(null);
+       // jScrollPane3.setViewportBorder(null);
+        txtUserRecommandation.setOpaque(false);
+        txtUserRecommandation.setBorder(null);
+        txtUserRecommandation.setBackground(new Color(0, 0, 0, 0));
+        
+       
+        
+        //set Transparent to text areas in my diet plans
+        
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        txtBreakfastUserMealPlan.setOpaque(false);
+        txtBreakfastUserMealPlan.setBackground(new Color(0, 0, 0, 0));
+        
+        jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane2.setBorder(null);
+        txtLunchUserMealPlan.setOpaque(false);
+        txtLunchUserMealPlan.setBackground(new Color(0, 0, 0, 0));
+        
+        jScrollPane7.getViewport().setOpaque(false);
+        jScrollPane7.setBorder(null);
+        txtDinnerUserMealPlan.setOpaque(false);
+        txtDinnerUserMealPlan.setBackground(new Color(0, 0, 0, 0));
+        
+        jScrollPane8.getViewport().setOpaque(false);
+        jScrollPane8.setBorder(null);
+        txtSnackUserMealPlan.setOpaque(false);
+        txtSnackUserMealPlan.setBackground(new Color(0, 0, 0, 0));
+        
+        jScrollPane9.getViewport().setOpaque(false);
+        jScrollPane9.setBorder(null);
+        txtNutrition.setOpaque(false);
+        txtNutrition.setBackground(new Color(0, 0, 0, 0));
     }
 
 }

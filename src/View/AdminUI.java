@@ -159,8 +159,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         btnSearchUser = new javax.swing.JButton();
         cmbSearchUser = new javax.swing.JComboBox<>();
         btnRemoveUser = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -444,7 +442,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         jPanel3.add(jTabbedPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 550));
 
-        jTabbedPaneMainPanelAdmin.addTab("                       Meal Plan Management                        ", jPanel3);
+        jTabbedPaneMainPanelAdmin.addTab("                          Meal Plan Management                            ", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(32, 33, 35));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -511,17 +509,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel1.add(btnRemoveUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, 190, -1));
 
-        jTabbedPaneMainPanelAdmin.addTab("              User Management               ", jPanel1);
-
-        jPanel4.setBackground(new java.awt.Color(32, 33, 35));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel28.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Set API Key");
-        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 90, -1));
-
-        jTabbedPaneMainPanelAdmin.addTab("Settings", jPanel4);
+        jTabbedPaneMainPanelAdmin.addTab("                   User Management                   ", jPanel1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -854,7 +842,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JComboBox<String> cmbSearchMealPlanInManage;
     private javax.swing.JComboBox<String> cmbSearchMealPlanInViewMealPlan;
     private javax.swing.JComboBox<String> cmbSearchUser;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -869,7 +856,6 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -984,7 +970,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
 
         int selectedIndex = jTabbedPaneMainPanelAdmin.getSelectedIndex();
 
-        if (selectedIndex == 3) {
+        if (selectedIndex == 2) {
             int answer = JOptionPane.showConfirmDialog(null, "Do you really want to Exit?", " AI Dietitian ", JOptionPane.YES_NO_OPTION);
 
             if (answer == 0) {
