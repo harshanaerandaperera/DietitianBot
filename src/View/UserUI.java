@@ -53,16 +53,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         DeserializeMealPlans();
         doc = txtAssistant.getStyledDocument();
         style = txtAssistant.addStyle("", null);
-        
-       
+
         //set Transparent to txtAssistant 
         jScrollPane4.getViewport().setOpaque(false);
         jScrollPane4.setBorder(null);
         jScrollPane4.setViewportBorder(null);
         txtAssistant.setOpaque(false);
         txtAssistant.setBorder(null);
-        txtAssistant.setBackground( new Color(0, 0, 0, 0) );
-      
+        txtAssistant.setBackground(new Color(0, 0, 0, 0));
+
     }
 
     /**
@@ -82,7 +81,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         System.out.println("Current User is: " + currentUser.getName());
 
         sb.append("  Hi " + currentUser.getName() + " How can i help ?");
-        
+
         giveBotResponse();
     }
 
@@ -110,7 +109,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     }
 
     public void showRecomendation() {
-        
+
         StringBuilder sbrecomendations = new StringBuilder();
 
         if (this.BMI < 18.5) {
@@ -127,15 +126,15 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            
+
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
-            
+
             sbrecomendations.setLength(0);
         }
         if (this.BMI >= 18.5 && this.BMI < 24.9) {
             sbrecomendations.append("\n");
-            
+
             sbrecomendations.append("Healthy weight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
@@ -147,17 +146,17 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            
+
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
-            
+
             sbrecomendations.setLength(0);
 
         }
         if (this.BMI >= 24.9 && this.BMI < 29.9) {
 
             sbrecomendations.append("\n");
-            
+
             sbrecomendations.append("Overweight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
@@ -169,10 +168,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            
+
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
-            
+
             sbrecomendations.setLength(0);
         }
         if (this.BMI >= 29.9) {
@@ -189,10 +188,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("Treatments");
 
             sbrecomendations.append("\n");
-            
+
             recommandation = sbrecomendations.toString();
             txtUserRecommandation.setText(recommandation);
-            
+
             sbrecomendations.setLength(0);
 
         }
@@ -393,7 +392,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         btnSendQuery = new javax.swing.JButton();
         txtUserQuery = new javax.swing.JTextField();
         lblChatBarImage = new javax.swing.JLabel();
-        lblTopScoreIntentName = new javax.swing.JLabel();
         lblSenAna = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAssistant = new javax.swing.JTextPane();
@@ -424,10 +422,10 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         lblUserGender = new javax.swing.JLabel();
         lblUserBMIProfile = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        lblProfileImage = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
-        btntestingpurpose = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         lblUserBMI = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -493,23 +491,22 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                 btnSendQueryActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSendQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 80, 70));
+        jPanel1.add(btnSendQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 430, 80, 70));
 
+        txtUserQuery.setBackground(new java.awt.Color(241, 242, 246));
         txtUserQuery.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        txtUserQuery.setToolTipText("");
+        txtUserQuery.setToolTipText("Please Enter your message!! ");
         txtUserQuery.setBorder(null);
-        jPanel1.add(txtUserQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 340, 50));
+        jPanel1.add(txtUserQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 1100, 50));
 
-        lblChatBarImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chatbar.png"))); // NOI18N
-        jPanel1.add(lblChatBarImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 480, 90));
+        lblChatBarImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bar.png"))); // NOI18N
+        jPanel1.add(lblChatBarImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 420, 1270, 90));
 
-        lblTopScoreIntentName.setForeground(new java.awt.Color(0, 0, 0));
-        lblTopScoreIntentName.setText("Top Score Intent");
-        jPanel1.add(lblTopScoreIntentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 480, -1, -1));
-
-        lblSenAna.setForeground(new java.awt.Color(0, 0, 0));
-        lblSenAna.setText("Query sentiment Analysis label");
-        jPanel1.add(lblSenAna, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 170, -1));
+        lblSenAna.setBackground(new java.awt.Color(153, 153, 153));
+        lblSenAna.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lblSenAna.setForeground(new java.awt.Color(204, 204, 204));
+        lblSenAna.setText("...");
+        jPanel1.add(lblSenAna, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 400, 170, -1));
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane4.setOpaque(false);
@@ -521,10 +518,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         txtAssistant.setOpaque(false);
         jScrollPane4.setViewportView(txtAssistant);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1170, 370));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1180, 370));
 
         lblAssistantImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ABackground.png"))); // NOI18N
-        lblAssistantImage.setText("jLabel1");
         jPanel1.add(lblAssistantImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1240, 520));
 
         jTabbedPaneAssistant.addTab("                                                                                                    Welcome                                                                                                         ", jPanel1);
@@ -537,125 +533,142 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Weight :");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 118, -1, -1));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 50, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Height:");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 171, -1, -1));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 140, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Age:");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 40, -1, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Gender:");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 230, -1, -1));
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 220, -1, -1));
 
-        txtWeight.setBackground(new java.awt.Color(32, 33, 35));
+        txtWeight.setBackground(new java.awt.Color(255, 255, 255));
         txtWeight.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtWeight.setForeground(new java.awt.Color(255, 255, 255));
+        txtWeight.setForeground(new java.awt.Color(51, 51, 51));
+        txtWeight.setToolTipText("Enter your weight in kilogram");
         txtWeight.setBorder(null);
-        jPanel4.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 116, 125, -1));
+        jPanel4.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 50, 125, -1));
 
-        txtHeight.setBackground(new java.awt.Color(32, 33, 35));
+        txtHeight.setBackground(new java.awt.Color(255, 255, 255));
         txtHeight.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtHeight.setForeground(new java.awt.Color(255, 255, 255));
+        txtHeight.setForeground(new java.awt.Color(51, 51, 51));
+        txtHeight.setToolTipText("Enter Your height in centimeters");
         txtHeight.setBorder(null);
-        jPanel4.add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 171, 125, -1));
+        jPanel4.add(txtHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 140, 125, -1));
 
-        txtAge.setBackground(new java.awt.Color(32, 33, 35));
+        txtAge.setBackground(new java.awt.Color(255, 255, 255));
         txtAge.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtAge.setForeground(new java.awt.Color(255, 255, 255));
+        txtAge.setForeground(new java.awt.Color(51, 51, 51));
         txtAge.setBorder(null);
-        jPanel4.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 40, 125, -1));
+        jPanel4.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 125, -1));
 
         btnUpdate.setBackground(new java.awt.Color(38, 50, 56));
         btnUpdate.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update Profile");
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update128.png"))); // NOI18N
+        btnUpdate.setToolTipText("Click to update profile");
+        btnUpdate.setBorder(null);
+        btnUpdate.setContentAreaFilled(false);
+        btnUpdate.setOpaque(false);
+        btnUpdate.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update64.png"))); // NOI18N
+        btnUpdate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/updaterollover.png"))); // NOI18N
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel4.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 452, 1117, -1));
+        jPanel4.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 340, 150, 140));
 
-        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 143, 125, 10));
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, 125, 10));
 
-        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 198, 125, 10));
+        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 170, 125, 10));
 
-        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 67, 125, 10));
+        jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 125, 10));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Activity Level :");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 358, 111, -1));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 140, -1));
 
-        cmbActivityLevel.setForeground(new java.awt.Color(255, 255, 255));
+        cmbActivityLevel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cmbActivityLevel.setForeground(new java.awt.Color(0, 0, 0));
         cmbActivityLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lightly active (moderate exercise but sedentary job)", "Moderately active (intense exercise but sedentary job)", "Very active (moderate exercise and active job)", "Extra active (intense exercise and active job)" }));
         cmbActivityLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbActivityLevelActionPerformed(evt);
             }
         });
-        jPanel4.add(cmbActivityLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 355, 349, -1));
+        jPanel4.add(cmbActivityLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 440, -1));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Goal :");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 300, 57, -1));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 80, -1));
 
-        cmbGoal.setForeground(new java.awt.Color(255, 255, 255));
+        cmbGoal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        cmbGoal.setForeground(new java.awt.Color(0, 0, 0));
         cmbGoal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maintenance", "Fat Loss" }));
-        jPanel4.add(cmbGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 297, 148, -1));
+        cmbGoal.setBorder(null);
+        jPanel4.add(cmbGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 270, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Name:");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 60, -1));
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, -1));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Email:");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 50, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, -1));
 
-        jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator9.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 77, 188, 10));
+        jSeparator9.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 188, 10));
 
-        txtUpdateUserName.setBackground(new java.awt.Color(32, 33, 35));
+        txtUpdateUserName.setBackground(new java.awt.Color(255, 255, 255));
         txtUpdateUserName.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        txtUpdateUserName.setForeground(new java.awt.Color(255, 255, 255));
+        txtUpdateUserName.setForeground(new java.awt.Color(51, 51, 51));
         txtUpdateUserName.setBorder(null);
-        jPanel4.add(txtUpdateUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 50, 188, -1));
+        jPanel4.add(txtUpdateUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 188, -1));
 
-        lblUserEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserEmail.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblUserEmail.setForeground(new java.awt.Color(51, 51, 51));
         lblUserEmail.setText("...");
-        jPanel4.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 300, -1));
+        jPanel4.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 300, -1));
 
-        lblUserGender.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserGender.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblUserGender.setForeground(new java.awt.Color(51, 51, 51));
         lblUserGender.setText("...");
-        jPanel4.add(lblUserGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 90, -1));
+        jPanel4.add(lblUserGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 220, 90, -1));
 
-        lblUserBMIProfile.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserBMIProfile.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblUserBMIProfile.setForeground(new java.awt.Color(51, 51, 51));
         lblUserBMIProfile.setText("...");
-        jPanel4.add(lblUserBMIProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 150, -1));
+        jPanel4.add(lblUserBMIProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 150, 40));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("BMI:");
-        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 50, -1));
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 50, -1));
+
+        lblProfileImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ABackground.png"))); // NOI18N
+        jPanel4.add(lblProfileImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1240, 520));
 
         jTabbedPaneEditProfile.addTab("                                                                                                  Edit Your Profile here                                                                                                     ", jPanel4);
 
@@ -676,14 +689,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jPanel10.setBackground(new java.awt.Color(32, 33, 35));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btntestingpurpose.setText("Testing App");
-        btntestingpurpose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btntestingpurposeActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btntestingpurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 50, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -813,7 +818,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1232, Short.MAX_VALUE)
+            .addGap(0, 1226, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -826,7 +831,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneMainPanelUser)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPaneMainPanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 1228, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -843,20 +850,38 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
-        users.getUserByEmail(currentUser.getEmail()).setName(txtUpdateUserName.getText());
-        users.getUserByEmail(currentUser.getEmail()).setAge(Integer.parseInt(txtAge.getText()));
-        users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(txtWeight.getText()));
-        users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(txtHeight.getText()));
-        users.getUserByEmail(currentUser.getEmail()).setGoal((String) cmbGoal.getSelectedItem());
-        users.getUserByEmail(currentUser.getEmail()).setActivityLevel((String) cmbActivityLevel.getSelectedItem());
-        JOptionPane.showMessageDialog(null, "Update Successfully !", " updated", JOptionPane.DEFAULT_OPTION);
-        currentUser = users.getUserByEmail(currentUser.getEmail());
-        showBMI();
-        getTDEE();
-        jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
-        generateMyPlan();
+        if (V.isValidName(txtUpdateUserName.getText())) {
+            if (V.isValidAge(txtAge.getText())) {
+                if (V.isValidWeight(txtWeight.getText())) {
+                    if (V.isValidHeight(txtHeight.getText())) {
+                        users.getUserByEmail(currentUser.getEmail()).setName(txtUpdateUserName.getText());
+                        users.getUserByEmail(currentUser.getEmail()).setAge(Integer.parseInt(txtAge.getText()));
+                        users.getUserByEmail(currentUser.getEmail()).setWeight(Double.parseDouble(txtWeight.getText()));
+                        users.getUserByEmail(currentUser.getEmail()).setHeight(Double.parseDouble(txtHeight.getText()));
+                        users.getUserByEmail(currentUser.getEmail()).setGoal((String) cmbGoal.getSelectedItem());
+                        users.getUserByEmail(currentUser.getEmail()).setActivityLevel((String) cmbActivityLevel.getSelectedItem());
+                        JOptionPane.showMessageDialog(null, "Profile Updated Successfully !", " Update Profile ", JOptionPane.DEFAULT_OPTION);
+                        currentUser = users.getUserByEmail(currentUser.getEmail());
+                        showBMI();
+                        getTDEE();
+                        jTabbedPaneAssistant.setTitleAt(0, "                                                                                       Welcome " + currentUser.getName() + "                                                                                                                                                                                                                       ");
+                        generateMyPlan();
 
-        getMyPlan();
+                        getMyPlan();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Invalid Height, Please Re-Enter Height !", " Height ", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Weight, Please Re-Enter Weight !", " Update Weight ", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Age, Please Re-Enter Age !", " Update Age ", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid Name pattern, Please Re-Enter Name !", " Update Name ", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     public void AssistantProcessor() {
@@ -881,7 +906,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
 
                     giveBotResponse();
-                    
+
                 } else {
 
                     sb.append("\n");
@@ -969,7 +994,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
                     sb.append("\n");
 
                     giveBotResponse();
-                    
+
                 } else {
 
                     sb.append("\n");
@@ -1016,16 +1041,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("\n");
             sb.append(this.recommandation);
             sb.append("\n");
-            
+
             giveBotResponse();
-        
+
         }
         if (L.getTopScoreIntent().equals("getStatus")) {
             sb.append("  Here is your Current Status ");
             sb.append("\n");
             sb.append("<=============================================================>");
             sb.append("\n");
-            sb.append("  Total Daily Energy Expenditure : "+Integer.toString(this.TDEE));
+            sb.append("  Total Daily Energy Expenditure : " + Integer.toString(this.TDEE));
             sb.append("\n");
             sb.append("  BMI : " + Double.toString(this.BMI));
             sb.append("\n");
@@ -1035,7 +1060,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sb.append("\n");
             sb.append("<=============================================================>");
             giveBotResponse();
-        
+
         }
 
         if (L.getTopScoreIntent().equals("getEmail")) {
@@ -1078,7 +1103,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             giveBotResponse();
         }
         if (L.getTopScoreIntent().equals("getTDEE")) {
-            
+
             sb.append("\n");
             sb.append("  Your Daily calorie requirement is " + Integer.toString(this.TDEE));
             sb.append("\n");
@@ -1160,24 +1185,16 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         }
 
     }
-    private void btntestingpurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestingpurposeActionPerformed
 
-        DietMaths t = new DietMaths();
-
-        t.MNUTRIENT(2000);
-
-    }//GEN-LAST:event_btntestingpurposeActionPerformed
-
-    
     public void giveUserResponse() {
-        StyleConstants.setForeground(style, Color.GRAY);
+        StyleConstants.setForeground(style, Color.DARK_GRAY);
         try {
             doc.insertString(doc.getLength(), sb.toString(), style);
         } catch (BadLocationException ex) {
         }
         sb.setLength(0);
     }
-    
+
     public void giveBotResponse() {
         StyleConstants.setForeground(style, Color.RED);
         try {
@@ -1186,7 +1203,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         }
         sb.setLength(0);
     }
-    
+
     private void cmbMyMealPlansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMyMealPlansActionPerformed
         if (cmbMyMealPlans.getSelectedIndex() == 0) {
             lbldisplayTotCal.setVisible(false); //Hide Total Calorie Amount Label
@@ -1223,10 +1240,9 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         L.setQuery(txtUserQuery.getText());
         L.ProcessQuery();
-        lblTopScoreIntentName.setText(L.getTopScoreIntent());
 
-        lblSenAna.setText(L.getSentimentAnalysisLabel());
-
+        lblSenAna.setText(L.getSentimentAnalysisLabel() + " user query");
+        txtUserQuery.setText("");
         AssistantProcessor();
     }//GEN-LAST:event_btnSendQueryMouseReleased
 
@@ -1239,11 +1255,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         sb.append("\n");
 
         giveUserResponse();
-        
+
     }//GEN-LAST:event_btnSendQueryMousePressed
 
     private void btnSendQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendQueryActionPerformed
-        // dont write anything
+        //don't do anything
     }//GEN-LAST:event_btnSendQueryActionPerformed
 
     /**
@@ -1277,7 +1293,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSendQuery;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btntestingpurpose;
     private javax.swing.JComboBox<String> cmbActivityLevel;
     private javax.swing.JComboBox<String> cmbGoal;
     private javax.swing.JComboBox<String> cmbMyMealPlans;
@@ -1323,8 +1338,8 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblAssistantImage;
     private javax.swing.JLabel lblChatBarImage;
     private javax.swing.JLabel lblMealPlanTotalCalorieAmount;
+    private javax.swing.JLabel lblProfileImage;
     private javax.swing.JLabel lblSenAna;
-    private javax.swing.JLabel lblTopScoreIntentName;
     private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserBMIProfile;
     private javax.swing.JLabel lblUserEmail;
@@ -1353,7 +1368,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             FileOutputStream ufos = new FileOutputStream(new File("datafiles/users.ser"));
             ObjectOutputStream uboos = new ObjectOutputStream(ufos);
             uboos.writeObject(users);
-            uboos.flush();  
+            uboos.flush();
             uboos.close();
         } catch (Exception e) {
             System.out.println(e);
