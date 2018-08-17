@@ -36,7 +36,7 @@ public class SignUpUI extends javax.swing.JFrame {
      */
     public void SerializeUser() {
         try {
-            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            FileOutputStream ufos = new FileOutputStream(new File("datafiles/users.ser"));
             ObjectOutputStream uboos = new ObjectOutputStream(ufos);
             uboos.writeObject(users);
             uboos.flush();
@@ -51,7 +51,7 @@ public class SignUpUI extends javax.swing.JFrame {
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
-        File file = new File("users.txt");
+        File file = new File("datafiles/users.ser");
         try {
 
             FileInputStream ufis = new FileInputStream(file);

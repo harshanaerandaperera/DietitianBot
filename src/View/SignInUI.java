@@ -30,7 +30,7 @@ public class SignInUI extends javax.swing.JFrame implements Serializable {
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
-        File file = new File("users.txt");
+        File file = new File("datafiles/users.ser");
         try {
 
             FileInputStream ufis = new FileInputStream(file);

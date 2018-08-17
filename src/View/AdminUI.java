@@ -913,7 +913,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
      */
     public void SerializeUser() {
         try {
-            FileOutputStream ufos = new FileOutputStream(new File("users.txt"));
+            FileOutputStream ufos = new FileOutputStream(new File("datafiles/users.ser"));
             ObjectOutputStream uboos = new ObjectOutputStream(ufos);
             uboos.writeObject(users);
             uboos.flush();
@@ -928,7 +928,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
      */
     public void DeserializeUsers() {
         ObjectInputStream uois = null;
-        File file = new File("users.txt");
+        File file = new File("datafiles/users.ser");
         try {
 
             FileInputStream ufis = new FileInputStream(file);
@@ -949,7 +949,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
      */
     public void SerializeMealPlans() {
         try {
-            FileOutputStream mplfos = new FileOutputStream(new File("mealPlans.txt"));
+            FileOutputStream mplfos = new FileOutputStream(new File("datafiles/mealPlans.ser"));
             ObjectOutputStream mplboos = new ObjectOutputStream(mplfos);
             mplboos.writeObject(mealPlans);
             mplboos.flush();
@@ -964,7 +964,7 @@ public class AdminUI extends javax.swing.JFrame implements Serializable {
      */
     public void DeserializeMealPlans() {
         ObjectInputStream mplois = null;
-        File file = new File("mealPlans.txt");
+        File file = new File("datafiles/mealPlans.ser");
         try {
 
             FileInputStream mplfis = new FileInputStream(file);
