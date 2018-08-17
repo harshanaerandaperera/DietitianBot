@@ -1353,7 +1353,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             FileOutputStream ufos = new FileOutputStream(new File("datafiles/users.ser"));
             ObjectOutputStream uboos = new ObjectOutputStream(ufos);
             uboos.writeObject(users);
-            uboos.flush();
+            uboos.flush();  
             uboos.close();
         } catch (Exception e) {
             System.out.println(e);
