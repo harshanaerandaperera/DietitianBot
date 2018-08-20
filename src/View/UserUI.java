@@ -455,6 +455,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         jLabel39 = new javax.swing.JLabel();
         lblMyStatusImage1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        lblProfileImage1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(32, 33, 35));
@@ -581,7 +582,6 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
         btnUpdate.setToolTipText("Click to update profile");
         btnUpdate.setBorder(null);
         btnUpdate.setContentAreaFilled(false);
-        btnUpdate.setOpaque(false);
         btnUpdate.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update64.png"))); // NOI18N
         btnUpdate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/updaterollover.png"))); // NOI18N
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -846,15 +846,19 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         jTabbedPaneMainPanelUser.addTab("                Diet Chart               ", jPanel6);
 
+        lblProfileImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/EBackground.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1226, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(lblProfileImage1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addComponent(lblProfileImage1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, Short.MAX_VALUE)
         );
 
         jTabbedPaneMainPanelUser.addTab("", new javax.swing.ImageIcon(getClass().getResource("/Images/SignOut.png")), jPanel3); // NOI18N
@@ -1221,7 +1225,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     public void giveUserResponse() {
         StyleConstants.setForeground(style, Color.DARK_GRAY);
         try {
-            doc.insertString(doc.getLength(), sb.toString(), style);
+            doc.insertString(doc.getLength(), "                                                        "+sb.toString(), style);
         } catch (BadLocationException ex) {
         }
         sb.setLength(0);
@@ -1283,7 +1287,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
 
         sb.append("\n");
         sb.append("\n");
-        sb.append("                                                                                                             " + txtUserQuery.getText().toString());
+        sb.append("                                                                                                                                           " + txtUserQuery.getText().toString());
         sb.append("\n");
         sb.append("\n");
 
@@ -1374,6 +1378,7 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel lblMyStatusImage;
     private javax.swing.JLabel lblMyStatusImage1;
     private javax.swing.JLabel lblProfileImage;
+    private javax.swing.JLabel lblProfileImage1;
     private javax.swing.JLabel lblSenAna;
     private javax.swing.JLabel lblUserBMI;
     private javax.swing.JLabel lblUserBMIProfile;
