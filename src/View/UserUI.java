@@ -119,11 +119,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("Proper Recommandation");
+            sbrecomendations.append("Proper Recommandation for Under Weight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("Treatments");
+            sbrecomendations.append("Treatments Under Weight");
 
             sbrecomendations.append("\n");
 
@@ -139,11 +139,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("Proper Recommandation");
+            sbrecomendations.append("Proper Recommandation for Healthy weight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("Treatments");
+            sbrecomendations.append("Treatments for Healthy weight");
 
             sbrecomendations.append("\n");
 
@@ -161,11 +161,11 @@ public class UserUI extends javax.swing.JFrame implements Serializable {
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("Proper Recommandation");
+            sbrecomendations.append("Proper Recommandation for Overweight");
             sbrecomendations.append("\n");
             sbrecomendations.append("\n");
 
-            sbrecomendations.append("Treatments");
+            sbrecomendations.append("Treatments for Overweight");
 
             sbrecomendations.append("\n");
 
